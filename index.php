@@ -11,7 +11,6 @@ require_once 'head.php';
         <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
-                <!-- Widgets  -->
                 <div class="row">
                     <!-- totaU -->
                     <?php
@@ -203,8 +202,6 @@ require_once 'head.php';
                     </div>
                     <!-- totaAll -->
                 </div>
-                <!-- /Widgets -->
-                <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
