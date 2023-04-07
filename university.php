@@ -100,10 +100,10 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">Save changes</button>
-                                                <?php echo '<pre>';
-                                                print_r($_POST);
-                                                echo '</pre>';
-                                                ?>
+                                                <!-- <?php echo '<pre>';
+                                                        print_r($_POST);
+                                                        echo '</pre>';
+                                                        ?> -->
                                             </div>
                                         </div>
                                     </div>
