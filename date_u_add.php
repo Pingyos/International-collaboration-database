@@ -2,20 +2,10 @@
 require_once 'head.php'; ?>
 
 <body>
-    <!-- Left Panel -->
 
     <?php require_once 'aside.php'; ?>
-
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
-
     <div id="right-panel" class="right-panel">
-
-        <!-- Header-->
         <?php require_once 'header.php'; ?>
-        <!-- Header-->
-
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -116,22 +106,13 @@ require_once 'head.php'; ?>
                                     </div>
                                 </div>
                             </div>
-                        </div> <!-- .card -->
-                    </div><!--/.col-->
+                        </div>
+                    </div>
                 </div>
-
-
-            </div><!-- .animated -->
+            </div>
         </div>
-
         <div class="clearfix"></div>
-
-
-    </div><!-- /#right-panel -->
-
-    <!-- Right Panel -->
-
-    <!-- Scripts -->
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
