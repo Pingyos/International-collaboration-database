@@ -12,20 +12,6 @@
                         <li><i class="menu-icon fa fa-th"></i><a href="date_u.php">University Table</a></li>
                     </ul>
                 </li>
-                <!-- <li class="menu-title">Export To Excel</li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-arrow-circle-o-down"></i>Export</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-arrow-circle-o-down"></i><a href="eport_date.php">Export</a></li>
-                    </ul>
-                </li>
-                <li class="menu-title">Admin</li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-group"></i>Admin Forms</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-group"></i><a href="reg_signup.php">Signup</a></li>
-                    </ul>
-                </li> -->
             </ul>
         </div>
     </nav>
