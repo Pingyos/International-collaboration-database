@@ -1,17 +1,10 @@
-<?php 
+<?php
 require_once 'head.php'; ?>
 
 <body>
-    <!-- Left Panel -->
-
     <?php require_once 'aside.php'; ?>
-
     <div id="right-panel" class="right-panel">
-
-        <!-- Header-->
         <?php require_once 'header.php'; ?>
-        <!-- Header-->
-
         <div class="content">
             <div class="animated fadeIn">
 
@@ -29,7 +22,7 @@ require_once 'head.php'; ?>
                                             <h3 class="text-center">Add Data</h3>
                                         </div>
                                         <hr>
-                                        <form action="date_in_db.php" method="post" enctype="multipart/form-data">
+                                        <form method="post" enctype="multipart/form-data">
                                             <div class="row">
                                                 <input type="text" name="university_name" value="<?= $_GET['id']; ?>" hidden>
                                                 <div class="col-6">
@@ -57,7 +50,7 @@ require_once 'head.php'; ?>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label for="name" class="control-label mb-1">Name-Surname</label>
+                                                        <label for="name" class="control-label mb-1">Name Surname</label>
                                                         <input type="text" name="name" required class="form-control">
                                                     </div>
                                                 </div>
@@ -73,24 +66,16 @@ require_once 'head.php'; ?>
                                             </div>
                                         </form>
                                     </div>
+                                    <?php require_once 'date_in_db.php'; ?>
                                 </div>
                             </div>
-                        </div> <!-- .card -->
-                    </div><!--/.col-->
+                        </div>
+                    </div>
                 </div>
-
-
-            </div><!-- .animated -->
-        </div><!-- .content -->
-
+            </div>
+        </div>
         <div class="clearfix"></div>
-
-
-    </div><!-- /#right-panel -->
-
-    <!-- Right Panel -->
-
-    <!-- Scripts -->
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
