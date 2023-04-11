@@ -1,8 +1,6 @@
 <?php
 require_once 'head.php'; ?>
-
 <body>
-
     <?php require_once 'aside.php'; ?>
     <div id="right-panel" class="right-panel">
         <?php require_once 'header.php'; ?>
@@ -68,6 +66,7 @@ require_once 'head.php'; ?>
 
 
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
