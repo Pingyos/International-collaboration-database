@@ -2,6 +2,7 @@
 if (
     isset($_POST['university'])
     && isset($_POST['ranking'])
+    && isset($_POST['spec'])
     && isset($_POST['mou'])
     && isset($_POST['country'])
     && isset($_POST['university_id'])
@@ -10,12 +11,14 @@ if (
     require_once 'connect.php';
     $university_id = $_POST['university_id'];
     $university = $_POST['university'];
+    $spec = $_POST['spec'];
     $ranking = $_POST['ranking'];
     $mou = $_POST['mou'];
     $country = $_POST['country'];
     //sql update
-    $stmt = $conn->prepare("UPDATE  university SET university=:university, ranking=:ranking,mou=:mou, country=:country WHERE university_id=:university_id");
+    $stmt = $conn->prepare("UPDATE  university SET university=:university, ranking=:ranking,mou=:mou, country=:country, spec=:spec WHERE university_id=:university_id");
     $stmt->bindParam(':university_id', $university_id, PDO::PARAM_STR);
+    $stmt->bindParam(':spec', $spec, PDO::PARAM_STR);
     $stmt->bindParam(':university', $university, PDO::PARAM_STR);
     $stmt->bindParam(':ranking', $ranking, PDO::PARAM_STR);
     $stmt->bindParam(':mou', $mou, PDO::PARAM_STR);
@@ -30,26 +33,28 @@ if (
 
     if ($stmt->rowCount() >= 0) {
         echo '<script>
-             setTimeout(function() {
-              swal({
-                  title: "Edit Data Success",
-                  type: "success"
-              }, function() {
-                  window.location = "data_u.php"; //หน้าที่ต้องการให้กระโดดไป
-              });
-            }, 200);
-        </script>';
+        swal({
+          title: "Add Data Success",
+          text: "booking success",
+          type: "success",
+          timer: 2000,
+          showConfirmButton: false
+        }, function(){
+          window.location.href = "date_u.php";
+        });
+      </script>';
     } else {
         echo '<script>
-             setTimeout(function() {
-              swal({
-                  title: "Edit Data Error",
-                  type: "error"
-              }, function() {
-                  window.location = "index.php"; //หน้าที่ต้องการให้กระโดดไป
-              });
-            }, 200);
-        </script>';
+        swal({
+          title: "Add data fail",
+          text: "Add data fail",
+          type: "success",
+          timer: 2000,
+          showConfirmButton: false
+        }, function(){
+          window.location.href = "date_u.php";
+        });
+      </script>';
     }
     $conn = null; //close connect db
 } //isset
