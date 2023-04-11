@@ -9,22 +9,9 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-
                     <div class="col-md-12">
-                        <form action="university_db.php" method="post" enctype="multipart/form-data">
+                        <form method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <script>
-                                    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
-                                        keyboard: false
-                                    });
-
-                                    var myButton = document.querySelector('button[data-bs-toggle="modal"]');
-                                    myButton.addEventListener('click', function() {
-                                        myModal.show();
-                                    });
-                                </script>
-                                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     add
                                 </button>
@@ -45,13 +32,14 @@
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="ranking" class="control-label mb-1">QS Ranking<span style="color:red;">*</span></label>
+                                                            <label for="ranking" class="control-label mb-1">QS
+                                                                Ranking<span style="color:red;">*</span></label>
                                                             <input type="text" name="ranking" required class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="MOU" class="control-label mb-1">MOU/MOA<span style="color:red;">*</span></label>
+                                                            <label for="mou" class="control-label mb-1">MOU/MOA<span style="color:red;">*</span></label>
                                                             <select name="mou" required class="form-control">
                                                                 <option value="">Select MOU</option>
                                                                 <option value="YES">YES</option>
@@ -105,6 +93,7 @@
                                                         echo '</pre>';
                                                         ?> -->
                                             </div>
+                                            <?php require_once 'university_db.php'; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -115,38 +104,39 @@
                                 <strong class="card-title">Data Table</strong>
                             </div>
                             <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>University</th>
-                                            <th>Country</th>
-                                            <th>Ranking</th>
-                                            <th>Details</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        require_once 'connect.php';
-
-                                        $stmt = $conn->prepare("SELECT * FROM university");
-                                        $stmt->execute();
-                                        $result = $stmt->fetchAll();
-
-                                        foreach ($result as $t1) {
-                                        ?>
+                                <form method="post" enctype="multipart/form-data">
+                                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                        <thead>
                                             <tr>
-                                                <td><?= $t1['university']; ?></td>
-                                                <td><?= $t1['country']; ?></td>
-                                                <td><?= $t1['ranking']; ?></td>
-                                                <td>
-                                                    <a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a>
-                                                </td>
+                                                <th>University</th>
+                                                <th>Country</th>
+                                                <th>Ranking</th>
+                                                <th>Details</th>
                                             </tr>
-                                        <?php
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            require_once 'connect.php';
+                                            $stmt = $conn->prepare("SELECT * FROM university");
+                                            $stmt->execute();
+                                            $result = $stmt->fetchAll();
+
+                                            foreach ($result as $t1) {
+                                            ?>
+                                                <tr>
+                                                    <td><?= $t1['university']; ?></td>
+                                                    <td><?= $t1['country']; ?></td>
+                                                    <td><?= $t1['ranking']; ?></td>
+                                                    <td>
+                                                        <a href="university_view.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -186,6 +176,18 @@
         });
     </script>
 
+    <script>
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+            keyboard: false
+        });
+
+        var myButton = document.querySelector('button[data-bs-toggle="modal"]');
+        myButton.addEventListener('click', function() {
+            myModal.show();
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 </body>
 

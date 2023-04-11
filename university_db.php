@@ -38,7 +38,7 @@ if (
           timer: 2000,
           showConfirmButton: false
         }, function(){
-          window.location.href = "date_u.php";
+          window.location.href = "university.php";
         });
       </script>';
     } else {
@@ -50,7 +50,7 @@ if (
           timer: 2000,
           showConfirmButton: false
         }, function(){
-          window.location.href = "date_u.php";
+          window.location.href = "university.php";
         });
       </script>';
     }
