@@ -36,7 +36,7 @@ if (
                     title: "Add data Success",
                     type: "success"
                 }, function() {
-                    window.location = "date_in_add.php?id=' . $university . '";
+                    window.location = "check_date.php?university_id=' . $university_id . '";
                 });
             }, 200);
         </script>';

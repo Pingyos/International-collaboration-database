@@ -1,5 +1,6 @@
 <?php
 require_once 'head.php'; ?>
+
 <body>
     <?php require_once 'aside.php'; ?>
     <div id="right-panel" class="right-panel">
@@ -10,7 +11,104 @@ require_once 'head.php'; ?>
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <a href="date_u_add.php" class="btn btn-success">Add Data</a>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                Add Data
+                            </button>
+                        </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document"> <!-- Add 'modal-lg' class for larger modal -->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                <h3 class="text-center">University</h3>
+                                            </div>
+                                            <hr>
+                                            <form method="post" enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="university" class="control-label mb-1">University</label>
+                                                            <input type="text" name="university" required class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="ranking" class="control-label mb-1">QS Ranking</label>
+                                                            <input type="text" name="ranking" required class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="MOU" class="control-label mb-1">MOU/MOA</label>
+                                                            <select name="mou" class="form-control" required>
+                                                                <option value="">Select MOU/MOA</option>
+                                                                <option value="YES">YES</option>
+                                                                <option value="NO">NO</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="country" class="control-label mb-1">Country</label>
+                                                            <?php
+                                                            require_once 'connect.php';
+                                                            $query = "
+                                                            SELECT country_name FROM apps_countries 
+                                                            ORDER BY country_name ASC
+                                                        ";
+                                                            $result = $conn->query($query);
+                                                            ?>
+                                                            <select name="country" required class="form-control">
+                                                                <option value="">Select Country</option>
+                                                                <?php
+                                                                foreach ($result as $row) {
+                                                                    echo '<option value="' . $row["country_name"] . '">' . $row["country_name"] . '</option>';
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="spec" class="control-label mb-1">Specialization</label>
+                                                            <input type="text" name="spec" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="comments_u" class="control-label mb-1">Comments</label>
+                                                            <input type="text" name="comments_u" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-success btn-block">
+                                                        <span type="submit">Submit</span>
+                                                    </button>
+                                                    <!-- <?php echo '<pre>';
+                                                            print_r($_POST);
+                                                            echo '</pre>';
+                                                            ?> -->
+                                                </div>
+                                            </form>
+                                            <?php require_once 'date_u_db.php';
+                                            error_reporting(0);
+                                            ini_set('display_errors', 0); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card">
                             <div class="card-header">
@@ -93,6 +191,11 @@ require_once 'head.php'; ?>
         });
     </script>
 
+    <script>
+        $('#myModal').on('shown.bs.modal', function() {
+            $('#exampleModal').trigger('focus')
+        })
+    </script>
 
 </body>
 

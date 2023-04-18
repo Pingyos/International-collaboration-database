@@ -80,9 +80,79 @@ require_once 'head.php'; ?>
                             <div class="card-body">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <a href="date_in_add.php?id=<?= $university; ?>" class="btn btn-success">Add Data</a>
+                                        <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                            Add Data
+                                        </a>
                                     </div>
                                 </div>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="card-body">
+                                                    <div class="card-title">
+                                                        <h3 class="text-center">University</h3>
+                                                    </div>
+                                                    <hr>
+                                                    <form method="post" enctype="multipart/form-data">
+                                                        <div class="row">
+                                                            <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label for="university" class="control-label mb-1">Date Start</label>
+                                                                    <input type="date" name="date_s" required class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label for="ranking" class="control-label mb-1">Date End</label>
+                                                                    <input type="date" name="date_e" required class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label for="activity" class="control-label mb-1">Activity types</label>
+                                                                    <select name="activity" required class="form-control">
+                                                                        <option value="0">Activity types</option>
+                                                                        <option value="C">C</option>
+                                                                        <option value="A">A</option>
+                                                                        <option value="R">R</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label for="name" class="control-label mb-1">Name Surname</label>
+                                                                    <input type="text" name="name" required class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <label for="details" class="control-label mb-1">Activity details </label>
+                                                                    <textarea class="form-control" required name="details" style="height: 100px"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <button type="submit" class="btn btn-success btn-block">Add Data</button>
+
+                                                        </div>
+                                                    </form>
+                                                    <?php require_once 'date_in_db.php'; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php echo '<pre>';
+                                print_r($_POST);
+                                echo '</pre>';
+                                ?>
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <th>#</th>
@@ -146,6 +216,11 @@ require_once 'head.php'; ?>
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
 
+    <script>
+        $('#exampleModal').on('shown.bs.modal', function() {
+            $('#exampleModal').trigger('focus');
+        });
+    </script>
 
 </body>
 
