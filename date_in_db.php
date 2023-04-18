@@ -31,15 +31,15 @@ if (
 
     if ($result) {
         echo '<script>
-            setTimeout(function() {
-                swal({
-                    title: "Add data Success",
-                    type: "success"
-                }, function() {
-                    window.location = "check_date.php?university_id=' . $university_id . '";
-                });
-            }, 200);
-        </script>';
+        setTimeout(function() {
+            swal({
+                title: "Add data Success",
+                type: "success"
+            }, function() {
+                window.location = "check_date.php?university_id=' . $university_id . '";
+            });
+        }, 200);
+    </script>';
     } else {
         echo '<script>
              setTimeout(function() {
@@ -47,7 +47,7 @@ if (
                   title: "Add date Error",
                   type: "error"
               }, function() {
-                  window.location = "index.php"; //หน้าที่ต้องการให้กระโดดไป
+                  window.location = "index.php";
               });
             }, 200);
         </script>';

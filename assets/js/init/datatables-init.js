@@ -9,14 +9,14 @@
 
 
     $('#bootstrap-data-table').DataTable({
-        lengthMenu: [[7,10, 20, 50, -1], [7,10, 20, 50, "All"]],
+        lengthMenu: [[10,20, 30, 40, -1], [10,20, 30, 40, "All"]],
     });
 
 
 
     $('#bootstrap-data-table-export').DataTable({
         dom: 'lBfrtip',
-        lengthMenu: [[7,10, 20, 50, -1], [7,10, 20, 50, "All"]],
+        lengthMenu: [[10,20, 30, 40, -1], [10,20, 30, 40, "All"]],
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
