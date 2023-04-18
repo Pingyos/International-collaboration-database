@@ -101,6 +101,7 @@ require_once 'head.php'; ?>
                                                     <hr>
                                                     <form method="post" enctype="multipart/form-data">
                                                         <div class="row">
+                                                            <input type="text" name="university_id" value="<?= $row['university_id']; ?>" hidden>
                                                             <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
                                                             <div class="col-6">
                                                                 <div class="form-group">
@@ -161,43 +162,43 @@ require_once 'head.php'; ?>
                                         <th>Activity types</th>
                                         <th>Name-Surname</th>
                                         <th>Activity details</th>
+                                        <th>Activity details</th>
+                                        <th>Del</th>
                                     </thead>
-
-                                    <tdoby>
+                                    <tbody>
                                         <?php
-                                        $stmt2 = $conn->prepare("SELECT * FROM dateinter WHERE university='" . $row['university'] . "'");
-                                        $stmt2->execute();
-                                        $result = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+                                        require_once 'connect.php';
+                                        $stmt = $conn->prepare("SELECT * FROM dateinter WHERE university=:university");
+                                        $stmt->bindParam(':university', $row['university'], PDO::PARAM_STR);
+                                        $stmt->execute();
+                                        $result = $stmt->fetchAll();
                                         $countrow = 1;
-                                        foreach ($result as $row => $data) {
-                                            echo "<tr>
-                                                    <td>{$countrow}</td>
-                                                    <td>{$data['date_s']}</td>
-                                                    <td>{$data['date_e']}</td>
-                                                    <td>{$data['activity']}</td>
-                                                    <td>{$data['name']}</td>
-                                                    <td>{$data['details']}</td>
-                                                </tr>";
-                                            $countrow++;
+                                        foreach ($result as $t1) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $countrow ?></td>
+                                                <td><?= $t1['date_s']; ?></td>
+                                                <td><?= $t1['date_e']; ?></td>
+                                                <td><?= $t1['activity']; ?></td>
+                                                <td><?= $t1['name']; ?></td>
+                                                <td><?= $t1['details']; ?></td>
+                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a></td>
+                                                <td><a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Confirm Data Deletion !!');">Del</a></td>
+                                            </tr>
+                                        <?php $countrow++;
                                         }
                                         ?>
-                                    </tdoby>
+                                    </tbody>
+
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
-
-
+            </div>
+        </div>
         <div class="clearfix"></div>
-
-    </div><!-- /#right-panel -->
-
-    <!-- Right Panel -->
-
-    <!-- Scripts -->
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>

@@ -36,10 +36,11 @@ if (
                 title: "Add data Success",
                 type: "success"
             }, function() {
-                window.location = "check_date.php?university_id=' . $university_id . '";
+                var universityId = "' . $university_id . '";
+                window.location.href = "check_date.php?university_id=" + universityId;
             });
         }, 200);
-    </script>';
+      </script>';
     } else {
         echo '<script>
              setTimeout(function() {
