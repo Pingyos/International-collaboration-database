@@ -162,7 +162,7 @@ require_once 'head.php'; ?>
                                         <th>Activity types</th>
                                         <th>Name-Surname</th>
                                         <th>Activity details</th>
-                                        <th>Activity details</th>
+                                        <th>View</th>
                                         <th>Del</th>
                                     </thead>
                                     <tbody>
@@ -182,14 +182,40 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['activity']; ?></td>
                                                 <td><?= $t1['name']; ?></td>
                                                 <td><?= $t1['details']; ?></td>
-                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a></td>
+                                                <td><a href="?id=<?= $t1['id']; ?>" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal1">View</a></td>
                                                 <td><a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Confirm Data Deletion !!');">Del</a></td>
                                             </tr>
                                         <?php $countrow++;
                                         }
                                         ?>
                                     </tbody>
+                                    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="card-body">
+                                                        <div class="card-title">
+                                                            <h3 class="text-center">University</h3>
+                                                        </div>
+                                                        <hr>
+                                                        <form method="post" enctype="multipart/form-data">
+                                                            .....
+                                                            <div>
+                                                                <button type="submit" class="btn btn-success btn-block">Add Data</button>
 
+                                                            </div>
+                                                        </form>
+                                                        <?php require_once 'date_in_db.php'; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </table>
                             </div>
                         </div>
@@ -220,6 +246,7 @@ require_once 'head.php'; ?>
     <script>
         $('#exampleModal').on('shown.bs.modal', function() {
             $('#exampleModal').trigger('focus');
+            $('#exampleModal1').trigger('focus');
         });
     </script>
 
