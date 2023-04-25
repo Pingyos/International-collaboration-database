@@ -23,24 +23,28 @@ if (
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
     $stmt->bindParam(':details', $details, PDO::PARAM_STR);
     $result = $stmt->execute();
-
-    echo '
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
-
     if ($result) {
+        // Fetch university_id
+        $stmt = $conn->prepare("SELECT university_id FROM university WHERE university = :university");
+        $stmt->bindParam(':university', $university, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $university_id = $result['university_id'];
+
+        echo '
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
         echo '<script>
-        setTimeout(function() {
-            swal({
-                title: "Add data Success",
-                type: "success"
-            }, function() {
-                var universityId = "' . $university_id . '";
-                window.location.href = "check_date.php?university_id=" + universityId;
-            });
-        }, 200);
-      </script>';
+            setTimeout(function() {
+                swal({
+                    title: "Add data Success",
+                    type: "success"
+                }, function() {
+                    window.location = "check_date.php?university_id=' . $university_id . '";
+                });
+            }, 200);
+        </script>';
     } else {
         echo '<script>
              setTimeout(function() {
