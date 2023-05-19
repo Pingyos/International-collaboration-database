@@ -354,7 +354,6 @@
                                         <th>Date_e</th>
                                         <th>Activity types</th>
                                         <th>Name</th>
-                                        <th>#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -373,7 +372,6 @@
                                             <td><?= $t1['date_e']; ?></td>
                                             <td><?= $t1['activity']; ?></td>
                                             <td><?= $t1['name']; ?></td>
-                                            <td><a href="check_date.php" class="btn btn-success btn-sm">View</a></td>
                                         </tr>
                                     <?php
                                         $countrow++;
@@ -419,7 +417,6 @@
                                         <th>Date_e</th>
                                         <th>Activity types</th>
                                         <th>Name</th>
-                                        <th>#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -438,7 +435,6 @@
                                             <td><?= $t1['date_e']; ?></td>
                                             <td><?= $t1['activity']; ?></td>
                                             <td><?= $t1['name']; ?></td>
-                                            <td><a href="check_date.php" class="btn btn-success btn-sm">View</a></td>
                                         </tr>
                                     <?php
                                         $countrow++;
@@ -484,7 +480,6 @@
                                         <th>Date_e</th>
                                         <th>Activity types</th>
                                         <th>Name</th>
-                                        <th>#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -503,7 +498,6 @@
                                             <td><?= $t1['date_e']; ?></td>
                                             <td><?= $t1['activity']; ?></td>
                                             <td><?= $t1['name']; ?></td>
-                                            <td><a href="check_date.php" class="btn btn-success btn-sm">View</a></td>
                                         </tr>
                                     <?php
                                         $countrow++;
@@ -549,7 +543,6 @@
                                         <th>Date_e</th>
                                         <th>Activity types</th>
                                         <th>Name</th>
-                                        <th>#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -568,7 +561,6 @@
                                             <td><?= $t1['date_e']; ?></td>
                                             <td><?= $t1['activity']; ?></td>
                                             <td><?= $t1['name']; ?></td>
-                                            <td><a href="check_date.php" class="btn btn-success btn-sm">View</a></td>
                                         </tr>
                                     <?php
                                         $countrow++;
@@ -589,7 +581,7 @@
         })
     </script>
     <!-- .exampleModal_totaC -->
-    
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
