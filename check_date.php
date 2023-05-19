@@ -1,14 +1,14 @@
 <?php
-session_start();
-if (!isset($_SESSION['login_info'])) {
-    header('Location: login.php');
-    exit;
-}
-if (isset($_SESSION['login_info'])) {
-    $json = $_SESSION['login_info'];
-} else {
-    echo "You are not logged in.";
-}
+// session_start();
+// if (!isset($_SESSION['login_info'])) {
+//     header('Location: login.php');
+//     exit;
+// }
+// if (isset($_SESSION['login_info'])) {
+//     $json = $_SESSION['login_info'];
+// } else {
+//     echo "You are not logged in.";
+// }
 require_once 'head.php'; ?>
 
 <body>
@@ -50,6 +50,11 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
+                                            <label for="ranking">QS Ranking by Suject : <?= $row['ranking_suject']; ?></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
                                             <label for="ranking">QS Ranking by Suject : <?= $row['ranking']; ?></label>
                                         </div>
                                     </div>
@@ -65,7 +70,7 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="title">MOU/MOA : <?= $row['comments_u']; ?></label>
+                                            <label for="title">Comments : <?= $row['comments_u']; ?></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
