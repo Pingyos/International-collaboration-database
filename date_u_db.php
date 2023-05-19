@@ -33,7 +33,7 @@ if (
         echo '<script>
         swal({
           title: "Add Data Success",
-          text: "booking success",
+          text: "success",
           type: "success",
           timer: 2000,
           showConfirmButton: false

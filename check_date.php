@@ -1,5 +1,14 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['login_info'])) {
+    header('Location: login.php');
+    exit;
+}
+if (isset($_SESSION['login_info'])) {
+    $json = $_SESSION['login_info'];
+} else {
+    echo "You are not logged in.";
+}
 require_once 'head.php'; ?>
 
 <body>
@@ -84,8 +93,6 @@ require_once 'head.php'; ?>
                                         <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                                             Add Data
                                         </a>
-                                        <button type="submit" id="btnExport" name='export' value="Export to Excel" class="btn btn-info">Export
-                                            to Excel</button>
                                     </div>
                                 </div>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,7 +152,6 @@ require_once 'head.php'; ?>
                                                         <div>
                                                             <button type="submit" class="btn btn-success btn-block">Add Data</button>
                                                         </div>
-
                                                     </form>
                                                     <?php require_once 'date_in_db.php';
                                                     error_reporting(0);

@@ -1,6 +1,30 @@
 <?php
+session_start();
 
-require_once 'head.php'; ?>
+// Check if session login_info is set
+if (!isset($_SESSION['login_info'])) {
+    header('Location: login.php');
+    exit;
+} else {
+    $json = $_SESSION['login_info'];
+}
+
+// Check for inactivity
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 300)) { // 300 seconds = 5 minutes
+    session_unset(); // Unset all session variables
+    session_destroy(); // Destroy the session
+    header('Location: login.php'); // Redirect to login.php
+    exit;
+}
+
+// Update last activity time
+$_SESSION['last_activity'] = time();
+?>
+
+<!-- Your HTML code goes here -->
+<?php require_once 'head.php'; ?>
+<!-- Rest of your HTML code goes here -->
+
 
 <body>
     <?php require_once 'aside.php'; ?>
@@ -34,11 +58,7 @@ require_once 'head.php'; ?>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="stat-content">
-                                        <a href="#" class="small-box-footer">
-                                            More <i class="fa fa-arrow-circle-right"></i>
-                                        </a>
-                                    </div>
+                      
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,14 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['login_info'])) {
+    header('Location: login.php');
+    exit;
+}
+if (isset($_SESSION['login_info'])) {
+    $json = $_SESSION['login_info'];
+} else {
+    echo "You are not logged in.";
+}
 require_once 'head.php'; ?>
 
 <body>
@@ -123,7 +132,6 @@ require_once 'head.php'; ?>
                                             <th>University/Institute</th>
                                             <th>Country</th>
                                             <th>QSranking</th>
-                                            <th>Total</th>
                                             <th>Detial</th>
                                             <th>Del</th>
                                         </tr>
@@ -142,7 +150,6 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['university']; ?></td>
                                                 <td><?= $t1['country']; ?></td>
                                                 <td><?= $t1['ranking']; ?></td>
-                                                <td><?= $t1['university_id']; ?></td>
                                                 <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a></td>
                                                 <td><a href="del_u.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Confirm Data Deletion !!');">Del</a></td>
                                             </tr>

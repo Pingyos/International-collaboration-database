@@ -39,7 +39,7 @@ if (
 
     echo '<script>
         swal({
-          title: "UPDATE Data Success",
+          title: "Add Data Success",
           text: "success",
           type: "success",
           timer: 2000,
@@ -51,8 +51,8 @@ if (
   } else {
     echo '<script>
         swal({
-          title: "UPDATE data fail",
-          text: "UPDATE data fail",
+          title: "Add data fail",
+          text: "Add data fail",
           type: "success",
           timer: 2000,
           showConfirmButton: false

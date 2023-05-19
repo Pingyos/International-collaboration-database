@@ -1,5 +1,9 @@
 <?php
-
+if (isset($_SESSION['login_info'])) {
+    $json = $_SESSION['login_info'];
+} else {
+    echo "You are not logged in.";
+}
 ?>
 <header id="header" class="header">
     <div class="top-left">
@@ -25,8 +29,7 @@
                     <img class="user-avatar rounded-circle" src="images/admin.png" alt="User Avatar">
                 </a>
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link"><i class="fa fa- user"></i><?php echo $json['firstname_EN'] . $json['lastname_EN']; ?></a>
-                    <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                    <a class="nav-link"><i class="fa fa- user"></i><?php echo $json['firstname_EN']; ?></a>
                     <a class="nav-link" href="logout.php"><i class="fa fa-power -off"></i>Logout</a>
                 </div>
             </div>

@@ -1,10 +1,21 @@
-<?php require_once 'head.php'; ?>
+<?php
+session_start();
+if (!isset($_SESSION['login_info'])) {
+    header('Location: login.php');
+    exit;
+}
+if (isset($_SESSION['login_info'])) {
+    $json = $_SESSION['login_info'];
+} else {
+    echo "You are not logged in.";
+}
+require_once 'head.php'; ?>
 
 <body>
     <!-- Left Panel -->
 
     <?php require_once 'aside.php'; ?>
- 
+
     <div id="right-panel" class="right-panel">
 
         <!-- Header-->
