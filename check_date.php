@@ -50,11 +50,6 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="ranking">QS Ranking by Suject : <?= $row['ranking_suject']; ?></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
                                             <label for="ranking">QS Ranking by Suject : <?= $row['ranking']; ?></label>
                                         </div>
                                     </div>
@@ -70,7 +65,7 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="title">Comments : <?= $row['comments_u']; ?></label>
+                                            <label for="title">MOU/MOA : <?= $row['comments_u']; ?></label>
                                         </div>
                                     </div>
                                     <div class="col-6">

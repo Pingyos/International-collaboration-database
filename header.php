@@ -1,9 +1,9 @@
 <?php
-if (isset($_SESSION['login_info'])) {
-    $json = $_SESSION['login_info'];
-} else {
-    echo "You are not logged in.";
-}
+// if (isset($_SESSION['login_info'])) {
+//     $json = $_SESSION['login_info'];
+// } else {
+//     echo "You are not logged in.";
+// }
 ?>
 <header id="header" class="header">
     <div class="top-left">
