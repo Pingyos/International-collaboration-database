@@ -14,7 +14,6 @@ require_once 'head.php'; ?>
 <body>
 
     <?php require_once 'aside.php'; ?>
-
     <div id="right-panel" class="right-panel">
         <!-- Header-->
         <?php require_once 'header.php'; ?>
@@ -40,37 +39,37 @@ require_once 'head.php'; ?>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="university">University/Institute : <?= $row['university']; ?></label>
+                                            <label for="university">University/Institute : <B><?= $row['university']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="country">Country : <?= $row['country']; ?></label>
+                                            <label for="country">Country : <B><?= $row['country']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="ranking">QS Ranking : <?= $row['ranking']; ?></label>
+                                            <label for="ranking">QS Ranking : <B><?= $row['ranking']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="ranking">QS Ranking by Suject : <?= $row['qs_suject']; ?></label>
+                                            <label for="ranking">QS Ranking by Suject : <B><?= $row['qs_suject']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="title">MOU/MOA : <?= $row['mou']; ?></label>
+                                            <label for="title">MOU/MOA : <B><?= $row['mou']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="ranking">Specialization : <?= $row['spec']; ?></label>
+                                            <label for="ranking">Specialization : <B><?= $row['spec']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="title">Comments : <?= $row['comments_u']; ?></label>
+                                            <label for="title">Comments : <B><?= $row['comments_u']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -174,6 +173,9 @@ require_once 'head.php'; ?>
                                         <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                                             Add Data
                                         </a>
+                                        <!-- <a href="?act=excel" class="btn btn-secondary">
+                                            Export
+                                        </a> -->
                                     </div>
                                 </div>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -242,10 +244,6 @@ require_once 'head.php'; ?>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <?php echo '<pre>';
-                                        print_r($_POST);
-                                        echo '</pre>';
-                                        ?> -->
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <th>#</th>
@@ -315,6 +313,10 @@ require_once 'head.php'; ?>
         $('#exampleModaledit').on('shown.bs.modal', function() {
             $('#exampleModaledit').trigger('focus');
         });
+    </script>
+
+    <script>
+
     </script>
 </body>
 

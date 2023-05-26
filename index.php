@@ -256,11 +256,11 @@
                                     <thead>
                                         <tr>
                                             <th class="serial">#</th>
-                                            <th class="avatar">Avatar</th>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Product</th>
-                                            <th>Quantity</th>
+                                            <th>University</th>
+                                            <th>Country</th>
+                                            <th>QS ranking</th>
+                                            <th>MOU/MOA</th>
+                                            <th>Specialization</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -278,6 +278,8 @@
                                                 <td><?= $t1['university']; ?></td>
                                                 <td><?= $t1['country']; ?></td>
                                                 <td><?= $t1['ranking']; ?></td>
+                                                <td><?= $t1['mou']; ?></td>
+                                                <td><?= $t1['spec']; ?></td>
                                                 <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a></td>
                                             </tr>
                                         <?php $countrow++;
