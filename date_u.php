@@ -57,6 +57,12 @@ require_once 'head.php'; ?>
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
+                                                            <label for="qs_suject" class="control-label mb-1">QS Ranking by Suject</label>
+                                                            <input type="text" name="qs_suject" required class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
                                                             <label for="MOU" class="control-label mb-1">MOU/MOA</label>
                                                             <select name="mou" class="form-control" required>
                                                                 <option value="">Select MOU/MOA</option>
@@ -65,7 +71,14 @@ require_once 'head.php'; ?>
                                                             </select>
                                                         </div>
                                                     </div>
-
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="spec" class="control-label mb-1">Specialization</label>
+                                                            <input type="text" name="spec" class="form-control">
+                                                        </div>
+                                                    </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="country" class="control-label mb-1">Country</label>
@@ -89,13 +102,7 @@ require_once 'head.php'; ?>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label for="spec" class="control-label mb-1">Specialization</label>
-                                                            <input type="text" name="spec" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
+                                                    <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="comments_u" class="control-label mb-1">Comments</label>
                                                             <input type="text" name="comments_u" class="form-control">

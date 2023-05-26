@@ -50,7 +50,12 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="ranking">QS Ranking by Suject : <?= $row['ranking']; ?></label>
+                                            <label for="ranking">QS Ranking : <?= $row['ranking']; ?></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="ranking">QS Ranking by Suject : <?= $row['qs_suject']; ?></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -65,12 +70,88 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="title">MOU/MOA : <?= $row['comments_u']; ?></label>
+                                            <label for="title">Comments : <?= $row['comments_u']; ?></label>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <div class="form-group">
-                                            <a href="edit_u.php?university_id=<?= $row['university_id']; ?>" class="btn btn-warning">Edit Data</a>
+                                            <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModaledit<?= $row['university']; ?>">Edit Data</a>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="exampleModaledit<?= $row['university']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document"> <!-- Add 'modal-lg' class for larger modal -->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="card-body">
+                                                        <div class="card-title">
+                                                            <h3 class="text-center">University</h3>
+                                                        </div>
+                                                        <hr>
+                                                        <form method="post" novalidate="novalidate">
+                                                            <?php
+                                                            if (isset($_GET['university_id'])) {
+                                                                require_once 'connect.php';
+                                                                $stmt = $conn->prepare("SELECT* FROM university WHERE university_id=?");
+                                                                $stmt->execute([$_GET['university_id']]);
+                                                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                                                if ($stmt->rowCount() < 1) {
+                                                                    header('Location: index.php');
+                                                                    exit();
+                                                                }
+                                                            } //isset
+                                                            ?>
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <label for="university" class="control-label mb-1">University</label>
+                                                                    <input type="text" name="university" required value="<?= $row['university']; ?>" class="form-control"> <br>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label for="ranking" class="control-label mb-1">QS Ranking</label>
+                                                                    <input type="text" name="ranking" required value="<?= $row['ranking']; ?>" class="form-control"> <br>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label for="qs_suject" class="control-label mb-1">QS Ranking by Suject</label>
+                                                                    <input type="text" name="qs_suject" required value="<?= $row['qs_suject']; ?>" class="form-control"> <br>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label for="mou" class="control-label mb-1">MOU/MOA</label>
+                                                                    <input type="text" name="mou" required value="<?= $row['mou']; ?>" class="form-control"> <br>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label for="country" class="control-label mb-1">Country</label>
+                                                                    <input type="text" name="country" required value="<?= $row['country']; ?>" class="form-control"> <br>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label for="spec" class="control-label mb-1">Specialization</label>
+                                                                    <input type="text" name="spec" required value="<?= $row['spec']; ?>" class="form-control"> <br>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <label for="comments_u" class="control-label mb-1">Comments</label>
+                                                                    <input type="text" name="comments_u" required value="<?= $row['comments_u']; ?>" class="form-control"> <br>
+                                                                </div>
+                                                                <input type="hidden" name="university_id" value="<?= $row['university_id']; ?>">
+                                                            </div>
+                                                            <div>
+                                                                <button type="submit" class="btn btn-success btn-block">
+                                                                    <span type="submit">Submit</span>
+                                                                </button>
+                                                                <!-- <?php echo '<pre>';
+                                                                        print_r($_POST);
+                                                                        echo '</pre>';
+                                                                        ?> -->
+                                                            </div>
+                                                        </form>
+                                                        <?php require_once 'edit_u_db.php';
+                                                        error_reporting(0);
+                                                        ini_set('display_errors', 0); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -228,6 +309,11 @@ require_once 'head.php'; ?>
     <script>
         $('#exampleModal').on('shown.bs.modal', function() {
             $('#exampleModal').trigger('focus');
+        });
+    </script>
+    <script>
+        $('#exampleModaledit').on('shown.bs.modal', function() {
+            $('#exampleModaledit').trigger('focus');
         });
     </script>
 </body>

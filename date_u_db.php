@@ -6,15 +6,16 @@ if (
     && isset($_POST['country'])
     && isset($_POST['comments_u'])
     && isset($_POST['spec'])
+    && isset($_POST['qs_suject'])
 ) {
 
     //ไฟล์เชื่อมต่อฐานข้อมูล
     require_once 'connect.php';
     //sql insert
     $stmt = $conn->prepare("INSERT INTO university
-      (university, ranking, mou, country, comments_u ,spec)
+      (university, ranking, mou, country, comments_u ,spec ,qs_suject)
       VALUES
-      (:university, :ranking, :mou, :country, :comments_u, :spec)");
+      (:university, :ranking, :mou, :country, :comments_u, :spec, :qs_suject)");
     //bindParam data type
     $stmt->bindParam(':university', $_POST['university'], PDO::PARAM_STR);
     $stmt->bindParam(':ranking', $_POST['ranking'], PDO::PARAM_STR);
@@ -22,6 +23,7 @@ if (
     $stmt->bindParam(':country', $_POST['country'], PDO::PARAM_STR);
     $stmt->bindParam(':comments_u', $_POST['comments_u'], PDO::PARAM_STR);
     $stmt->bindParam(':spec', $_POST['spec'], PDO::PARAM_STR);
+    $stmt->bindParam(':qs_suject', $_POST['qs_suject'], PDO::PARAM_STR);
     $result = $stmt->execute();
     $conn = null; //close connect db
     //เงื่อนไขตรวจสอบการเพิ่มข้อมูล

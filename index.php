@@ -58,12 +58,17 @@
                                             </div>
                                         </div>
                                     </div>
-                      
+                                    <div class="stat-content">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaU" class="small-box-footer">
+                                            More <i class="fa fa-arrow-circle-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- totaU -->
+
                     <!-- totaC -->
                     <?php
                     require_once 'connect.php';
@@ -86,7 +91,7 @@
                                         </div>
                                     </div>
                                     <div class="stat-content">
-                                        <a href="#" class="small-box-footer">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaC" class="small-box-footer">
                                             More <i class="fa fa-arrow-circle-right"></i>
                                         </a>
                                     </div>
@@ -95,6 +100,7 @@
                         </div>
                     </div>
                     <!-- totaC -->
+
                     <!-- totaA -->
                     <?php
                     require_once 'connect.php';
@@ -117,7 +123,7 @@
                                         </div>
                                     </div>
                                     <div class="stat-content">
-                                        <a href="#" class="small-box-footer">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaA" class="small-box-footer">
                                             More <i class="fa fa-arrow-circle-right"></i>
                                         </a>
                                     </div>
@@ -126,6 +132,7 @@
                         </div>
                     </div>
                     <!-- totaA -->
+
                     <!-- totaR -->
                     <?php
                     require_once 'connect.php';
@@ -133,7 +140,6 @@
                     $stmt->execute();
                     $result = $stmt->fetch();
                     ?>
-
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -149,7 +155,7 @@
                                         </div>
                                     </div>
                                     <div class="stat-content">
-                                        <a href="#" class="small-box-footer">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaR" class="small-box-footer">
                                             More <i class="fa fa-arrow-circle-right"></i>
                                         </a>
                                     </div>
@@ -158,38 +164,7 @@
                         </div>
                     </div>
                     <!-- totaR -->
-                    <!-- totaR -->
-                    <?php
-                    require_once 'connect.php';
-                    $stmt = $conn->prepare("SELECT COUNT(*) AS totaEX FROM university");
-                    $stmt->execute();
-                    $result = $stmt->fetch();
-                    ?>
 
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-5">
-                                        <i>EX.</i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text">
-                                                <div class="stat-heading">Total</div><span class="count"><?php echo $result['totaEX']; ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="stat-content">
-                                        <a href="#" class="small-box-footer">
-                                            More <i class="fa fa-arrow-circle-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- totaR -->
                     <!-- totaAll -->
                     <?php
                     require_once 'connect.php';
@@ -197,7 +172,6 @@
                     $stmt->execute();
                     $result = $stmt->fetch();
                     ?>
-
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -213,7 +187,7 @@
                                         </div>
                                     </div>
                                     <div class="stat-content">
-                                        <a href="#" class="small-box-footer">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaAll" class="small-box-footer">
                                             More <i class="fa fa-arrow-circle-right"></i>
                                         </a>
                                     </div>
@@ -223,6 +197,7 @@
                     </div>
                     <!-- totaAll -->
                 </div>
+
                 <!-- /Widgets -->
                 <!-- Widgets  -->
                 <div class="row">
@@ -261,6 +236,319 @@
             </div>
         </div>
 
+        <!-- .exampleModal_totaU -->
+        <div class="modal fade" id="exampleModal_totaU" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaULabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModal_totaULabel">University</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center">University</h3>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th class="serial">#</th>
+                                            <th class="avatar">Avatar</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        require_once 'connect.php';
+                                        $stmt = $conn->prepare("SELECT* FROM university");
+                                        $stmt->execute();
+                                        $result = $stmt->fetchAll();
+                                        $countrow = 1;
+                                        foreach ($result as $t1) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $countrow ?></td>
+                                                <td><?= $t1['university']; ?></td>
+                                                <td><?= $t1['country']; ?></td>
+                                                <td><?= $t1['ranking']; ?></td>
+                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a></td>
+                                            </tr>
+                                        <?php $countrow++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#myModal').on('shown.bs.modal', function() {
+                $('#exampleModal_totaU').trigger('focus')
+            })
+        </script>
+        <!-- .exampleModal_totaU -->
+
+        <!-- .exampleModal_totaC -->
+        <div class="modal fade" id="exampleModal_totaC" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaCLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center">Activity C</h3>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>University</th>
+                                            <th>Date_s</th>
+                                            <th>Date_e</th>
+                                            <th>Activity types</th>
+                                            <th>Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        require_once 'connect.php';
+                                        $stmt = $conn->prepare("SELECT * FROM dateinter WHERE activity = 'C'");
+                                        $stmt->execute();
+                                        $result = $stmt->fetchAll();
+                                        $countrow = 1;
+                                        foreach ($result as $t1) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $countrow ?></td>
+                                                <td><?= $t1['university']; ?></td>
+                                                <td><?= $t1['date_s']; ?></td>
+                                                <td><?= $t1['date_e']; ?></td>
+                                                <td><?= $t1['activity']; ?></td>
+                                                <td><?= $t1['name']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $countrow++;
+                                        }
+                                        ?>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#myModal').on('shown.bs.modal', function() {
+                $('#exampleModal_totaC').trigger('focus')
+            })
+        </script>
+        <!-- .exampleModal_totaC -->
+
+        <!-- .exampleModal_totaA -->
+        <div class="modal fade" id="exampleModal_totaA" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaCLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center">Activity C</h3>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>University</th>
+                                            <th>Date_s</th>
+                                            <th>Date_e</th>
+                                            <th>Activity types</th>
+                                            <th>Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        require_once 'connect.php';
+                                        $stmt = $conn->prepare("SELECT * FROM dateinter WHERE activity = 'A'");
+                                        $stmt->execute();
+                                        $result = $stmt->fetchAll();
+                                        $countrow = 1;
+                                        foreach ($result as $t1) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $countrow ?></td>
+                                                <td><?= $t1['university']; ?></td>
+                                                <td><?= $t1['date_s']; ?></td>
+                                                <td><?= $t1['date_e']; ?></td>
+                                                <td><?= $t1['activity']; ?></td>
+                                                <td><?= $t1['name']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $countrow++;
+                                        }
+                                        ?>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#myModal').on('shown.bs.modal', function() {
+                $('#exampleModal_totaC').trigger('focus')
+            })
+        </script>
+        <!-- .exampleModal_totaA -->
+
+        <!-- .exampleModal_totaR -->
+        <div class="modal fade" id="exampleModal_totaR" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaCLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center">Activity C</h3>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>University</th>
+                                            <th>Date_s</th>
+                                            <th>Date_e</th>
+                                            <th>Activity types</th>
+                                            <th>Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        require_once 'connect.php';
+                                        $stmt = $conn->prepare("SELECT * FROM dateinter WHERE activity = 'R'");
+                                        $stmt->execute();
+                                        $result = $stmt->fetchAll();
+                                        $countrow = 1;
+                                        foreach ($result as $t1) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $countrow ?></td>
+                                                <td><?= $t1['university']; ?></td>
+                                                <td><?= $t1['date_s']; ?></td>
+                                                <td><?= $t1['date_e']; ?></td>
+                                                <td><?= $t1['activity']; ?></td>
+                                                <td><?= $t1['name']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $countrow++;
+                                        }
+                                        ?>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#myModal').on('shown.bs.modal', function() {
+                $('#exampleModal_totaC').trigger('focus')
+            })
+        </script>
+        <!-- .exampleModal_totaR -->
+
+        <!-- .exampleModal_totaAll -->
+        <div class="modal fade" id="exampleModal_totaAll" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaCLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center">Activity C</h3>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>University</th>
+                                            <th>Date_s</th>
+                                            <th>Date_e</th>
+                                            <th>Activity types</th>
+                                            <th>Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        require_once 'connect.php';
+                                        $stmt = $conn->prepare("SELECT * FROM dateinter");
+                                        $stmt->execute();
+                                        $result = $stmt->fetchAll();
+                                        $countrow = 1;
+                                        foreach ($result as $t1) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $countrow ?></td>
+                                                <td><?= $t1['university']; ?></td>
+                                                <td><?= $t1['date_s']; ?></td>
+                                                <td><?= $t1['date_e']; ?></td>
+                                                <td><?= $t1['activity']; ?></td>
+                                                <td><?= $t1['name']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $countrow++;
+                                        }
+                                        ?>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#myModal').on('shown.bs.modal', function() {
+                $('#exampleModal_totaC').trigger('focus')
+            })
+        </script>
+        <!-- .exampleModal_totaAll -->
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
