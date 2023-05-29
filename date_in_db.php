@@ -1,6 +1,7 @@
 <?php
 if (
     isset($_POST['date_s'])
+    && isset($_POST['university_id'])
     && isset($_POST['date_e'])
     && isset($_POST['activity'])
     && isset($_POST['name'])
@@ -8,15 +9,17 @@ if (
 ) {
     require_once 'connect.php';
     $university = $_POST['university_name'];
+    $university_id = $_POST['university_id'];
     $date_s = $_POST['date_s'];
     $date_e = $_POST['date_e'];
     $activity = $_POST['activity'];
     $name = $_POST['name'];
     $details = $_POST['details'];
     //sql insert
-    $stmt = $conn->prepare("INSERT INTO dateinter (university,date_s,date_e,activity,name,details)
-    VALUES (:university,:date_s,:date_e,:activity,:name,:details)");
+    $stmt = $conn->prepare("INSERT INTO dateinter (university,university_id,date_s,date_e,activity,name,details)
+    VALUES (:university,:university_id,:date_s,:date_e,:activity,:name,:details)");
     $stmt->bindParam(':university', $university, PDO::PARAM_STR);
+    $stmt->bindParam(':university_id', $university_id, PDO::PARAM_STR);
     $stmt->bindParam(':date_s', $date_s, PDO::PARAM_STR);
     $stmt->bindParam(':date_e', $date_e, PDO::PARAM_STR);
     $stmt->bindParam(':activity', $activity, PDO::PARAM_STR);
@@ -38,7 +41,7 @@ if (
         echo '<script>
         swal({
           title: "Add Data Success",
-          text: "success",
+          text: "university add success",
           type: "success",
           timer: 2000,
           showConfirmButton: false
