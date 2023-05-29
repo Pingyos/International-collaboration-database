@@ -73,84 +73,9 @@ require_once 'head.php'; ?>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-group">
+                                        <div class="form-group"><!--  -->
                                             <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id']; ?>">Edit Data</a>
                                         </div>
-                                    </div>
-                                    <div class="modal fade" id="exampleModaledit<?= $row['university_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document"> <!-- Add 'modal-lg' class for larger modal -->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="card-body">
-                                                        <div class="card-title">
-                                                            <h3 class="text-center">University</h3>
-                                                        </div>
-                                                        <hr>
-                                                        <form method="post" novalidate="novalidate">
-                                                            <?php
-                                                            if (isset($_GET['university_id'])) {
-                                                                require_once 'connect.php';
-                                                                $stmt = $conn->prepare("SELECT* FROM university WHERE university_id=?");
-                                                                $stmt->execute([$_GET['university_id']]);
-                                                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                                                if ($stmt->rowCount() < 1) {
-                                                                    header('Location: index.php');
-                                                                    exit();
-                                                                }
-                                                            } //isset
-                                                            ?>
-                                                            <div class="row">
-                                                                <div class="col-6">
-                                                                    <label for="university" class="control-label mb-1">University</label>
-                                                                    <input type="text" name="university" required value="<?= $row['university']; ?>" class="form-control"> <br>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <label for="ranking" class="control-label mb-1">QS Ranking</label>
-                                                                    <input type="text" name="ranking" required value="<?= $row['ranking']; ?>" class="form-control"> <br>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <label for="qs_suject" class="control-label mb-1">QS Ranking by Suject</label>
-                                                                    <input type="text" name="qs_suject" required value="<?= $row['qs_suject']; ?>" class="form-control"> <br>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <label for="mou" class="control-label mb-1">MOU/MOA</label>
-                                                                    <input type="text" name="mou" required value="<?= $row['mou']; ?>" class="form-control"> <br>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <label for="country" class="control-label mb-1">Country</label>
-                                                                    <input type="text" name="country" required value="<?= $row['country']; ?>" class="form-control"> <br>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <label for="spec" class="control-label mb-1">Specialization</label>
-                                                                    <input type="text" name="spec" required value="<?= $row['spec']; ?>" class="form-control"> <br>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <label for="comments_u" class="control-label mb-1">Comments</label>
-                                                                    <input type="text" name="comments_u" required value="<?= $row['comments_u']; ?>" class="form-control"> <br>
-                                                                </div>
-                                                                <input type="hidden" name="university_id" value="<?= $row['university_id']; ?>">
-                                                            </div>
-                                                            <div>
-                                                                <button type="submit" class="btn btn-success btn-block">
-                                                                    <span type="submit">Submit</span>
-                                                                </button>
-
-                                                            </div>
-                                                        </form>
-                                                        <?php require_once 'edit_u_db.php';
-                                                        error_reporting(0);
-                                                        ini_set('display_errors', 0); ?>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +87,7 @@ require_once 'head.php'; ?>
                     print_r($_POST);
                     echo '</pre>';
                     ?> -->
-            <!-- .animated -->
+            <!-- -->
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12">
@@ -173,78 +98,9 @@ require_once 'head.php'; ?>
                             <div class="card-body">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                        <a class="btn btn-success" data-toggle="modal" data-target="#exampleModalAdd">
                                             Add Data
                                         </a>
-                                        <!-- <a href="?act=excel" class="btn btn-secondary">
-                                            Export
-                                        </a> -->
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="card-body">
-                                                    <div class="card-title">
-                                                        <h3 class="text-center">University</h3>
-                                                    </div>
-                                                    <hr>
-                                                    <form method="post" enctype="multipart/form-data">
-                                                        <div class="row">
-                                                            <input type="text" name="university_id" value="<?= $row['university_id']; ?>" hidden>
-                                                            <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
-                                                            <div class="col-6">
-                                                                <div class="form-group">
-                                                                    <label for="university" class="control-label mb-1">Date Start</label>
-                                                                    <input type="date" name="date_s" required class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="form-group">
-                                                                    <label for="ranking" class="control-label mb-1">Date End</label>
-                                                                    <input type="date" name="date_e" required class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="form-group">
-                                                                    <label for="activity" class="control-label mb-1">Activity types</label>
-                                                                    <select name="activity" required class="form-control">
-                                                                        <option value="0">Activity types</option>
-                                                                        <option value="C">C</option>
-                                                                        <option value="A">A</option>
-                                                                        <option value="R">R</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="form-group">
-                                                                    <label for="name" class="control-label mb-1">Name Surname</label>
-                                                                    <input type="text" name="name" required class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <label for="details" class="control-label mb-1">Activity details </label>
-                                                                    <textarea class="form-control" required name="details" style="height: 100px"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <button type="submit" class="btn btn-success btn-block">Add Data</button>
-                                                        </div>
-                                                    </form>
-                                                    <?php require_once 'date_in_db.php';
-                                                    error_reporting(0);
-                                                    ini_set('display_errors', 0); ?>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -275,7 +131,7 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['name']; ?></td>
                                                 <td><?= $t1['details']; ?></td>
                                                 <td>
-                                                    <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalupdate<?= $t1['id']; ?>">Edit</a>
+                                                    <a href="edit_U.php?id=<?= $t1['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                                     <hr>
                                                     <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Confirm Data Deletion!!');">Del</a>
                                                 </td>
@@ -284,77 +140,6 @@ require_once 'head.php'; ?>
                                         }
                                         ?>
                                     </tbody>
-                                    <div class="modal fade" id="exampleModalupdate<?= $t1['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="card-body">
-                                                        <div class="card-title">
-                                                            <h3 class="text-center">University</h3>
-                                                        </div>
-                                                        <hr>
-                                                        <form method="post" enctype="multipart/form-data">
-                                                            <div class="row">
-                                                                <input type="text" name="university_id" value="<?= $row['university_id']; ?>" hidden>
-                                                                <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="university" class="control-label mb-1">university</label>
-                                                                        <input type="text" name="university" value="<?= $t1['university']; ?>" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <div class="form-group">
-                                                                        <label for="university" class="control-label mb-1">Date Start</label>
-                                                                        <input type="date" name="date_s" value="<?= $t1['date_s']; ?>" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <div class="form-group">
-                                                                        <label for="ranking" class="control-label mb-1">Date End</label>
-                                                                        <input type="date" name="date_e" value="<?= $t1['date_e']; ?>" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <div class="form-group">
-                                                                        <label for="activity" class="control-label mb-1">Activity types</label>
-                                                                        <select name="activity" required class="form-control">
-                                                                            <option><?= $t1['activity']; ?></option>
-                                                                            <option value="C">C</option>
-                                                                            <option value="A">A</option>
-                                                                            <option value="R">R</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <div class="form-group">
-                                                                        <label for="name" class="control-label mb-1">Name Surname</label>
-                                                                        <input type="text" name="name" value="<?= $t1['name']; ?>" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="details" class="control-label mb-1">Activity details </label>
-                                                                        <textarea class="form-control" name="details" style="height: 100px"><?= $t1['details']; ?></textarea>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <button type="submit" class="btn btn-success btn-block">
-                                                                <span type="submit">Submit</span>
-                                                            </button>
-                                                        </form>
-                                                        <!-- <?php require_once 'edit_db.php'; ?> -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </table>
                             </div>
                         </div>
@@ -364,6 +149,153 @@ require_once 'head.php'; ?>
         </div>
         <div class="clearfix"></div>
     </div>
+
+    <!--Add-->
+    <div class="modal fade" id="exampleModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center">University</h3>
+                        </div>
+                        <hr>
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <input type="text" name="university_id" value="<?= $row['university_id']; ?>" hidden>
+                                <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="university" class="control-label mb-1">Date Start</label>
+                                        <input type="date" name="date_s" required class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="ranking" class="control-label mb-1">Date End</label>
+                                        <input type="date" name="date_e" required class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="activity" class="control-label mb-1">Activity types</label>
+                                        <select name="activity" required class="form-control">
+                                            <option value="0">Activity types</option>
+                                            <option value="C">C</option>
+                                            <option value="A">A</option>
+                                            <option value="R">R</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="name" class="control-label mb-1">Name Surname</label>
+                                        <input type="text" name="name" required class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="details" class="control-label mb-1">Activity details </label>
+                                        <textarea class="form-control" required name="details" style="height: 100px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-success btn-block">Add Data</button>
+                            </div>
+                        </form>
+                        <?php require_once 'date_in_db.php';
+                        error_reporting(0);
+                        ini_set('display_errors', 0); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Add-->
+
+    <!--edit-->
+    <div class="modal fade" id="exampleModaledit<?= $row['university_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document"> <!-- Add 'modal-lg' class for larger modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center">University</h3>
+                        </div>
+                        <hr>
+                        <form method="post" novalidate="novalidate">
+                            <?php
+                            if (isset($_GET['university_id'])) {
+                                require_once 'connect.php';
+                                $stmt = $conn->prepare("SELECT* FROM university WHERE university_id=?");
+                                $stmt->execute([$_GET['university_id']]);
+                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                if ($stmt->rowCount() < 1) {
+                                    header('Location: index.php');
+                                    exit();
+                                }
+                            } //isset
+                            ?>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="university" class="control-label mb-1">University</label>
+                                    <input type="text" name="university" required value="<?= $row['university']; ?>" class="form-control"> <br>
+                                </div>
+                                <div class="col-6">
+                                    <label for="ranking" class="control-label mb-1">QS Ranking</label>
+                                    <input type="text" name="ranking" required value="<?= $row['ranking']; ?>" class="form-control"> <br>
+                                </div>
+                                <div class="col-6">
+                                    <label for="qs_suject" class="control-label mb-1">QS Ranking by Suject</label>
+                                    <input type="text" name="qs_suject" required value="<?= $row['qs_suject']; ?>" class="form-control"> <br>
+                                </div>
+                                <div class="col-6">
+                                    <label for="mou" class="control-label mb-1">MOU/MOA</label>
+                                    <input type="text" name="mou" required value="<?= $row['mou']; ?>" class="form-control"> <br>
+                                </div>
+                                <div class="col-6">
+                                    <label for="country" class="control-label mb-1">Country</label>
+                                    <input type="text" name="country" required value="<?= $row['country']; ?>" class="form-control"> <br>
+                                </div>
+                                <div class="col-6">
+                                    <label for="spec" class="control-label mb-1">Specialization</label>
+                                    <input type="text" name="spec" required value="<?= $row['spec']; ?>" class="form-control"> <br>
+                                </div>
+                                <div class="col-12">
+                                    <label for="comments_u" class="control-label mb-1">Comments</label>
+                                    <input type="text" name="comments_u" required value="<?= $row['comments_u']; ?>" class="form-control"> <br>
+                                </div>
+                                <input type="hidden" name="university_id" value="<?= $row['university_id']; ?>">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-success btn-block">
+                                    <span type="submit">Submit</span>
+                                </button>
+
+                            </div>
+                        </form>
+                        <?php require_once 'edit_u_db.php';
+                        error_reporting(0);
+                        ini_set('display_errors', 0); ?>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--edit-->
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -383,8 +315,8 @@ require_once 'head.php'; ?>
     <script src="assets/js/init/datatables-init.js"></script>
 
     <script>
-        $('#exampleModal').on('shown.bs.modal', function() {
-            $('#exampleModal').trigger('focus');
+        $('#exampleModalAdd').on('shown.bs.modal', function() {
+            $('#exampleModalAdd').trigger('focus');
         });
     </script>
     <script>
