@@ -7,6 +7,7 @@ $stmt = $conn->prepare('DELETE FROM university WHERE university_id=:university_i
 $stmt->bindParam(':university_id', $id , PDO::PARAM_INT);
 $stmt->execute();
 
+
 //  sweet alert 
 echo '
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
