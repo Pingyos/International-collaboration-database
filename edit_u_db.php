@@ -5,6 +5,7 @@ if (
   && isset($_POST['spec'])
   && isset($_POST['mou'])
   && isset($_POST['country'])
+  && isset($_POST['comments_u'])
   && isset($_POST['university_id'])
   && isset($_POST['qs_suject'])
 ) {
@@ -16,15 +17,17 @@ if (
   $ranking = $_POST['ranking'];
   $mou = $_POST['mou'];
   $country = $_POST['country'];
+  $comments_u = $_POST['comments_u'];
   $qs_suject = $_POST['qs_suject'];
   //sql update
-  $stmt = $conn->prepare("UPDATE  university SET university=:university, ranking=:ranking,mou=:mou, country=:country, spec=:spec, qs_suject=:qs_suject WHERE university_id=:university_id");
+  $stmt = $conn->prepare("UPDATE  university SET university=:university, ranking=:ranking,mou=:mou, country=:country, spec=:spec, qs_suject=:qs_suject, comments_u=:comments_u WHERE university_id=:university_id");
   $stmt->bindParam(':university_id', $university_id, PDO::PARAM_STR);
   $stmt->bindParam(':spec', $spec, PDO::PARAM_STR);
   $stmt->bindParam(':university', $university, PDO::PARAM_STR);
   $stmt->bindParam(':ranking', $ranking, PDO::PARAM_STR);
   $stmt->bindParam(':mou', $mou, PDO::PARAM_STR);
   $stmt->bindParam(':country', $country, PDO::PARAM_STR);
+  $stmt->bindParam(':comments_u', $comments_u, PDO::PARAM_STR);
   $stmt->bindParam(':qs_suject', $qs_suject, PDO::PARAM_STR);
   $stmt->execute();
   $stmt = $conn->prepare("SELECT university_id FROM university WHERE university = :university");

@@ -54,7 +54,7 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="ranking">QS Ranking by Suject : <B><?= $row['qs_suject']; ?></B></label>
+                                            <label for="qs_suject">QS Ranking by Suject : <B><?= $row['qs_suject']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -74,10 +74,10 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModaledit<?= $row['university']; ?>">Edit Data</a>
+                                            <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id']; ?>">Edit Data</a>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="exampleModaledit<?= $row['university']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModaledit<?= $row['university_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document"> <!-- Add 'modal-lg' class for larger modal -->
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -139,19 +139,18 @@ require_once 'head.php'; ?>
                                                                 <button type="submit" class="btn btn-success btn-block">
                                                                     <span type="submit">Submit</span>
                                                                 </button>
-                                                                <!-- <?php echo '<pre>';
-                                                                        print_r($_POST);
-                                                                        echo '</pre>';
-                                                                        ?> -->
+
                                                             </div>
                                                         </form>
                                                         <?php require_once 'edit_u_db.php';
                                                         error_reporting(0);
                                                         ini_set('display_errors', 0); ?>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -159,6 +158,10 @@ require_once 'head.php'; ?>
                     </div>
                 </div>
             </div>
+            <?php echo '<pre>';
+            print_r($_POST);
+            echo '</pre>';
+            ?>
             <!-- .animated -->
             <div class="animated fadeIn">
                 <div class="row">

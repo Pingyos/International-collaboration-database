@@ -36,26 +36,28 @@ if (
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
         echo '<script>
-            setTimeout(function() {
-                swal({
-                    title: "Add data Success",
-                    type: "success"
-                }, function() {
-                    window.location = "check_date.php?university_id=' . $university_id . '";
-                });
-            }, 200);
-        </script>';
+        swal({
+          title: "Add Data Success",
+          text: "success",
+          type: "success",
+          timer: 2000,
+          showConfirmButton: false
+        }, function(){
+          window.location = "check_date.php?university_id=' . $university_id . '";
+        });
+      </script>';
     } else {
         echo '<script>
-             setTimeout(function() {
-              swal({
-                  title: "Add date Error",
-                  type: "error"
-              }, function() {
-                  window.location = "index.php";
-              });
-            }, 200);
-        </script>';
+        swal({
+          title: "Add data fail",
+          text: "fail",
+          type: "fail",
+          timer: 2000,
+          showConfirmButton: false
+        }, function(){
+          window.location.href = "date_u.php";
+        });
+      </script>';
     }
     $conn = null; //close connect db
 } //isset
