@@ -140,6 +140,10 @@ Googel Fonts  */
 /* Googel Fonts End  
 
 */
+.btn-Export {
+  background: #00425A;
+  color: #FFFFFF; /* Sets the text color to white */
+}
 
 .btn-AddNew {
   background: #4c90f2;
@@ -151,7 +155,7 @@ Googel Fonts  */
   color: #FFFFFF; /* Sets the text color to white */
 }
 .btn-Del {
-  background: #fd7e40;
+  background: #FC7300;
   color: #FFFFFF; /* Sets the text color to white */
 }
 .btn-Edit {

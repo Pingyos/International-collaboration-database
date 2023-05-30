@@ -137,9 +137,13 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['name']; ?></td>
                                                 <td><?= $t1['details']; ?></td>
                                                 <td>
-                                                    <a href="update_in.php?id=<?= $t1['id']; ?>" class="btn btn-Edit btn-sm">Edit</a>
-                                                    <hr>
-                                                    <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-Del btn-sm">Del</a>
+                                                    <div class="modal-body">
+                                                        <a href="update_in.php?id=<?= $t1['id']; ?>" class="btn btn-Edit btn-sm">Edit</a>
+                                                        <hr>
+                                                        <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-Del btn-sm">Del</a>
+                                                        <hr>
+                                                        <a href="export_view.php?id=<?= $t1['id']; ?>" class="btn btn-Export btn-sm">Export</a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         <?php
