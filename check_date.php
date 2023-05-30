@@ -24,7 +24,7 @@ require_once 'head.php'; ?>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">University Form</strong>
+                                <strong class="card-title">Detail</strong>
                             </div>
                             <div class="card-body">
                                 <?php
@@ -54,7 +54,7 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="qs_suject">QS Ranking by Suject : <B><?= $row['qs_suject']; ?></B></label>
+                                            <label for="qs_suject">QS Ranking by Subject : <B><?= $row['qs_suject']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -74,7 +74,7 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id']; ?>">Edit Data</a>
+                                            <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id'];?>">Edit Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,13 +88,13 @@ require_once 'head.php'; ?>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Data Form</strong>
+                                <strong class="card-title">Cooperation</strong>
                             </div>
                             <div class="card-body">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <a class="btn btn-success" data-toggle="modal" data-target="#exampleModalAdd">
-                                            Add Data
+                                            Add New
                                         </a>
                                     </div>
                                 </div>
@@ -104,9 +104,9 @@ require_once 'head.php'; ?>
                                         <th>Date Start</th>
                                         <th>Date End</th>
                                         <th>Activity types</th>
-                                        <th>Name-Surname</th>
-                                        <th>Activity details</th>
-                                        <th>Edit/Del</th>
+                                        <th>Representative/Contact</th>
+                                        <th>Agreement Details</th>
+                                        <th>Detail</th>
                                     </thead>
                                     <tbody>
                                         <?php
@@ -136,7 +136,7 @@ require_once 'head.php'; ?>
                                                 <td>
                                                     <a href="update_in.php?id=<?= $t1['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                                     <hr>
-                                                    <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Confirm Data Deletion!!');">Del</a>
+                                                    <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-danger btn-sm">Del</a>
                                                 </td>
                                             </tr>
                                         <?php
@@ -258,7 +258,7 @@ require_once 'head.php'; ?>
                                     <input type="text" name="ranking" required value="<?= $row['ranking']; ?>" class="form-control"> <br>
                                 </div>
                                 <div class="col-6">
-                                    <label for="qs_suject" class="control-label mb-1">QS Ranking by Suject</label>
+                                    <label for="qs_suject" class="control-label mb-1">QS Ranking by Subject</label>
                                     <input type="text" name="qs_suject" required value="<?= $row['qs_suject']; ?>" class="form-control"> <br>
                                 </div>
                                 <div class="col-6">

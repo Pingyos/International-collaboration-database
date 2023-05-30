@@ -54,7 +54,7 @@
                                     <div class="stat-content">
                                         <div class="text-left dib">
                                             <div class="stat-text">
-                                                <div class="stat-heading">University</div><span class="count"><?php echo $result['totaU']; ?></span>
+                                                <div class="stat-heading">Total Agreements</div><span class="count"><?php echo $result['totaU']; ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -241,7 +241,6 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModal_totaULabel">University</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -249,7 +248,7 @@
                     <div class="modal-body">
                         <div class="card-body">
                             <div class="card-title">
-                                <h3 class="text-center">University</h3>
+                                <h3 class="text-center">International Collaboration</h3>
                             </div>
                             <div class="table-stats order-table ov-h">
                                 <table class="table ">

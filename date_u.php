@@ -22,7 +22,7 @@ require_once 'head.php'; ?>
                     <div class="col-md-12">
                         <div class="form-group">
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                                Add Data
+                                Add New
                             </button>
                         </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,34 +36,34 @@ require_once 'head.php'; ?>
                                     <div class="modal-body">
                                         <div class="card-body">
                                             <div class="card-title">
-                                                <h3 class="text-center">University</h3>
+                                                <h3 class="text-center">New University</h3>
                                             </div>
                                             <hr>
                                             <form method="post" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="university" class="control-label mb-1">University</label>
+                                                            <label for="university" class="control-label mb-1">University <span style="color:red;">*</span></label>
                                                             <input type="text" name="university" required class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="ranking" class="control-label mb-1">QS Ranking</label>
-                                                            <input type="text" name="ranking" required class="form-control">
+                                                            <input type="text" name="ranking" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="qs_suject" class="control-label mb-1">QS Ranking by Suject</label>
-                                                            <input type="text" name="qs_suject" required class="form-control">
+                                                            <label for="qs_suject" class="control-label mb-1">QS Ranking by Subject</label>
+                                                            <input type="text" name="qs_suject" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="MOU" class="control-label mb-1">MOU/MOA</label>
+                                                            <label for="MOU" class="control-label mb-1">MOU/MOA <span style="color:red;">*</span></label>
                                                             <select name="mou" class="form-control" required>
                                                                 <option value="">Select MOU/MOA</option>
                                                                 <option value="YES">YES</option>
@@ -81,7 +81,7 @@ require_once 'head.php'; ?>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="country" class="control-label mb-1">Country</label>
+                                                            <label for="country" class="control-label mb-1">Country <span style="color:red;">*</span> </label>
                                                             <?php
                                                             require_once 'connect.php';
                                                             $query = "
@@ -104,8 +104,8 @@ require_once 'head.php'; ?>
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label for="comments_u" class="control-label mb-1">Comments</label>
-                                                            <input type="text" name="comments_u" class="form-control">
+                                                            <label for="comments_u" class="control-label mb-1">Activity details </label>
+                                                            <textarea class="form-control" name="comments_u" style="height: 150px"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -113,10 +113,6 @@ require_once 'head.php'; ?>
                                                     <button type="submit" class="btn btn-success btn-block">
                                                         <span type="submit">Submit</span>
                                                     </button>
-                                                    <!-- <?php echo '<pre>';
-                                                            print_r($_POST);
-                                                            echo '</pre>';
-                                                            ?> -->
                                                 </div>
                                             </form>
                                             <?php require_once 'date_u_db.php';
@@ -138,9 +134,8 @@ require_once 'head.php'; ?>
                                             <th>#</th>
                                             <th>University/Institute</th>
                                             <th>Country</th>
-                                            <th>QSranking</th>
-                                            <th>Detial</th>
-                                            <th>Del</th>
+                                            <th>QS ranking</th>
+                                            <th>Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,8 +152,9 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['university']; ?></td>
                                                 <td><?= $t1['country']; ?></td>
                                                 <td><?= $t1['ranking']; ?></td>
-                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a></td>
-                                                <td><a href="del_u.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Confirm Data Deletion !!');">Del</a></td>
+                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a>
+                                                    <a href="del_u.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-danger btn-sm">Del</a>
+                                                </td>
                                             </tr>
 
                                         <?php $countrow++;
@@ -175,11 +171,7 @@ require_once 'head.php'; ?>
             </div>
         </div>
         <div class="clearfix"></div>
-
-
-
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>

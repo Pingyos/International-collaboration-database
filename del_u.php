@@ -18,7 +18,7 @@ echo '
         echo '<script>
              setTimeout(function() {
               swal({
-                  title: "Del Data Success",
+                  title: "Confirm Deletion",
                   type: "success"
               }, function() {
                   window.location = "date_u.php";

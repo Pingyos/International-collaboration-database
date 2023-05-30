@@ -23,9 +23,6 @@ require_once 'head.php'; ?>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">University Form</strong>
-                            </div>
                             <?php
                             if (isset($_GET['id'])) {
                                 require_once 'connect.php';
@@ -42,7 +39,7 @@ require_once 'head.php'; ?>
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="card-title">
-                                        <h3 class="text-center">University</h3>
+                                        <h3 class="text-center">Edit University Information</h3>
                                     </div>
                                     <hr>
                                     <form method="post" enctype="multipart/form-data">
