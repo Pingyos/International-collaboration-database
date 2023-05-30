@@ -165,7 +165,7 @@ require_once 'head.php'; ?>
                 <div class="modal-body">
                     <div class="card-body">
                         <div class="card-title">
-                            <h3 class="text-center">University</h3>
+                            <h3 class="text-center">New Data</h3>
                         </div>
                         <hr>
                         <form method="post" enctype="multipart/form-data">
@@ -174,19 +174,19 @@ require_once 'head.php'; ?>
                                 <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="date_s" class="control-label mb-1">Date Start</label>
+                                        <label for="date_s" class="control-label mb-1">Date Start <span style="color:red;">*</span></label>
                                         <input type="date" name="date_s" required class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="date_e" class="control-label mb-1">Date End</label>
+                                        <label for="date_e" class="control-label mb-1">Date End <span style="color:red;">*</span></label>
                                         <input type="date" name="date_e" required class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="activity" class="control-label mb-1">Activity types</label>
+                                        <label for="activity" class="control-label mb-1">Activity types <span style="color:red;">*</span></label>
                                         <select name="activity" required class="form-control">
                                             <option value="0">Activity types</option>
                                             <option value="C">C</option>
@@ -197,19 +197,19 @@ require_once 'head.php'; ?>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="name" class="control-label mb-1">Name Surname</label>
+                                        <label for="name" class="control-label mb-1">Name Surname <span style="color:red;">*</span></label>
                                         <input type="text" name="name" required class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="details" class="control-label mb-1">Activity details </label>
+                                        <label for="details" class="control-label mb-1">Activity details <span style="color:red;">*</span> </label>
                                         <textarea class="form-control" required name="details" style="height: 350px"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-success btn-block">Add Data</button>
+                                <button type="submit" class="btn btn-success btn-block">Submit</button>
                             </div>
                         </form>
                         <?php require_once 'date_in_db.php'; ?>

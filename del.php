@@ -20,7 +20,7 @@ echo '
                   title: "Del Data Success",
                   type: "success"
               }, function() {
-                  window.location = "date_u.php"; //หน้าที่ต้องการให้กระโดดไป
+                  window.location = "date_u.php";
               });
             }, 200);
         </script>';
@@ -31,7 +31,7 @@ echo '
                   title: "Del Data Error",
                   type: "error"
               }, function() {
-                  window.location = "index.php"; //หน้าที่ต้องการให้กระโดดไป
+                  window.location = "index.php";
               });
             }, 200);
         </script>';

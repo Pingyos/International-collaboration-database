@@ -5,12 +5,10 @@
                 <li class="active">
                     <a href="index.php"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
-                <li class="menu-title">Search DATA</li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Data Table</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href="date_u.php">University Table</a></li>
-                    </ul>
+
+                <li class="menu-title">Collaboration</li>
+                <li>
+                    <a href="date_u.php"><i class="menu-icon fa fa-tasks"></i>UNIVERSITY DATA</a>
                 </li>
             </ul>
         </div>
