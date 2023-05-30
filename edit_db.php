@@ -1,34 +1,30 @@
 <?php
 if (
   isset($_POST['id'])
-  && isset($_POST['university_id'])
   && isset($_POST['university'])
-  && isset($_POST['university_name'])
   && isset($_POST['date_s'])
   && isset($_POST['date_e'])
   && isset($_POST['activity'])
   && isset($_POST['name'])
+  && isset($_POST['details'])
 ) {
 
   require_once 'connect.php';
   $id = $_POST['id'];
-  $university_id = $_POST['university_id'];
   $university = $_POST['university'];
-  $university_name = $_POST['university_name'];
   $date_s = $_POST['date_s'];
   $date_e = $_POST['date_e'];
   $activity = $_POST['activity'];
+  $details = $_POST['details'];
   $name = $_POST['name'];
   //sql update
-  $stmt = $conn->prepare("UPDATE  dateinter SET university_id=:university_id, university=:university, university_name=:university_name,date_s=:date_s, date_e=:date_e, activity=:activity, name=:name WHERE id=:id");
+  $stmt = $conn->prepare("UPDATE  dateinter SET date_s=:date_s, date_e=:date_e, activity=:activity, name=:name, details=:details WHERE id=:id");
   $stmt->bindParam(':id', $id, PDO::PARAM_STR);
-  $stmt->bindParam(':university_id', $university_id, PDO::PARAM_STR);
-  $stmt->bindParam(':university', $university, PDO::PARAM_STR);
-  $stmt->bindParam(':university_name', $university_name, PDO::PARAM_STR);
   $stmt->bindParam(':date_s', $date_s, PDO::PARAM_STR);
   $stmt->bindParam(':date_e', $date_e, PDO::PARAM_STR);
   $stmt->bindParam(':activity', $activity, PDO::PARAM_STR);
   $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+  $stmt->bindParam(':details', $details, PDO::PARAM_STR);
   $stmt->execute();
   $stmt = $conn->prepare("SELECT university_id FROM university WHERE university = :university");
   $stmt->bindParam(':university', $university, PDO::PARAM_STR);

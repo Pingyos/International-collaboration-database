@@ -73,7 +73,7 @@ require_once 'head.php'; ?>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-group"><!--  -->
+                                        <div class="form-group">
                                             <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id']; ?>">Edit Data</a>
                                         </div>
                                     </div>
@@ -83,11 +83,6 @@ require_once 'head.php'; ?>
                     </div>
                 </div>
             </div>
-            <!-- <?php echo '<pre>';
-                    print_r($_POST);
-                    echo '</pre>';
-                    ?> -->
-            <!-- -->
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12">
@@ -125,18 +120,27 @@ require_once 'head.php'; ?>
                                         ?>
                                             <tr>
                                                 <td><?= $countrow ?></td>
-                                                <td><?= $t1['date_s']; ?></td>
-                                                <td><?= $t1['date_e']; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_s_formatted = strftime('%d %b %Y', strtotime($t1['date_s']));
+                                                ?>
+                                                <td><?php echo $date_s_formatted; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
+                                                ?>
+                                                <td><?php echo $date_e_formatted; ?></td>
                                                 <td><?= $t1['activity']; ?></td>
                                                 <td><?= $t1['name']; ?></td>
                                                 <td><?= $t1['details']; ?></td>
                                                 <td>
-                                                    <a href="edit_U.php?id=<?= $t1['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                                    <a href="update_in.php?id=<?= $t1['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                                     <hr>
                                                     <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Confirm Data Deletion!!');">Del</a>
                                                 </td>
                                             </tr>
-                                        <?php $countrow++;
+                                        <?php
+                                            $countrow++;
                                         }
                                         ?>
                                     </tbody>
@@ -147,11 +151,10 @@ require_once 'head.php'; ?>
                 </div>
             </div>
         </div>
-        <div class="clearfix"></div>
     </div>
 
     <!--Add-->
-    <div class="modal fade" id="exampleModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalAdd" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -171,13 +174,13 @@ require_once 'head.php'; ?>
                                 <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="university" class="control-label mb-1">Date Start</label>
+                                        <label for="date_s" class="control-label mb-1">Date Start</label>
                                         <input type="date" name="date_s" required class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="ranking" class="control-label mb-1">Date End</label>
+                                        <label for="date_e" class="control-label mb-1">Date End</label>
                                         <input type="date" name="date_e" required class="form-control">
                                     </div>
                                 </div>
@@ -201,7 +204,7 @@ require_once 'head.php'; ?>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="details" class="control-label mb-1">Activity details </label>
-                                        <textarea class="form-control" required name="details" style="height: 100px"></textarea>
+                                        <textarea class="form-control" required name="details" style="height: 350px"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -209,9 +212,7 @@ require_once 'head.php'; ?>
                                 <button type="submit" class="btn btn-success btn-block">Add Data</button>
                             </div>
                         </form>
-                        <?php require_once 'date_in_db.php';
-                        error_reporting(0);
-                        ini_set('display_errors', 0); ?>
+                        <?php require_once 'date_in_db.php'; ?>
                     </div>
                 </div>
             </div>
@@ -220,8 +221,8 @@ require_once 'head.php'; ?>
     <!--Add-->
 
     <!--edit-->
-    <div class="modal fade" id="exampleModaledit<?= $row['university_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document"> <!-- Add 'modal-lg' class for larger modal -->
+    <div class="modal fade" id="exampleModaledit<?= $row['university_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModaledit" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -245,7 +246,7 @@ require_once 'head.php'; ?>
                                     header('Location: index.php');
                                     exit();
                                 }
-                            } //isset
+                            }
                             ?>
                             <div class="row">
                                 <div class="col-6">
@@ -285,11 +286,8 @@ require_once 'head.php'; ?>
 
                             </div>
                         </form>
-                        <?php require_once 'edit_u_db.php';
-                        error_reporting(0);
-                        ini_set('display_errors', 0); ?>
+                        <?php require_once 'edit_u_db.php'; ?>
                     </div>
-
                 </div>
             </div>
         </div>
