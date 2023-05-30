@@ -21,7 +21,7 @@ require_once 'head.php'; ?>
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-AddNew" data-toggle="modal" data-target="#exampleModal">
                                 Add New
                             </button>
                         </div>
@@ -110,7 +110,7 @@ require_once 'head.php'; ?>
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <button type="submit" class="btn btn-success btn-block">
+                                                    <button type="submit" class="btn btn-Submit btn-block">
                                                         <span type="submit">Submit</span>
                                                     </button>
                                                 </div>
@@ -152,7 +152,7 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['university']; ?></td>
                                                 <td><?= $t1['country']; ?></td>
                                                 <td><?= $t1['ranking']; ?></td>
-                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a>
+                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-View btn-sm">View</a>
                                                     <a href="del_u.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-danger btn-sm">Del</a>
                                                 </td>
                                             </tr>

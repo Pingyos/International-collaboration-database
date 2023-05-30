@@ -279,7 +279,7 @@
                                                 <td><?= $t1['ranking']; ?></td>
                                                 <td><?= $t1['mou']; ?></td>
                                                 <td><?= $t1['spec']; ?></td>
-                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-success btn-sm">View</a></td>
+                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-View btn-sm">View</a></td>
                                             </tr>
                                         <?php $countrow++;
                                         }
@@ -337,8 +337,16 @@
                                             <tr>
                                                 <td><?= $countrow ?></td>
                                                 <td><?= $t1['university']; ?></td>
-                                                <td><?= $t1['date_s']; ?></td>
-                                                <td><?= $t1['date_e']; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_s_formatted = strftime('%d %b %Y', strtotime($t1['date_s']));
+                                                ?>
+                                                <td><?php echo $date_s_formatted; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
+                                                ?>
+                                                <td><?php echo $date_e_formatted; ?></td>
                                                 <td><?= $t1['activity']; ?></td>
                                                 <td><?= $t1['name']; ?></td>
                                             </tr>
@@ -400,8 +408,16 @@
                                             <tr>
                                                 <td><?= $countrow ?></td>
                                                 <td><?= $t1['university']; ?></td>
-                                                <td><?= $t1['date_s']; ?></td>
-                                                <td><?= $t1['date_e']; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_s_formatted = strftime('%d %b %Y', strtotime($t1['date_s']));
+                                                ?>
+                                                <td><?php echo $date_s_formatted; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
+                                                ?>
+                                                <td><?php echo $date_e_formatted; ?></td>
                                                 <td><?= $t1['activity']; ?></td>
                                                 <td><?= $t1['name']; ?></td>
                                             </tr>
@@ -463,8 +479,16 @@
                                             <tr>
                                                 <td><?= $countrow ?></td>
                                                 <td><?= $t1['university']; ?></td>
-                                                <td><?= $t1['date_s']; ?></td>
-                                                <td><?= $t1['date_e']; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_s_formatted = strftime('%d %b %Y', strtotime($t1['date_s']));
+                                                ?>
+                                                <td><?php echo $date_s_formatted; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
+                                                ?>
+                                                <td><?php echo $date_e_formatted; ?></td>
                                                 <td><?= $t1['activity']; ?></td>
                                                 <td><?= $t1['name']; ?></td>
                                             </tr>
@@ -526,8 +550,16 @@
                                             <tr>
                                                 <td><?= $countrow ?></td>
                                                 <td><?= $t1['university']; ?></td>
-                                                <td><?= $t1['date_s']; ?></td>
-                                                <td><?= $t1['date_e']; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_s_formatted = strftime('%d %b %Y', strtotime($t1['date_s']));
+                                                ?>
+                                                <td><?php echo $date_s_formatted; ?></td>
+                                                <?php
+                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
+                                                $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
+                                                ?>
+                                                <td><?php echo $date_e_formatted; ?></td>
                                                 <td><?= $t1['activity']; ?></td>
                                                 <td><?= $t1['name']; ?></td>
                                             </tr>

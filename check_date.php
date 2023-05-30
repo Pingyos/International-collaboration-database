@@ -74,7 +74,9 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id'];?>">Edit Detail</a>
+                                            <button type="button" class="btn btn-Edit" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id']; ?>">
+                                                Edit Detail
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -93,10 +95,11 @@ require_once 'head.php'; ?>
                             <div class="card-body">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <a class="btn btn-success" data-toggle="modal" data-target="#exampleModalAdd">
+                                        <button type="button" class="btn btn-AddNew" data-toggle="modal" data-target="#exampleModalAdd">
                                             Add New
-                                        </a>
+                                        </button>
                                     </div>
+
                                 </div>
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
@@ -134,9 +137,9 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['name']; ?></td>
                                                 <td><?= $t1['details']; ?></td>
                                                 <td>
-                                                    <a href="update_in.php?id=<?= $t1['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                                    <a href="update_in.php?id=<?= $t1['id']; ?>" class="btn btn-Edit btn-sm">Edit</a>
                                                     <hr>
-                                                    <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-danger btn-sm">Del</a>
+                                                    <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-Del btn-sm">Del</a>
                                                 </td>
                                             </tr>
                                         <?php
@@ -209,7 +212,7 @@ require_once 'head.php'; ?>
                                 </div>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-success btn-block">Submit</button>
+                                <button type="submit" class="btn btn-Submit btn-block">Submit</button>
                             </div>
                         </form>
                         <?php require_once 'date_in_db.php'; ?>
@@ -280,7 +283,7 @@ require_once 'head.php'; ?>
                                 <input type="hidden" name="university_id" value="<?= $row['university_id']; ?>">
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-success btn-block">
+                                <button type="submit" class="btn btn-Submit btn-block">
                                     <span type="submit">Submit</span>
                                 </button>
 

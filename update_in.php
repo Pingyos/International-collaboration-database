@@ -88,7 +88,7 @@ require_once 'head.php'; ?>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-success btn-block">
+                                        <button type="submit" class="btn btn-Submit btn-block">
                                             <span type="submit">Submit</span>
                                         </button>
                                     </form>

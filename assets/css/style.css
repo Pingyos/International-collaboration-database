@@ -140,6 +140,28 @@ Googel Fonts  */
 /* Googel Fonts End  
 
 */
+
+.btn-AddNew {
+  background: #4c90f2;
+  color: #FFFFFF; /* Sets the text color to white */
+}
+
+.btn-View {
+  background: #43b97f;
+  color: #FFFFFF; /* Sets the text color to white */
+}
+.btn-Del {
+  background: #fd7e40;
+  color: #FFFFFF; /* Sets the text color to white */
+}
+.btn-Edit {
+  background: #feb80a;
+  color: #FFFFFF; /* Sets the text color to white */
+}
+.btn-Submit {
+  background: #02273d;
+  color: #FFFFFF; /* Sets the text color to white */
+}
 .bg-flat-color-1 {
   background: #00c292; }
 
