@@ -21,9 +21,12 @@ require_once 'head.php'; ?>
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <button type="button" class="btn btn-AddNew" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-AddNew" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus-square-o"></i>
                                 Add New
                             </button>
+                            <a href="export_u_csv.php" type="button" class="btn btn-Export"><i class="fa fa-clipboard"></i>
+                                Export
+                            </a>
                         </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document"> <!-- Add 'modal-lg' class for larger modal -->
@@ -124,9 +127,6 @@ require_once 'head.php'; ?>
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Data Table</strong>
-                            </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
@@ -152,8 +152,8 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['university']; ?></td>
                                                 <td><?= $t1['country']; ?></td>
                                                 <td><?= $t1['ranking']; ?></td>
-                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-View btn-sm">View</a>
-                                                    <a href="del_u.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-danger btn-sm">Del</a>
+                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-View btn-sm"><i class="fa fa-folder-open-o"></i> View</a>
+                                                    <a href="del_u.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Del</a>
                                                 </td>
                                             </tr>
 
@@ -165,12 +165,9 @@ require_once 'head.php'; ?>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <div class="clearfix"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>

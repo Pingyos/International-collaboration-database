@@ -23,9 +23,6 @@ require_once 'head.php'; ?>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Detail</strong>
-                            </div>
                             <div class="card-body">
                                 <?php
                                 if (isset($_GET['university_id'])) {
@@ -75,7 +72,7 @@ require_once 'head.php'; ?>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <button type="button" class="btn btn-Edit" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id']; ?>">
-                                                Edit Detail
+                                                <i class="fa fa-pencil"></i> Edit Detail
                                             </button>
                                         </div>
                                     </div>
@@ -89,17 +86,16 @@ require_once 'head.php'; ?>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Cooperation</strong>
-                            </div>
                             <div class="card-body">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <button type="button" class="btn btn-AddNew" data-toggle="modal" data-target="#exampleModalAdd">
-                                            Add New
+                                            <i class="fa fa-plus-square-o"></i> Add New
                                         </button>
+                                        <a href="export_d_csv.php" type="button" class="btn btn-Export"><i class="fa fa-clipboard"></i>
+                                            Export
+                                        </a>
                                     </div>
-
                                 </div>
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
@@ -138,11 +134,11 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['details']; ?></td>
                                                 <td>
                                                     <div class="modal-body">
-                                                        <a href="update_in.php?id=<?= $t1['id']; ?>" class="btn btn-Edit btn-sm">Edit</a>
+                                                        <a href="update_in.php?id=<?= $t1['id']; ?>" class="btn btn-Edit btn-sm"><i class="fa fa-pencil"></i> Edit</a>
                                                         <hr>
-                                                        <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-Del btn-sm">Del</a>
+                                                        <a href="del.php?id=<?= $t1['id']; ?>" class="btn btn-Del btn-sm"><i class="fa fa-trash-o"></i> Del</a>
                                                         <hr>
-                                                        <a href="export_view.php?id=<?= $t1['id']; ?>" class="btn btn-Export btn-sm">Export</a>
+                                                        <a href="export_view.php?id=<?= $t1['id']; ?>" class="btn btn-Export btn-sm"><i class="fa fa-clipboard"></i> Export</a>
                                                     </div>
                                                 </td>
                                             </tr>
