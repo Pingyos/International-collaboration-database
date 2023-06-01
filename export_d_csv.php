@@ -5,7 +5,7 @@ header('Content-Encoding: UTF-8');
 require("connect.php");
 
 // Select the table to export
-$query = "SELECT * FROM dateinter";
+$query = "SELECT * FROM dateinter ";
 if (!$result = $conn->query($query)) {
     exit($conn->errorInfo());
 }

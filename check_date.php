@@ -235,7 +235,7 @@ require_once 'head.php'; ?>
                 <div class="modal-body">
                     <div class="card-body">
                         <div class="card-title">
-                            <h3 class="text-center">University</h3>
+                            <h3 class="text-center">Edit University Information</h3>
                         </div>
                         <hr>
                         <form method="post" novalidate="novalidate">

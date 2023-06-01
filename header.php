@@ -17,7 +17,7 @@
         <div class="header-menu">
             <div class="user-area dropdown float-right">
                 <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle" src="images/admin.png" alt="User Avatar">
+                    <img class="user-avatar rounded-circle" src="images/admin_logo.png" alt="User Avatar">
                 </a>
                 <div class="user-menu dropdown-menu">
                     <a class="nav-link"><i class="fa fa- user"></i><?php echo $json['firstname_EN']; ?></a>
