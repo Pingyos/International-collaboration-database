@@ -197,9 +197,18 @@
                     </div>
                     <!-- totaAll -->
                 </div>
-
                 <!-- /Widgets -->
                 <!-- Widgets  -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="Vector-map-js">
+                                <div id="vmap" class="vmap"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# card -->
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
@@ -233,6 +242,7 @@
                         </div> <!-- .card -->
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -1011,6 +1021,9 @@
         <script src="assets/js/vmap.sampledata.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
         <script src="assets/js/init/vector-init.js"></script>
+        
+
+        
 </body>
 
 </html>
