@@ -66,12 +66,24 @@ require_once 'head.php'; ?>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="activity" class="control-label mb-1">Activity types</label>
-                                                    <select name="activity" required class="form-control">
-                                                        <option><?= $row['activity']; ?></option>
-                                                        <option value="C">C</option>
-                                                        <option value="A">A</option>
-                                                        <option value="R">R</option>
+                                                    <label for="activity" class="control-label mb-1">Activity types <span style="color:red;">*</span></label>
+                                                    <select name="activity[]" data-placeholder="Choose" multiple class="standardSelect" tabindex="5">
+                                                        <option ><?= $row['activity']; ?></option>
+                                                        <optgroup label="A">
+                                                            <option>Study visit (Pay)</option>
+                                                            <option>Training Course</option>
+                                                            <option>Student Exchange</option>
+                                                            <option>Visiting Scholar</option>
+                                                            <option>Special Lecture</option>
+                                                        </optgroup>
+                                                        <optgroup label="C">
+                                                            <option>Sign MOU/MOA</option>
+                                                            <option>Academic Collaboration Negotiation</option>
+                                                            <option>Cooperation in foreign countries</option>
+                                                        </optgroup>
+                                                        <optgroup label="R">
+                                                            <option>Co-research</option>
+                                                        </optgroup>
                                                     </select>
                                                 </div>
                                             </div>
@@ -94,9 +106,9 @@ require_once 'head.php'; ?>
                                     </form>
                                     <?php require_once 'edit_db.php'; ?>
                                     <!-- <?php echo '<pre>';
-                                    print_r($_POST);
-                                    echo '</pre>';
-                                    ?> -->
+                                            print_r($_POST);
+                                            echo '</pre>';
+                                            ?> -->
                                 </div>
                             </div>
                         </div>
@@ -107,6 +119,17 @@ require_once 'head.php'; ?>
     </div>
     </div>
 
+    <script>
+        jQuery(document).ready(function() {
+            jQuery(".standardSelect").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+        });
+    </script>
+    
+    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
