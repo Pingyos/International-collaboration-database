@@ -82,6 +82,10 @@ require_once 'head.php'; ?>
                     </div>
                 </div>
             </div>
+            <?php echo '<pre>';
+            print_r($_POST);
+            echo '</pre>';
+            ?>
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12">
@@ -156,6 +160,7 @@ require_once 'head.php'; ?>
         </div>
     </div>
 
+
     <!--Add-->
     <div class="modal fade" id="exampleModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalAdd" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -190,11 +195,23 @@ require_once 'head.php'; ?>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="activity" class="control-label mb-1">Activity types <span style="color:red;">*</span></label>
-                                        <select name="activity" required class="form-control">
-                                            <option value="0">Activity types</option>
-                                            <option value="C">C</option>
-                                            <option value="A">A</option>
-                                            <option value="R">R</option>
+                                        <select name="activity[]" data-placeholder="Choose" multiple class="standardSelect" tabindex="5">
+                                            <option value="" label="default"></option>
+                                            <optgroup label="A">
+                                                <option>Study visit (Pay)</option>
+                                                <option>Training Course</option>
+                                                <option>Student Exchange</option>
+                                                <option>Visiting Scholar</option>
+                                                <option>Special Lecture</option>
+                                            </optgroup>
+                                            <optgroup label="C">
+                                                <option>Sign MOU/MOA</option>
+                                                <option>Academic Collaboration Negotiation</option>
+                                                <option>Cooperation in foreign countries</option>
+                                            </optgroup>
+                                            <optgroup label="R">
+                                                <option>Co-research</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
@@ -211,6 +228,7 @@ require_once 'head.php'; ?>
                                     </div>
                                 </div>
                             </div>
+
                             <div>
                                 <button type="submit" class="btn btn-Submit btn-block">Submit</button>
                             </div>
@@ -314,7 +332,7 @@ require_once 'head.php'; ?>
     <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
-
+    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
     <script>
         $('#exampleModalAdd').on('shown.bs.modal', function() {
             $('#exampleModalAdd').trigger('focus');
@@ -333,8 +351,15 @@ require_once 'head.php'; ?>
     </script>
 
     <script>
-
+        jQuery(document).ready(function() {
+            jQuery(".standardSelect").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+        });
     </script>
+
 </body>
 
 </html>

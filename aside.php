@@ -8,7 +8,10 @@
 
                 <li class="menu-title">Collaboration</li>
                 <li>
-                    <a href="date_u.php"><i class="menu-icon fa fa-tasks"></i>UNIVERSITY DATA</a>
+                    <a href="search.php"><i class="menu-icon fa fa-search-plus"></i> SEARCH DATA</a>
+                </li>
+                <li>
+                    <a href="date_u.php"><i class="menu-icon fa fa-tasks"></i> UNIVERSITY DATA</a>
                 </li>
             </ul>
         </div>

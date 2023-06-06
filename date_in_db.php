@@ -12,12 +12,14 @@ if (
     $university_id = $_POST['university_id'];
     $date_s = $_POST['date_s'];
     $date_e = $_POST['date_e'];
-    $activity = $_POST['activity'];
+    $activity = implode(",", $_POST['activity']);
     $name = $_POST['name'];
     $details = $_POST['details'];
-    //sql insert
-    $stmt = $conn->prepare("INSERT INTO dateinter (university,university_id,date_s,date_e,activity,name,details)
-    VALUES (:university,:university_id,:date_s,:date_e,:activity,:name,:details)");
+
+    // SQL insert
+    $stmt = $conn->prepare("INSERT INTO dateinter (university, university_id, date_s, date_e, activity, name, details)
+    VALUES (:university, :university_id, :date_s, :date_e, :activity, :name, :details)");
+
     $stmt->bindParam(':university', $university, PDO::PARAM_STR);
     $stmt->bindParam(':university_id', $university_id, PDO::PARAM_STR);
     $stmt->bindParam(':date_s', $date_s, PDO::PARAM_STR);
@@ -25,7 +27,9 @@ if (
     $stmt->bindParam(':activity', $activity, PDO::PARAM_STR);
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
     $stmt->bindParam(':details', $details, PDO::PARAM_STR);
+
     $result = $stmt->execute();
+    
     if ($result) {
         // Fetch university_id
         $stmt = $conn->prepare("SELECT university_id FROM university WHERE university = :university");
@@ -41,7 +45,7 @@ if (
         echo '<script>
         swal({
           title: "Add Data Success",
-          text: "university add success",
+          text: "University add success",
           type: "success",
           timer: 2000,
           showConfirmButton: false
@@ -52,9 +56,9 @@ if (
     } else {
         echo '<script>
         swal({
-          title: "Add data fail",
-          text: "fail",
-          type: "fail",
+          title: "Add Data Fail",
+          text: "Failed to add data",
+          type: "error",
           timer: 2000,
           showConfirmButton: false
         }, function(){
@@ -62,5 +66,6 @@ if (
         });
       </script>';
     }
-    $conn = null; //close connect db
-} //isset
+    $conn = null;
+}
+?>
