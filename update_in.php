@@ -68,7 +68,7 @@ require_once 'head.php'; ?>
                                                 <div class="form-group">
                                                     <label for="activity" class="control-label mb-1">Activity types <span style="color:red;">*</span></label>
                                                     <select name="activity[]" data-placeholder="Choose" multiple class="standardSelect" tabindex="5">
-                                                        <option ><?= $row['activity']; ?></option>
+                                                        <option><?= $row['activity']; ?></option>
                                                         <optgroup label="A">
                                                             <option>Study visit (Pay)</option>
                                                             <option>Training Course</option>
@@ -119,6 +119,7 @@ require_once 'head.php'; ?>
     </div>
     </div>
 
+    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
     <script>
         jQuery(document).ready(function() {
             jQuery(".standardSelect").chosen({
@@ -128,8 +129,6 @@ require_once 'head.php'; ?>
             });
         });
     </script>
-    
-    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
