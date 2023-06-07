@@ -24,9 +24,9 @@ require_once 'head.php'; ?>
                             <button type="button" class="btn btn-AddNew" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus-square-o"></i>
                                 Add New
                             </button>
-                            <a href="export_u_csv.php" type="button" class="btn btn-Export"><i class="fa fa-clipboard"></i>
+                            <!-- <a href="export_u_csv.php" type="button" class="btn btn-Export"><i class="fa fa-clipboard"></i>
                                 Export
-                            </a>
+                            </a> -->
                         </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document"> <!-- Add 'modal-lg' class for larger modal -->
@@ -153,7 +153,7 @@ require_once 'head.php'; ?>
                                                 <td><?= $t1['country']; ?></td>
                                                 <td><?= $t1['ranking']; ?></td>
                                                 <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-View btn-sm"><i class="fa fa-folder-open-o"></i> View</a>
-                                                    <a href="del_u.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Del</a>
+                                                    <a href="del_u.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-Del btn-sm"><i class="fa fa-trash-o"></i> Del</a>
                                                 </td>
                                             </tr>
 

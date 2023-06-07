@@ -10,7 +10,7 @@
 // }
 
 // // Check for inactivity
-// if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 300)) { // 300 seconds = 5 minutes
+// if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 2000)) { //  2000seconds = 33 minutes
 //     session_unset(); // Unset all session variables
 //     session_destroy(); // Destroy the session
 //     header('Location: login.php'); // Redirect to login.php

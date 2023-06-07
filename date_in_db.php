@@ -12,7 +12,7 @@ if (
     $university_id = $_POST['university_id'];
     $date_s = $_POST['date_s'];
     $date_e = $_POST['date_e'];
-    $activity = implode(",", $_POST['activity']);
+    $activity = implode(" , " , $_POST['activity']);
     $name = $_POST['name'];
     $details = $_POST['details'];
 

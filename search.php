@@ -26,35 +26,38 @@ require_once 'head.php'; ?>
                                         <form name="search_user" id="search_user" method="POST" action="search.php">
                                             <div class="form-row">
                                                 <div class="form-group col-4">
-                                                    <label for="activity">Activity Types</label>
+                                                    <label for="activity"><B>Activity Types</B></label>
                                                     <input type="text" class="form-control" id="activity" name="activity">
                                                 </div>
                                                 <div class="form-group col-4">
-                                                    <label for="date_s">Year</label>
+                                                    <label for="date_s"><B>Year</B></label>
                                                     <input type="text" class="form-control" id="date_s" name="date_s">
                                                 </div>
                                                 <div class="form-group col-4">
-                                                    <label for="university">University</label>
+                                                    <label for="university"><B>University</B></label>
                                                     <input type="text" class="form-control" id="university" name="university">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="submit" class="btn btn-success col-sm-2 mt-2" id="submit" name="submit" value="ค้นหา">
-                                                <input type="button" class="btn btn-danger col-sm-2 mt-2" id="resetform" name="resetform" value="ล้างข้อมูลการค้นหา">
+                                                <button id="submit" name="submit" type="submit" class="btn btn-View col-sm-2 mt-2"><i class="fa fa-search"></i>
+                                                    Search
+                                                </button>
+                                                <input type="button" class="btn btn-Del col-sm-2 mt-2" id="resetform" name="resetform" value="Clearance">
                                             </div>
                                         </form>
                                     </div>
-                                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <table class="table table-striped table-hover">
                                         <thead>
                                             <th style="width: 2%;">#</th>
-                                            <th style="width: 8%;">Date Start</th>
-                                            <th style="width: 8%;">Date End</th>
-                                            <th style="width: 8%;">University</th>
+                                            <th style="width: 8%;">Start</th>
+                                            <th style="width: 8%;">End</th>
+                                            <th style="width: 15%;">University</th>
                                             <th style="width: 8%;">Activity types</th>
-                                            <th style="width: 8%;">Representative/Contact</th>
                                             <th style="width: 50%;">Agreement Details</th>
+                                            <th style="width: 5%;">Detail</th>
                                         </thead>
-
+                                        <tbody>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -64,6 +67,7 @@ require_once 'head.php'; ?>
             </div>
         </div>
     </div>
+
     <script>
         $(function() {
 
@@ -170,7 +174,6 @@ require_once 'head.php'; ?>
 
         });
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -186,11 +189,32 @@ require_once 'head.php'; ?>
     <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+        function formatDate_S(dateString) {
+            const date = new Date(dateString);
+            const options = {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            };
+            return date.toLocaleDateString('en-US', options).replace(/\//g, '/');
+        }
+    </script>
+        <script>
+        function formatDate_E(dateString) {
+            const date = new Date(dateString);
+            const options = {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            };
+            return date.toLocaleDateString('en-US', options).replace(/\//g, '/');
+        }
+    </script>
+
     <script>
         $(function() {
 
@@ -217,21 +241,22 @@ require_once 'head.php'; ?>
                             // แสดงค่าลงในตาราง
                             trstring += `
                                     <tr>
-                                        <td>${countrow}</td>
-                                        <td>${value.date_s}</td>
-                                        <td>${value.date_e}</td>
-                                        <td>${value.university}</td>
-                                        <td>${value.activity}</td>
-                                        <td>${value.name}</td>
-                                        <td>${value.details}</td>
+                                    <td>${countrow}</td>
+                                    <td>${formatDate_S(value.date_s)}</td>
+                                    <td>${formatDate_E(value.date_e)}</td>
+                                    <td>${value.university}</td>
+                                    <td>${value.activity}</td>
+                                    <td>${value.details}</td>
+
+                                        <td><a href="check_date.php?university_id=${value.university_id}" class="btn btn-go btn-sm"><i class="fa fa-location-arrow"></i> Go </a></td>
                                     </tr>`;
+
                             $('table tbody').html(trstring);
                             countrow++;
                         });
                     }
                 });
             }
-
             // ============================================================================
             // เมื่อมีการ submit form
             $('form#search_user').submit(function(event) {
@@ -271,8 +296,8 @@ require_once 'head.php'; ?>
                                         <td>${value.date_e}</td>
                                         <td>${value.university}</td>
                                         <td>${value.activity}</td>
-                                        <td>${value.name}</td>
                                         <td>${value.details}</td>
+                                        <td><a href="check_date.php?university_id=${value.university_id}" class="btn btn-go btn-sm"><i class="fa fa-location-arrow"></i> Go </a></td>
                                     </tr>`;
                                 $('table tbody').html(trstring);
                                 countrow++;

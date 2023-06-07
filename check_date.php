@@ -82,10 +82,10 @@ require_once 'head.php'; ?>
                     </div>
                 </div>
             </div>
-            <?php echo '<pre>';
+            <!-- <?php echo '<pre>';
             print_r($_POST);
             echo '</pre>';
-            ?>
+            ?> -->
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12">
@@ -96,16 +96,16 @@ require_once 'head.php'; ?>
                                         <button type="button" class="btn btn-AddNew" data-toggle="modal" data-target="#exampleModalAdd">
                                             <i class="fa fa-plus-square-o"></i> Add New
                                         </button>
-                                        <a href="export_d_csv.php" type="button" class="btn btn-Export"><i class="fa fa-clipboard"></i>
+                                        <!-- <a href="export_d_csv.php" type="button" class="btn btn-Export"><i class="fa fa-clipboard"></i>
                                             Export
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <th>#</th>
-                                        <th>Date Start</th>
-                                        <th>Date End</th>
+                                        <th>Start</th>
+                                        <th>End</th>
                                         <th>Activity types</th>
                                         <th>Representative/Contact</th>
                                         <th>Agreement Details</th>
@@ -133,7 +133,7 @@ require_once 'head.php'; ?>
                                                 $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
                                                 ?>
                                                 <td><?php echo $date_e_formatted; ?></td>
-                                                <td><?= $t1['activity']; ?></td>
+                                                <td ><?= $t1['activity']; ?></td>
                                                 <td><?= $t1['name']; ?></td>
                                                 <td><?= $t1['details']; ?></td>
                                                 <td>
@@ -182,13 +182,13 @@ require_once 'head.php'; ?>
                                 <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="date_s" class="control-label mb-1">Date Start <span style="color:red;">*</span></label>
+                                        <label for="date_s" class="control-label mb-1">Start <span style="color:red;">*</span></label>
                                         <input type="date" name="date_s" required class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="date_e" class="control-label mb-1">Date End <span style="color:red;">*</span></label>
+                                        <label for="date_e" class="control-label mb-1">End <span style="color:red;">*</span></label>
                                         <input type="date" name="date_e" required class="form-control">
                                     </div>
                                 </div>

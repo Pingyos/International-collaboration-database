@@ -9,7 +9,7 @@ $university = $_POST['university'];
 
 // เช็คว่าทั้ง 3 ช่องต้องไม่เป็นค่าว่าง
 if (!empty($activity) or !empty($date_s) or !empty($university)) {
-    $sql = "SELECT * FROM dateinter WHERE activity LIKE '%$activity%' AND date_s LIKE '%$date_s%' AND university LIKE '%$university'";
+    $sql = "SELECT * FROM dateinter WHERE activity LIKE '%$activity%' AND date_s LIKE '%$date_s%' AND university LIKE '%$university%'";
     $qeury = mysqli_query($connect, $sql);
 
     // กำหนดตัวแปรไว้เก็บข้อมูลที่ค้นหาได้
