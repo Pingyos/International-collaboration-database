@@ -36,7 +36,7 @@ require_once 'head.php'; ?>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="university">University/Institute : <B><?= $row['university']; ?></B></label>
+                                            <label for="university">University/Institute : <B><?= $row['university']; ?> (<?= $row['department']; ?>)</B></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -133,7 +133,7 @@ require_once 'head.php'; ?>
                                                 $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
                                                 ?>
                                                 <td><?php echo $date_e_formatted; ?></td>
-                                                <td ><?= $t1['activity']; ?></td>
+                                                <td><?= $t1['activity']; ?></td>
                                                 <td><?= $t1['name']; ?></td>
                                                 <td><?= $t1['details']; ?></td>
                                                 <td>
@@ -275,6 +275,10 @@ require_once 'head.php'; ?>
                                     <input type="text" name="university" required value="<?= $row['university']; ?>" class="form-control"> <br>
                                 </div>
                                 <div class="col-6">
+                                    <label for="department" class="control-label mb-1">Department of</label>
+                                    <input type="text" name="department" required value="<?= $row['department']; ?>" class="form-control"> <br>
+                                </div>
+                                <div class="col-6">
                                     <label for="ranking" class="control-label mb-1">QS Ranking</label>
                                     <input type="text" name="ranking" required value="<?= $row['ranking']; ?>" class="form-control"> <br>
                                 </div>
@@ -332,7 +336,7 @@ require_once 'head.php'; ?>
     <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
-    
+
     <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
     <script>
         $('#exampleModalAdd').on('shown.bs.modal', function() {
@@ -362,4 +366,5 @@ require_once 'head.php'; ?>
     </script>
 
 </body>
+
 </html>

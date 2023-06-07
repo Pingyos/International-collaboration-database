@@ -292,8 +292,8 @@ require_once 'head.php'; ?>
                                 trstring += `
                                     <tr>
                                     <td>${countrow}</td>
-                                        <td>${value.date_s}</td>
-                                        <td>${value.date_e}</td>
+                                        <td>${formatDate_S(value.date_s)}</td>
+                                        <td>${formatDate_E(value.date_e)}</td>
                                         <td>${value.university}</td>
                                         <td>${value.activity}</td>
                                         <td>${value.details}</td>
@@ -305,7 +305,7 @@ require_once 'head.php'; ?>
 
 
                         } else {
-                            alert('ไม่พบข้อมูลที่ค้นหา');
+                            alert('no information found');
                         }
                     }
                 });

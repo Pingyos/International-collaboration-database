@@ -2,6 +2,7 @@
 if (
   isset($_POST['university'])
   && isset($_POST['ranking'])
+  && isset($_POST['department'])
   && isset($_POST['spec'])
   && isset($_POST['mou'])
   && isset($_POST['country'])
@@ -13,6 +14,7 @@ if (
   require_once 'connect.php';
   $university_id = $_POST['university_id'];
   $university = $_POST['university'];
+  $department = $_POST['department'];
   $spec = $_POST['spec'];
   $ranking = $_POST['ranking'];
   $mou = $_POST['mou'];
@@ -20,8 +22,9 @@ if (
   $comments_u = $_POST['comments_u'];
   $qs_suject = $_POST['qs_suject'];
   //sql update
-  $stmt = $conn->prepare("UPDATE  university SET university=:university, ranking=:ranking,mou=:mou, country=:country, spec=:spec, qs_suject=:qs_suject, comments_u=:comments_u WHERE university_id=:university_id");
+  $stmt = $conn->prepare("UPDATE  university SET university=:university, department=:department, ranking=:ranking,mou=:mou, country=:country, spec=:spec, qs_suject=:qs_suject, comments_u=:comments_u WHERE university_id=:university_id");
   $stmt->bindParam(':university_id', $university_id, PDO::PARAM_STR);
+  $stmt->bindParam(':department', $department, PDO::PARAM_STR);
   $stmt->bindParam(':spec', $spec, PDO::PARAM_STR);
   $stmt->bindParam(':university', $university, PDO::PARAM_STR);
   $stmt->bindParam(':ranking', $ranking, PDO::PARAM_STR);

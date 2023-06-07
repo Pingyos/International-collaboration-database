@@ -1,6 +1,7 @@
 <?php if (
   isset($_POST['university'])
   && isset($_POST['ranking'])
+  && isset($_POST['department'])
   && isset($_POST['mou'])
   && isset($_POST['country'])
   && isset($_POST['comments_u'])
@@ -35,12 +36,13 @@
   } else {
     // SQL insert
     $stmt = $conn->prepare("INSERT INTO university
-          (university, ranking, mou, country, comments_u ,spec ,qs_suject)
+          (university,department, ranking, mou, country, comments_u ,spec ,qs_suject)
           VALUES
-          (:university, :ranking, :mou, :country, :comments_u, :spec, :qs_suject)");
+          (:university, :department, :ranking, :mou, :country, :comments_u, :spec, :qs_suject)");
 
     // bindParam data type
     $stmt->bindParam(':university', $_POST['university'], PDO::PARAM_STR);
+    $stmt->bindParam(':department', $_POST['department'], PDO::PARAM_STR);
     $stmt->bindParam(':ranking', $_POST['ranking'], PDO::PARAM_STR);
     $stmt->bindParam(':mou', $_POST['mou'], PDO::PARAM_STR);
     $stmt->bindParam(':country', $_POST['country'], PDO::PARAM_STR);
