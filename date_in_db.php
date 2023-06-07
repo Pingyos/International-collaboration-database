@@ -47,7 +47,7 @@ if (
           title: "Add Data Success",
           text: "University add success",
           type: "success",
-          timer: 2000,
+          timer: 1500,
           showConfirmButton: false
         }, function(){
           window.location = "check_date.php?university_id=' . $university_id . '";
@@ -59,7 +59,7 @@ if (
           title: "Add Data Fail",
           text: "Failed to add data",
           type: "error",
-          timer: 2000,
+          timer: 1500,
           showConfirmButton: false
         }, function(){
           window.location.href = "date_u.php";

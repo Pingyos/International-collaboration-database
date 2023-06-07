@@ -51,7 +51,7 @@ if (
           title: "Edit Data Success",
           text: "success",
           type: "success",
-          timer: 2000,
+          timer: 1500,
           showConfirmButton: false
         }, function(){
           window.location = "check_date.php?university_id=' . $university_id . '";
@@ -63,7 +63,7 @@ if (
           title: "Edit data fail",
           text: "fail",
           type: "fail",
-          timer: 2000,
+          timer: 1500,
           showConfirmButton: false
         }, function(){
           window.location.href = "date_u.php";

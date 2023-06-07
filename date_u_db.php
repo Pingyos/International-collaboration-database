@@ -1,6 +1,8 @@
 <?php if (
   isset($_POST['university'])
   && isset($_POST['ranking'])
+  && isset($_POST['signed'])
+  && isset($_POST['expired'])
   && isset($_POST['department'])
   && isset($_POST['mou'])
   && isset($_POST['country'])
@@ -27,7 +29,7 @@
           title: "Data already exists",
           text: "Please make a new list.",
           type: "error",
-          timer: 2000,
+          timer: 1500,
           showConfirmButton: false
         }, function(){
           window.location.href = "date_u.php";
@@ -36,13 +38,15 @@
   } else {
     // SQL insert
     $stmt = $conn->prepare("INSERT INTO university
-          (university,department, ranking, mou, country, comments_u ,spec ,qs_suject)
+          (university,department, signed, expired, ranking, mou, country, comments_u ,spec ,qs_suject)
           VALUES
-          (:university, :department, :ranking, :mou, :country, :comments_u, :spec, :qs_suject)");
+          (:university, :department, :expired, :signed, :ranking, :mou, :country, :comments_u, :spec, :qs_suject)");
 
     // bindParam data type
     $stmt->bindParam(':university', $_POST['university'], PDO::PARAM_STR);
     $stmt->bindParam(':department', $_POST['department'], PDO::PARAM_STR);
+    $stmt->bindParam(':signed', $_POST['signed'], PDO::PARAM_STR);
+    $stmt->bindParam(':expired', $_POST['expired'], PDO::PARAM_STR);
     $stmt->bindParam(':ranking', $_POST['ranking'], PDO::PARAM_STR);
     $stmt->bindParam(':mou', $_POST['mou'], PDO::PARAM_STR);
     $stmt->bindParam(':country', $_POST['country'], PDO::PARAM_STR);
@@ -61,7 +65,7 @@
               title: "Add Data Success",
               text: "success",
               type: "success",
-              timer: 2000,
+              timer: 1500,
               showConfirmButton: false
             }, function(){
               window.location.href = "date_u.php";

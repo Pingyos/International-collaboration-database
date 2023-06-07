@@ -64,11 +64,7 @@ require_once 'head.php'; ?>
                                             <label for="qs_suject">QS Ranking by Subject : <B><?= $row['qs_suject']; ?></B></label>
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="title">MOU/MOA : <B><?= $row['mou']; ?></B></label>
-                                        </div>
-                                    </div>
+
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="ranking">Specialization : <B><?= $row['spec']; ?></B></label>
@@ -77,6 +73,16 @@ require_once 'head.php'; ?>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="title">Comments : <B><?= $row['comments_u']; ?></B></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="mou">MOU/MOA : <B><?= $row['mou']; ?></B></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="date">MOU/MOA : <B><?= $row['expired']; ?> - <?= $row['signed']; ?></B></label>
                                         </div>
                                     </div>
                                     <div class="col-12">

@@ -122,15 +122,17 @@ require_once 'head.php'; ?>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-12">
+                                                <div class="row" id="show-me">
+                                                    <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="MOU" class="control-label mb-1">MOU/MOA <span style="color:red;">*</span></label>
-                                                            <select name="mou" class="form-control" required>
-                                                                <option value="">Select MOU/MOA</option>
-                                                                <option value="YES">YES</option>
-                                                                <option value="NO">NO</option>
-                                                            </select>
+                                                            <label for="signed" class="control-label mb-1">Signed </label>
+                                                            <input type="date" name="signed"  class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="expired" class="control-label mb-1">Expired </label>
+                                                            <input type="date" name="expired"  class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
