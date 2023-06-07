@@ -1,14 +1,24 @@
 <?php
 // session_start();
+
+// // Check if session login_info is set
 // if (!isset($_SESSION['login_info'])) {
 //     header('Location: login.php');
 //     exit;
-// }
-// if (isset($_SESSION['login_info'])) {
-//     $json = $_SESSION['login_info'];
 // } else {
-//     echo "You are not logged in.";
+//     $json = $_SESSION['login_info'];
 // }
+
+// // Check for inactivity
+// if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 2000)) { //  2000seconds = 33 minutes
+//     session_unset(); // Unset all session variables
+//     session_destroy(); // Destroy the session
+//     header('Location: login.php'); // Redirect to login.php
+//     exit;
+// }
+
+// // Update last activity time
+// $_SESSION['last_activity'] = time();
 require_once 'head.php'; ?>
 
 <body>
@@ -74,23 +84,11 @@ require_once 'head.php'; ?>
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="MOU" class="control-label mb-1">MOU/MOA <span style="color:red;">*</span></label>
-                                                            <select name="mou" class="form-control" required>
-                                                                <option value="">Select MOU/MOA</option>
-                                                                <option value="YES">YES</option>
-                                                                <option value="NO">NO</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
                                                             <label for="spec" class="control-label mb-1">Specialization</label>
                                                             <input type="text" name="spec" class="form-control">
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12">
+                                                    <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="country" class="control-label mb-1">Country <span style="color:red;">*</span> </label>
                                                             <?php
@@ -108,6 +106,30 @@ require_once 'head.php'; ?>
                                                                     echo '<option value="' . $row["country_name"] . '">' . $row["country_name"] . '</option>';
                                                                 }
                                                                 ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="MOU" class="control-label mb-1">MOU/MOA <span style="color:red;">*</span></label>
+                                                            <select name="mou" class="form-control" required>
+                                                                <option value="">Select MOU/MOA</option>
+                                                                <option value="YES">YES</option>
+                                                                <option value="NO">NO</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="MOU" class="control-label mb-1">MOU/MOA <span style="color:red;">*</span></label>
+                                                            <select name="mou" class="form-control" required>
+                                                                <option value="">Select MOU/MOA</option>
+                                                                <option value="YES">YES</option>
+                                                                <option value="NO">NO</option>
                                                             </select>
                                                         </div>
                                                     </div>

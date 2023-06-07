@@ -1,14 +1,24 @@
 <?php
 // session_start();
+
+// // Check if session login_info is set
 // if (!isset($_SESSION['login_info'])) {
 //     header('Location: login.php');
 //     exit;
-// }
-// if (isset($_SESSION['login_info'])) {
-//     $json = $_SESSION['login_info'];
 // } else {
-//     echo "You are not logged in.";
+//     $json = $_SESSION['login_info'];
 // }
+
+// // Check for inactivity
+// if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 2000)) { //  2000seconds = 33 minutes
+//     session_unset(); // Unset all session variables
+//     session_destroy(); // Destroy the session
+//     header('Location: login.php'); // Redirect to login.php
+//     exit;
+// }
+
+// // Update last activity time
+// $_SESSION['last_activity'] = time();
 require_once 'head.php'; ?>
 
 <body>
@@ -83,9 +93,9 @@ require_once 'head.php'; ?>
                 </div>
             </div>
             <!-- <?php echo '<pre>';
-            print_r($_POST);
-            echo '</pre>';
-            ?> -->
+                    print_r($_POST);
+                    echo '</pre>';
+                    ?> -->
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12">
@@ -298,7 +308,7 @@ require_once 'head.php'; ?>
                                     <label for="spec" class="control-label mb-1">Specialization</label>
                                     <input type="text" name="spec" required value="<?= $row['spec']; ?>" class="form-control"> <br>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6">
                                     <label for="comments_u" class="control-label mb-1">Comments</label>
                                     <input type="text" name="comments_u" required value="<?= $row['comments_u']; ?>" class="form-control"> <br>
                                 </div>
