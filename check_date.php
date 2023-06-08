@@ -333,7 +333,6 @@ require_once 'head.php'; ?>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" name="spec" required value="<?= $row['spec']; ?>" class="form-control"> <br>
                                     <div class="form-group">
                                         <label for="signed" class="control-label mb-1">Signed </label>
                                         <input type="date" name="signed" class="form-control" value="<?= $row['signed']; ?>">
