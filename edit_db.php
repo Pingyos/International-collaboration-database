@@ -14,7 +14,7 @@ if (
   $university = $_POST['university'];
   $date_s = $_POST['date_s'];
   $date_e = $_POST['date_e'];
-  $activity = $_POST['activity'];
+  $activity = implode(" , ", $_POST['activity']);
   $details = $_POST['details'];
   $name = $_POST['name'];
   //sql update

@@ -98,10 +98,10 @@ require_once 'head.php'; ?>
                     </div>
                 </div>
             </div>
-            <?php echo '<pre>';
-            print_r($_POST);
-            echo '</pre>';
-            ?>
+            <!-- <?php echo '<pre>';
+                    print_r($_POST);
+                    echo '</pre>';
+                    ?> -->
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12">
@@ -213,21 +213,17 @@ require_once 'head.php'; ?>
                                         <label for="activity" class="control-label mb-1">Activity types <span style="color:red;">*</span></label>
                                         <select name="activity[]" data-placeholder="Choose" multiple class="standardSelect" tabindex="5">
                                             <option value="" label="default"></option>
-                                            <optgroup label="A">
-                                                <option>Study visit (Pay)</option>
-                                                <option>Training Course</option>
-                                                <option>Student Exchange</option>
-                                                <option>Visiting Scholar</option>
-                                                <option>Special Lecture</option>
-                                            </optgroup>
-                                            <optgroup label="C">
-                                                <option>Sign MOU/MOA</option>
-                                                <option>Academic Collaboration Negotiation</option>
-                                                <option>Cooperation in foreign countries</option>
-                                            </optgroup>
-                                            <optgroup label="R">
-                                                <option>Co-research</option>
-                                            </optgroup>
+                                            <option>Study visitors (Pay)</option>
+                                            <option>Training Course</option>
+                                            <option>Student Exchange</option>
+                                            <option>Visiting Scholar</option>
+                                            <option>Special Lecture</option>
+                                            <option>Sign MOU/MOA</option>
+                                            <option>Academic Collaboration Negotiation</option>
+                                            <option>Cooperation in foreign countries</option>
+                                            <option>Co-research</option>
+                                            <option>Seminar/meeting</option>
+                                            <option>Uisiturs</option>
                                         </select>
                                     </div>
                                 </div>

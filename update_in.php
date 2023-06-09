@@ -12,7 +12,6 @@
 require_once 'head.php'; ?>
 
 <body>
-
     <?php require_once 'aside.php'; ?>
     <div id="right-panel" class="right-panel">
         <!-- Header-->
@@ -67,7 +66,20 @@ require_once 'head.php'; ?>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="activity" class="control-label mb-1">Activity types <span style="color:red;">*</span></label>
-                                                    <input type="activity" name="activity" value="<?= $row['activity']; ?>" class="form-control">
+                                                    <select name="activity[]"  multiple class="standardSelect" tabindex="5">
+                                                        <option><?= $row['activity']; ?></option>
+                                                        <option>Study visitors (Pay)</option>
+                                                        <option>Training Course</option>
+                                                        <option>Student Exchange</option>
+                                                        <option>Visiting Scholar</option>
+                                                        <option>Special Lecture</option>
+                                                        <option>Sign MOU/MOA</option>
+                                                        <option>Academic Collaboration Negotiation</option>
+                                                        <option>Cooperation in foreign countries</option>
+                                                        <option>Co-research</option>
+                                                        <option>Seminar/meeting</option>
+                                                        <option>Uisiturs</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-6">
@@ -87,6 +99,7 @@ require_once 'head.php'; ?>
                                             <span type="submit">Submit</span>
                                         </button>
                                     </form>
+
                                     <?php require_once 'edit_db.php'; ?>
                                     <!-- <?php echo '<pre>';
                                             print_r($_POST);
@@ -101,17 +114,6 @@ require_once 'head.php'; ?>
         </div>
     </div>
     </div>
-
-    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
-    <script>
-        jQuery(document).ready(function() {
-            jQuery(".standardSelect").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
-        });
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
@@ -130,6 +132,18 @@ require_once 'head.php'; ?>
     <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
+
+    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
+
+    <script>
+        jQuery(document).ready(function() {
+            jQuery(".standardSelect").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+        });
+    </script>
 </body>
 
 </html>
