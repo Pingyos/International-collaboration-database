@@ -88,7 +88,7 @@ require_once 'head.php'; ?>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-Edit" data-toggle="modal" data-target="#exampleModaledit<?= $row['university_id']; ?>">
+                                            <button type="button" class="btn btn-Edit" data-toggle="modal" data-target="#exampleModaledit">
                                                 <i class="fa fa-pencil"></i> Edit Detail
                                             </button>
                                         </div>
@@ -257,8 +257,8 @@ require_once 'head.php'; ?>
     <!--Add-->
 
     <!--edit-->
-    <div class="modal fade" id="exampleModaledit<?= $row['university_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModaledit" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+    <div class="modal fade" id="exampleModaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -13,6 +13,9 @@
                 <li>
                     <a href="date_u.php"><i class="menu-icon fa fa-tasks"></i> UNIVERSITY DATA</a>
                 </li>
+                <li>
+                    <a href="addtage.php"><i class="menu-icon fa fa-cogs"></i> ADD TAGE</a>
+                </li>
             </ul>
         </div>
     </nav>

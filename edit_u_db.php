@@ -1,4 +1,3 @@
-@@ -1,75 +1,75 @@
 <?php
 if (
   isset($_POST['university'])
