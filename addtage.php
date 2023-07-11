@@ -32,7 +32,6 @@ require_once 'head.php'; ?>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -57,6 +56,45 @@ require_once 'head.php'; ?>
                                             print_r($_POST);
                                             echo '</pre>';
                                             ?> -->
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <h3 class="text-center">Add Tage</h3>
+                                    </div>
+                                    <hr>
+                                    <form method="post" enctype="multipart/form-data">
+                                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                            <thead>
+                                                <th>#</th>
+                                                <th>Activity types</th>
+                                                <th>Detail</th>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                require_once 'connect.php';
+                                                $stmt = $conn->prepare("SELECT * FROM tage");
+                                                $stmt->execute();
+                                                $result = $stmt->fetchAll();
+                                                $countrow = 1;
+                                                foreach ($result as $row) {
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $countrow ?></td>
+                                                        <td><?= $row['activity']; ?></td>
+                                                        <td>
+                                                            <a href="deltage.php?id=<?= $row['id']; ?>" class="btn btn-Del btn-sm"><i class="fa fa-trash-o"></i> Del</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $countrow++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+
+                                    </form>
                                 </div>
                             </div>
                         </div>

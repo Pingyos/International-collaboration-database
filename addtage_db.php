@@ -16,7 +16,7 @@ if (isset($_POST['activity'])) {
         echo '<script>
         swal({
           title: "Add Data Success",
-          text: "University add success",
+          text: "Tage add success",
           type: "success",
           timer: 1500,
           showConfirmButton: false
