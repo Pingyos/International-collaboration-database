@@ -66,22 +66,36 @@ require_once 'head.php'; ?>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="activity" class="control-label mb-1">Activity types <span style="color:red;">*</span></label>
-                                                    <select name="activity[]"  multiple class="standardSelect" tabindex="5">
+                                                    <select name="activity[]" multiple class="standardSelect" tabindex="5">
                                                         <option><?= $row['activity']; ?></option>
-                                                        <option>Study visitors (Pay)</option>
-                                                        <option>Training Course</option>
-                                                        <option>Student Exchange</option>
-                                                        <option>Visiting Scholar</option>
-                                                        <option>Special Lecture</option>
-                                                        <option>Sign MOU/MOA</option>
-                                                        <option>Academic Collaboration Negotiation</option>
-                                                        <option>Cooperation in foreign countries</option>
-                                                        <option>Co-research</option>
-                                                        <option>Seminar/meeting</option>
-                                                        <option>Uisiturs</option>
+                                                        <?php
+                                                        require_once 'connect.php';
+
+                                                        // ดึงข้อมูลจากฐานข้อมูล
+                                                        $sql = "SELECT activity FROM tage";
+                                                        $result = $conn->query($sql);
+
+                                                        // สร้างตัวเลือกในแบบฟอร์ม
+                                                        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                                            echo '<option>' . $row['activity'] . '</option>';
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
+                                            <?php
+                                            if (isset($_GET['id'])) {
+                                                require_once 'connect.php';
+                                                $stmt = $conn->prepare("SELECT* FROM dateinter WHERE id=?");
+                                                $stmt->execute([$_GET['id']]);
+                                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                                //ถ้าคิวรี่ผิดพลาดให้กลับไปหน้า index
+                                                if ($stmt->rowCount() < 1) {
+                                                    header('Location: index.php');
+                                                    exit();
+                                                }
+                                            } //isset
+                                            ?>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="name" class="control-label mb-1">Name Surname</label>

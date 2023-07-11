@@ -21,6 +21,7 @@
 // $_SESSION['last_activity'] = time();
 require_once 'head.php'; ?>
 
+
 <body>
 
     <?php require_once 'aside.php'; ?>
@@ -213,20 +214,22 @@ require_once 'head.php'; ?>
                                         <label for="activity" class="control-label mb-1">Activity types <span style="color:red;">*</span></label>
                                         <select name="activity[]" data-placeholder="Choose" multiple class="standardSelect" tabindex="5">
                                             <option value="" label="default"></option>
-                                            <option>Study visitors (Pay)</option>
-                                            <option>Training Course</option>
-                                            <option>Student Exchange</option>
-                                            <option>Visiting Scholar</option>
-                                            <option>Special Lecture</option>
-                                            <option>Sign MOU/MOA</option>
-                                            <option>Academic Collaboration Negotiation</option>
-                                            <option>Cooperation in foreign countries</option>
-                                            <option>Co-research</option>
-                                            <option>Seminar/meeting</option>
-                                            <option>Uisiturs</option>
+                                            <?php
+                                            require_once 'connect.php';
+
+                                            // ดึงข้อมูลจากฐานข้อมูล
+                                            $sql = "SELECT activity FROM tage";
+                                            $result = $conn->query($sql);
+
+                                            // สร้างตัวเลือกในแบบฟอร์ม
+                                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                                echo '<option>' . $row['activity'] . '</option>';
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="name" class="control-label mb-1">Name Surname <span style="color:red;">*</span></label>
@@ -283,44 +286,24 @@ require_once 'head.php'; ?>
                             ?>
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="university" class="control-label mb-1">University <span style="color:red;">*</span></label>
-                                        <input type="text" name="university" required class="form-control" value="<?= $row['university']; ?>">
-                                    </div>
+                                    <label for="university" class="control-label mb-1">University</label>
+                                    <input type="text" name="university" required value="<?= $row['university']; ?>" class="form-control"> <br>
                                 </div>
                                 <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="department" class="control-label mb-1">Department of <span style="color:red;">*</span></label>
-                                        <input type="text" name="department" required class="form-control" value="<?= $row['department']; ?>">
-                                    </div>
+                                    <label for="department" class="control-label mb-1">Department of</label>
+                                    <input type="text" name="department" required value="<?= $row['department']; ?>" class="form-control"> <br>
                                 </div>
                                 <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="ranking" class="control-label mb-1">QS Ranking</label>
-                                        <input type="text" name="ranking" class="form-control" value="<?= $row['ranking']; ?>">
-                                    </div>
+                                    <label for="ranking" class="control-label mb-1">QS Ranking</label>
+                                    <input type="text" name="ranking" required value="<?= $row['ranking']; ?>" class="form-control"> <br>
                                 </div>
                                 <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="qs_suject" class="control-label mb-1">QS Ranking by Subject</label>
-                                        <input type="text" name="qs_suject" class="form-control" value="<?= $row['qs_suject']; ?>">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="spec" class="control-label mb-1">Specialization</label>
-                                        <input type="text" name="spec" class="form-control" value="<?= $row['spec']; ?>">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="comments_u" class="control-label mb-1">Comments</label>
-                                        <input type="text" name="comments_u" class="form-control" value="<?= $row['comments_u']; ?>">
-                                    </div>
+                                    <label for="qs_suject" class="control-label mb-1">QS Ranking by Subject</label>
+                                    <input type="text" name="qs_suject" required value="<?= $row['qs_suject']; ?>" class="form-control"> <br>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="MOU" class="control-label mb-1">MOU/MOA <span style="color:red;">*</span></label>
+                                        <label for="mou" class="control-label mb-1">MOU/MOA <span style="color:red;">*</span></label>
                                         <select name="mou" class="form-control" required>
                                             <option><?= $row['mou']; ?></option>
                                             <option value="YES">YES</option>
@@ -331,42 +314,34 @@ require_once 'head.php'; ?>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="signed" class="control-label mb-1">Signed </label>
-                                        <input type="date" name="signed" class="form-control" value="<?= $row['signed']; ?>">
+                                        <input type="date" name="signed" value="<?= $row['signed']; ?>" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="expired" class="control-label mb-1">Expired </label>
-                                        <input type="date" name="expired" class="form-control" value="<?= $row['expired']; ?>">
+                                        <input type="date" name="expired" value="<?= $row['expired']; ?>" class="form-control">
                                     </div>
                                 </div>
-
+                                <div class="col-6">
+                                    <label for="country" class="control-label mb-1">Country</label>
+                                    <input type="text" name="country" required value="<?= $row['country']; ?>" class="form-control"> <br>
+                                </div>
+                                <div class="col-6">
+                                    <label for="spec" class="control-label mb-1">Specialization</label>
+                                    <input type="text" name="spec" required value="<?= $row['spec']; ?>" class="form-control"> <br>
+                                </div>
                                 <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="country" class="control-label mb-1">Country <span style="color:red;">*</span> </label>
-                                        <?php
-                                        require_once 'connect.php';
-                                        $query = "
-                                                            SELECT country_name FROM apps_countries 
-                                                            ORDER BY country_name ASC
-                                                        ";
-                                        $result = $conn->query($query);
-                                        ?>
-                                        <select name="country" required class="form-control">
-                                            <option><?= $row['country']; ?></option>
-                                            <?php
-                                            foreach ($result as $row) {
-                                                echo '<option value="' . $row["country_name"] . '">' . $row["country_name"] . '</option>';
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
+                                    <label for="comments_u" class="control-label mb-1">Comments</label>
+                                    <input type="text" name="comments_u" required value="<?= $row['comments_u']; ?>" class="form-control"> <br>
                                 </div>
+                                <input type="hidden" name="university_id" value="<?= $row['university_id']; ?>">
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-Submit btn-block">
                                     <span type="submit">Submit</span>
                                 </button>
+
                             </div>
                         </form>
                         <?php require_once 'edit_u_db.php'; ?>
