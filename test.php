@@ -26,11 +26,11 @@ require_once 'head.php'; ?>
                                         <form method="POST">
                                             <div class="form-row">
                                                 <div class="form-group col-6">
-                                                    <label for="date_s"><B>Start Date</B></label>
+                                                    <label for="date_s"><B>วันที่เริ่มต้น</B></label>
                                                     <input class="form-control" type="date" id="date_s" name="date_s" value="<?php echo isset($_POST['date_s']) ? $_POST['date_s'] : ''; ?>">
                                                 </div>
                                                 <div class="form-group col-6">
-                                                    <label for="date_e"><B>End Date</B></label>
+                                                    <label for="date_e"><B>วันที่สิ้นสุด</B></label>
                                                     <input class="form-control" type="date" id="date_e" name="date_e" value="<?php echo isset($_POST['date_e']) ? $_POST['date_e'] : ''; ?>">
                                                 </div>
 
@@ -38,7 +38,7 @@ require_once 'head.php'; ?>
                                                 <div class="form-group col-6">
                                                     <label for="activity"><b>Activity Types</b></label>
                                                     <select class="form-control" name="activity" id="activity">
-                                                        <option value="" disabled selected>Activity Types</option>
+                                                        <option value="" disabled selected>กรุณาเลือก Activity Types</option>
                                                         <?php
                                                         require_once 'connect.php';
 
@@ -60,7 +60,7 @@ require_once 'head.php'; ?>
                                                 <div class="form-group col-6">
                                                     <label for="university"><B>University</B></label>
                                                     <select class="form-control" name="university" id="university">
-                                                        <option value="">University</option>
+                                                        <option value="">กรุณาเลือก มหาลัย</option>
                                                         <?php
                                                         if (isset($_POST['activity'])) {
                                                             $selected_activity = $_POST['activity'];
@@ -82,9 +82,11 @@ require_once 'head.php'; ?>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-Submit btn-block">
-                                                <span type="submit">Submit</span>
-                                            </button>
+                                            <div class="form-group col-12">
+                                                <button type="submit" class="btn btn-info">
+                                                    <span>แสดงรายชื่อ</span>
+                                                </button>
+                                            </div>
                                             <hr>
                                             <?php
                                             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -143,29 +145,29 @@ require_once 'head.php'; ?>
                                                 if (count($results) > 0) {
                                                     // Display the table with filtered data
                                             ?>
-                                                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Start Date</th>
-                                                                <th>End Date</th>
-                                                                <th>Activity</th>
-                                                                <th>University</th>
-                                                                <th>Agreement Details</th>
-                                                                <!-- Add other columns you want to display -->
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php foreach ($results as $row) : ?>
+                                                    <div class="form-group col-12">
+                                                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                                            <thead>
                                                                 <tr>
-                                                                    <td><?php echo $row['date_s']; ?></td>
-                                                                    <td><?php echo $row['date_e']; ?></td>
-                                                                    <td><?php echo $row['university']; ?></td>
-                                                                    <td><?php echo $row['activity']; ?></td>
-                                                                    <td><?php echo $row['details']; ?></td>
+                                                                    <th>Start Date</th>
+                                                                    <th>End Date</th>
+                                                                    <th>Activity</th>
+                                                                    <th>University</th>
+                                                                    <!-- Add other columns you want to display -->
                                                                 </tr>
-                                                            <?php endforeach; ?>
-                                                        </tbody>
-                                                    </table>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php foreach ($results as $row) : ?>
+                                                                    <tr>
+                                                                        <td><?php echo $row['date_s']; ?></td>
+                                                                        <td><?php echo $row['date_e']; ?></td>
+                                                                        <td><?php echo $row['university']; ?></td>
+                                                                        <td><?php echo $row['activity']; ?></td>
+                                                                    </tr>
+                                                                <?php endforeach; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                             <?php
                                                 } else {
                                                     echo "No data found.";
