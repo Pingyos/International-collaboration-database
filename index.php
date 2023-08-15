@@ -44,7 +44,7 @@
                     $stmt->execute();
                     $result = $stmt->fetch();
                     ?>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
@@ -69,29 +69,43 @@
                     </div>
                     <!-- totaU -->
 
-                    <!-- totaC -->
+                    <!-- Studyvisit -->
                     <?php
                     require_once 'connect.php';
-                    $stmt = $conn->prepare("SELECT COUNT(*) AS totaC FROM dateinter WHERE ( activity = 'C')");
+
+                    $stmt = $conn->prepare("SELECT country, COUNT(DISTINCT university) AS totalUniversities FROM university GROUP BY country");
                     $stmt->execute();
-                    $result = $stmt->fetch();
+                    $countryData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    $uniqueCountries = array(); // เก็บประเทศที่ไม่ซ้ำกัน
+                    $totalUniversities = 0; // ตัวแปรสำหรับเก็บจำนวนมหาวิทยาลัยทั้งหมด
+
+                    foreach ($countryData as $row) {
+                        $country = $row['country'];
+                        if (!in_array($country, $uniqueCountries)) {
+                            $uniqueCountries[] = $country; // เพิ่มประเทศเข้าไปในรายการประเทศที่ไม่ซ้ำกัน
+                            $totalUniversities += $row['totalUniversities']; // เพิ่มจำนวนมหาวิทยาลัยของประเทศนั้นๆเข้าไปในตัวแปร totalUniversities
+                        }
+                    }
                     ?>
-                    <div class="col-lg-3 col-md-6">
+
+                    <div class="col-lg-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i>C</i>
+                                        <i class="fa fa-globe"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
                                             <div class="stat-text">
-                                                <div class="stat-heading">Activity C</div><span class="count"><?php echo $result['totaC']; ?></span>
+                                                <div class="stat-heading">Total Country</div>
+                                                <span class="count"><?php echo count($uniqueCountries); ?></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="stat-content">
-                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaC" class="small-box-footer">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal_Studyvisit" class="small-box-footer">
                                             More <i class="fa fa-arrow-circle-right"></i>
                                         </a>
                                     </div>
@@ -99,80 +113,16 @@
                             </div>
                         </div>
                     </div>
-                    <!-- totaC -->
+                    <!-- Studyvisit -->
 
-                    <!-- totaA -->
+                    <!-- TrainingCoursell -->
                     <?php
                     require_once 'connect.php';
-                    $stmt = $conn->prepare("SELECT COUNT(*) AS totaA FROM dateinter WHERE ( activity = 'A')");
+                    $stmt = $conn->prepare("SELECT COUNT(*) AS TrainingCoursell FROM dateinter");
                     $stmt->execute();
                     $result = $stmt->fetch();
                     ?>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-3">
-                                        <i>A</i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text">
-                                                <div class="stat-heading">Activity A</div><span class="count"><?php echo $result['totaA']; ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="stat-content">
-                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaA" class="small-box-footer">
-                                            More <i class="fa fa-arrow-circle-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- totaA -->
-
-                    <!-- totaR -->
-                    <?php
-                    require_once 'connect.php';
-                    $stmt = $conn->prepare("SELECT COUNT(*) AS totaR FROM dateinter WHERE ( activity = 'R')");
-                    $stmt->execute();
-                    $result = $stmt->fetch();
-                    ?>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-4">
-                                        <i>R</i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text">
-                                                <div class="stat-heading">Activity R</div><span class="count"><?php echo $result['totaR']; ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="stat-content">
-                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaR" class="small-box-footer">
-                                            More <i class="fa fa-arrow-circle-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- totaR -->
-
-                    <!-- totaAll -->
-                    <?php
-                    require_once 'connect.php';
-                    $stmt = $conn->prepare("SELECT COUNT(*) AS totaAll FROM dateinter");
-                    $stmt->execute();
-                    $result = $stmt->fetch();
-                    ?>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
@@ -182,12 +132,12 @@
                                     <div class="stat-content">
                                         <div class="text-left dib">
                                             <div class="stat-text">
-                                                <div class="stat-heading">Activity C,A,R</div><span class="count"><?php echo $result['totaAll']; ?></span>
+                                                <div class="stat-heading">Total Data</div><span class="count"><?php echo $result['TrainingCoursell']; ?></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="stat-content">
-                                        <a href="#" data-toggle="modal" data-target="#exampleModal_totaAll" class="small-box-footer">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal_TrainingCoursell" class="small-box-footer">
                                             More <i class="fa fa-arrow-circle-right"></i>
                                         </a>
                                     </div>
@@ -195,22 +145,67 @@
                             </div>
                         </div>
                     </div>
-                    <!-- totaAll -->
+                    <!-- TrainingCoursell -->
                 </div>
-                <!-- /Widgets -->
-                <!-- Widgets  -->
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="Vector-map-js">
-                                <div id="vmap" class="vmap"></div>
-                            </div>
+                    <div class="form-group col-lg-12 col-md-3 col-12">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-body--">
+                                    <div class="table-stats order-table ov-h">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th class="serial">#</th>
+                                                    <th>Activity</th>
+                                                    <th>Number of Activities</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                require_once 'connect.php';
+
+                                                $stmt = $conn->prepare("SELECT DISTINCT activity FROM dateinter");
+                                                $stmt->execute();
+                                                $activities = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+                                                $rowNumber = 1;
+                                                foreach ($activities as $activity) {
+                                                    $stmtCount = $conn->prepare("SELECT COUNT(*) AS activityCount FROM dateinter WHERE activity = :activity");
+                                                    $stmtCount->bindParam(':activity', $activity);
+                                                    $stmtCount->execute();
+                                                    $activityCount = $stmtCount->fetchColumn();
+                                                ?>
+                                                    <tr>
+                                                        <td class="serial"><?= $rowNumber ?></td>
+                                                        <td><?= $activity ?></td>
+                                                        <td><span class="count"><?= $activityCount ?></span></td>
+                                                    </tr>
+                                                <?php
+                                                    $rowNumber++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+
+                                    </div> <!-- /.table-stats -->
+                                </div>
+                            </div> <!-- /.card -->
                         </div>
                     </div>
-                    <!-- /# card -->
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="form-group col-lg-12 col-md-3 col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Maps</strong>
+                            </div>
+                            <div id="regions_div" style="width: 100%; height: 450px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-3 col-6">
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">Activity</strong>
@@ -227,22 +222,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Collaboration</strong>
-                            </div>
-                            <div id="university" style="width: 100%; height: 450px;"></div>
-                        </div> <!-- .card -->
-                    </div><!--/.col-->
-                    <div class="col-lg-6">
-                        <div class="card">
-
-                        </div> <!-- .card -->
-                    </div>
-                </div>
-
             </div>
         </div>
 
@@ -266,7 +245,7 @@
                                         <tr>
                                             <th class="serial">#</th>
                                             <th>University</th>
-                                            <th>Country</th>
+                                            <th>country</th>
                                             <th>QS ranking</th>
                                             <th>MOU/MOA</th>
                                             <th>Specialization</th>
@@ -279,11 +258,11 @@
                                         $stmt = $conn->prepare("SELECT* FROM university");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
-                                        $countrow = 1;
+                                        $StudentExchangeow = 1;
                                         foreach ($result as $t1) {
                                         ?>
                                             <tr>
-                                                <td><?= $countrow ?></td>
+                                                <td><?= $StudentExchangeow ?></td>
                                                 <td><?= $t1['university']; ?></td>
                                                 <td><?= $t1['country']; ?></td>
                                                 <td><?= $t1['ranking']; ?></td>
@@ -291,7 +270,7 @@
                                                 <td><?= $t1['spec']; ?></td>
                                                 <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-View btn-sm">View</a></td>
                                             </tr>
-                                        <?php $countrow++;
+                                        <?php $StudentExchangeow++;
                                         }
                                         ?>
                                     </tbody>
@@ -309,8 +288,8 @@
         </script>
         <!-- .exampleModal_totaU -->
 
-        <!-- .exampleModal_totaC -->
-        <div class="modal fade" id="exampleModal_totaC" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaCLabel" aria-hidden="true">
+        <!-- .exampleModal_Studyvisit -->
+        <div class="modal fade" id="exampleModal_Studyvisit" tabindex="-1" role="dialog" aria-labelledby="exampleModal_StudyvisitLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -321,51 +300,41 @@
                     <div class="modal-body">
                         <div class="card-body">
                             <div class="card-title">
-                                <h3 class="text-center">Activity C</h3>
+                                <h3 class="text-center">Country</h3>
                             </div>
                             <div class="table-stats order-table ov-h">
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th class="serial">#</th>
                                             <th>University</th>
-                                            <th>Date_s</th>
-                                            <th>Date_e</th>
-                                            <th>Activity types</th>
-                                            <th>Name</th>
+                                            <th>country</th>
+                                            <th>QS ranking</th>
+                                            <th>MOU/MOA</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         require_once 'connect.php';
-                                        $stmt = $conn->prepare("SELECT * FROM dateinter WHERE activity = 'C'");
+                                        $stmt = $conn->prepare("SELECT * FROM `university` ORDER BY `university`.`country` DESC");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
-                                        $countrow = 1;
+                                        $StudentExchangeow = 1;
                                         foreach ($result as $t1) {
                                         ?>
                                             <tr>
-                                                <td><?= $countrow ?></td>
+                                                <td><?= $StudentExchangeow ?></td>
                                                 <td><?= $t1['university']; ?></td>
-                                                <?php
-                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
-                                                $date_s_formatted = strftime('%d %b %Y', strtotime($t1['date_s']));
-                                                ?>
-                                                <td><?php echo $date_s_formatted; ?></td>
-                                                <?php
-                                                setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
-                                                $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
-                                                ?>
-                                                <td><?php echo $date_e_formatted; ?></td>
-                                                <td><?= $t1['activity']; ?></td>
-                                                <td><?= $t1['name']; ?></td>
+                                                <td><?= $t1['country']; ?></td>
+                                                <td><?= $t1['ranking']; ?></td>
+                                                <td><?= $t1['mou']; ?></td>
+                                                <td><a href="check_date.php?university_id=<?= $t1['university_id']; ?>" class="btn btn-View btn-sm">View</a></td>
                                             </tr>
-                                        <?php
-                                            $countrow++;
+                                        <?php $StudentExchangeow++;
                                         }
                                         ?>
                                     </tbody>
-
                                 </table>
                             </div>
                         </div>
@@ -375,13 +344,13 @@
         </div>
         <script>
             $('#myModal').on('shown.bs.modal', function() {
-                $('#exampleModal_totaC').trigger('focus')
+                $('#exampleModal_Studyvisit').trigger('focus')
             })
         </script>
-        <!-- .exampleModal_totaC -->
+        <!-- .exampleModal_Studyvisit -->
 
-        <!-- .exampleModal_totaA -->
-        <div class="modal fade" id="exampleModal_totaA" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaCLabel" aria-hidden="true">
+        <!-- .exampleModal_TrainingCourse -->
+        <div class="modal fade" id="exampleModal_TrainingCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModal_StudyvisitLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -412,11 +381,11 @@
                                         $stmt = $conn->prepare("SELECT * FROM dateinter WHERE activity = 'A'");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
-                                        $countrow = 1;
+                                        $StudentExchangeow = 1;
                                         foreach ($result as $t1) {
                                         ?>
                                             <tr>
-                                                <td><?= $countrow ?></td>
+                                                <td><?= $StudentExchangeow ?></td>
                                                 <td><?= $t1['university']; ?></td>
                                                 <?php
                                                 setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
@@ -432,7 +401,7 @@
                                                 <td><?= $t1['name']; ?></td>
                                             </tr>
                                         <?php
-                                            $countrow++;
+                                            $StudentExchangeow++;
                                         }
                                         ?>
                                     </tbody>
@@ -446,13 +415,13 @@
         </div>
         <script>
             $('#myModal').on('shown.bs.modal', function() {
-                $('#exampleModal_totaC').trigger('focus')
+                $('#exampleModal_Studyvisit').trigger('focus')
             })
         </script>
-        <!-- .exampleModal_totaA -->
+        <!-- .exampleModal_TrainingCourse -->
 
-        <!-- .exampleModal_totaR -->
-        <div class="modal fade" id="exampleModal_totaR" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaCLabel" aria-hidden="true">
+        <!-- .exampleModal_StudentExchange -->
+        <div class="modal fade" id="exampleModal_StudentExchange" tabindex="-1" role="dialog" aria-labelledby="exampleModal_StudyvisitLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -483,11 +452,11 @@
                                         $stmt = $conn->prepare("SELECT * FROM dateinter WHERE activity = 'R'");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
-                                        $countrow = 1;
+                                        $StudentExchangeow = 1;
                                         foreach ($result as $t1) {
                                         ?>
                                             <tr>
-                                                <td><?= $countrow ?></td>
+                                                <td><?= $StudentExchangeow ?></td>
                                                 <td><?= $t1['university']; ?></td>
                                                 <?php
                                                 setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
@@ -503,7 +472,7 @@
                                                 <td><?= $t1['name']; ?></td>
                                             </tr>
                                         <?php
-                                            $countrow++;
+                                            $StudentExchangeow++;
                                         }
                                         ?>
                                     </tbody>
@@ -517,13 +486,13 @@
         </div>
         <script>
             $('#myModal').on('shown.bs.modal', function() {
-                $('#exampleModal_totaC').trigger('focus')
+                $('#exampleModal_Studyvisit').trigger('focus')
             })
         </script>
-        <!-- .exampleModal_totaR -->
+        <!-- .exampleModal_StudentExchange -->
 
-        <!-- .exampleModal_totaAll -->
-        <div class="modal fade" id="exampleModal_totaAll" tabindex="-1" role="dialog" aria-labelledby="exampleModal_totaCLabel" aria-hidden="true">
+        <!-- .exampleModal_TrainingCoursell -->
+        <div class="modal fade" id="exampleModal_TrainingCoursell" tabindex="-1" role="dialog" aria-labelledby="exampleModal_StudyvisitLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -554,11 +523,11 @@
                                         $stmt = $conn->prepare("SELECT * FROM dateinter");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
-                                        $countrow = 1;
+                                        $StudentExchangeow = 1;
                                         foreach ($result as $t1) {
                                         ?>
                                             <tr>
-                                                <td><?= $countrow ?></td>
+                                                <td><?= $StudentExchangeow ?></td>
                                                 <td><?= $t1['university']; ?></td>
                                                 <?php
                                                 setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
@@ -574,7 +543,7 @@
                                                 <td><?= $t1['name']; ?></td>
                                             </tr>
                                         <?php
-                                            $countrow++;
+                                            $StudentExchangeow++;
                                         }
                                         ?>
                                     </tbody>
@@ -588,10 +557,10 @@
         </div>
         <script>
             $('#myModal').on('shown.bs.modal', function() {
-                $('#exampleModal_totaC').trigger('focus')
+                $('#exampleModal_Studyvisit').trigger('focus')
             })
         </script>
-        <!-- .exampleModal_totaAll -->
+        <!-- .exampleModal_TrainingCoursell -->
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
@@ -902,30 +871,31 @@
                     <?php
                     require_once 'connect.php';
 
-                    $stmtC = $conn->prepare("SELECT COUNT(*) AS totaC FROM dateinter WHERE activity = 'C'");
-                    $stmtC->execute();
-                    $countC = $stmtC->fetchColumn();
+                    $stmt = $conn->prepare("SELECT * FROM tage");
+                    $stmt->execute();
+                    $tageData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    $stmtA = $conn->prepare("SELECT COUNT(*) AS totaA FROM dateinter WHERE activity = 'A'");
-                    $stmtA->execute();
-                    $countA = $stmtA->fetchColumn();
+                    $dataArray = [];
 
-                    $stmtR = $conn->prepare("SELECT COUNT(*) AS totaR FROM dateinter WHERE activity = 'R'");
-                    $stmtR->execute();
-                    $countR = $stmtR->fetchColumn();
+                    foreach ($tageData as $row) {
+                        $activity = $row['activity'];
+                        $stmtCount = $conn->prepare("SELECT COUNT(*) AS country FROM dateinter WHERE activity = :activity");
+                        $stmtCount->bindParam(':activity', $activity);
+                        $stmtCount->execute();
+                        $country = $stmtCount->fetchColumn();
 
-                    echo "['Activity C', " . $countC . "],";
-                    echo "['Activity A', " . $countA . "],";
-                    echo "['Activity R', " . $countR . "]";
+                        $dataArray[] = "['" . $activity . "', " . $country . "]";
+                    }
+
+                    $dataString = implode(',', $dataArray);
+                    echo $dataString;
                     ?>
                 ]);
 
                 var options = {
                     pieHole: 0.4,
-                    colors: ['#AB8CE4', '#03A9E3', '#FB9678']
+                    colors: ['#AB8CE4', '#03A9E3', '#FB9678', '#e51c23', '#4a148c', '#ab47bc', '#4fc3f7', '#01579b', '#00bcd4', '#006064', '#26a69a', '#2baf2b', '#ff6f00', '#6c2c10']
                 };
-
-
 
                 var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
                 chart.draw(data, options);
@@ -940,32 +910,59 @@
 
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                    ['Country', 'Number of Universities', {
-                        role: 'tooltip'
-                    }],
+                    ['Country', 'Number of Universities'],
                     <?php
                     require_once 'connect.php';
 
-                    $stmtC = $conn->prepare("SELECT country, COUNT(*) AS count, GROUP_CONCAT(university SEPARATOR ', ') AS universities FROM university GROUP BY country");
+                    $stmtC = $conn->prepare("SELECT country, COUNT(*) AS count FROM university GROUP BY country");
                     $stmtC->execute();
 
                     while ($row = $stmtC->fetch(PDO::FETCH_ASSOC)) {
-                        echo "['" . $row['country'] . "', " . $row['count'] . ", '" . $row['universities'] . "'],";
+                        echo "['" . $row['country'] . "', " . $row['count'] . "],";
                     }
                     ?>
                 ]);
 
                 var options = {
-                    backgroundColor: '#ffff',
-                    colors: ['#00C292'],
-                    tooltip: {
-                        isHtml: true
-                    }
+                    pieHole: 0.4,
+                    colors: ['#ffca28', '#f57f17', '#FB9678', '#e51c23', '#4a148c', '#ab47bc', '#4fc3f7', '#01579b', '#afb42b', '#006064', '#26a69a', '#2baf2b', '#ff6f00', '#6c2c10', '#880e4f', '#311b92', '#e7e9fd']
                 };
 
-                var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+                var chart = new google.visualization.PieChart(document.getElementById('columnchart'));
                 chart.draw(data, options);
+            }
+        </script>
 
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['geochart'],
+            });
+            google.charts.setOnLoadCallback(drawRegionsMap);
+
+            function drawRegionsMap() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Country', 'Popularity'],
+                    <?php
+                    require_once 'connect.php';
+
+                    $stmtC = $conn->prepare("SELECT country, COUNT(*) AS count FROM university GROUP BY country");
+                    $stmtC->execute();
+
+                    while ($row = $stmtC->fetch(PDO::FETCH_ASSOC)) {
+                        echo "['" . $row['country'] . "', " . $row['count'] . "],";
+                    }
+                    ?>
+                ]);
+
+                var options = {
+                    colorAxis: {
+                        colors: ['#4fc3f7', '#01579b']
+                    } // เปลี่ยนระดับสีตรงนี้
+                };
+
+                var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+                chart.draw(data, options);
             }
         </script>
 
@@ -1021,9 +1018,9 @@
         <script src="assets/js/vmap.sampledata.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
         <script src="assets/js/init/vector-init.js"></script>
-        
 
-        
+
+
 </body>
 
 </html>

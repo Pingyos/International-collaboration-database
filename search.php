@@ -23,7 +23,7 @@ require_once 'head.php'; ?>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <form method="POST">
+                                        <form method="post">
                                             <div class="form-row">
                                                 <div class="form-group col-6">
                                                     <label for="date_s"><B>Start Date</B></label>
@@ -82,74 +82,70 @@ require_once 'head.php'; ?>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-Submit btn-block">
-                                                <span type="submit">Submit</span>
+                                            <button type="submit" name="display_data" class="btn btn-Submit btn-block">
+                                                <span>Display Data</span>
                                             </button>
                                             <hr>
                                             <?php
                                             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                                // เชื่อมต่อฐานข้อมูล (ตัวอย่างเท่านั้น)
-                                                require_once 'connect.php';
+                                                if (isset($_POST['display_data'])) {
+                                                    require_once 'connect.php';
 
-                                                // Initialize the SQL query
-                                                $sql = "SELECT * FROM dateinter WHERE 1=1 ";
+                                                    $sql = "SELECT * FROM dateinter WHERE 1=1 ";
 
-                                                // Check if "Start Date" is selected
-                                                if (isset($_POST['date_s']) && !empty($_POST['date_s'])) {
-                                                    $start_date = $_POST['date_s'];
-                                                    $sql .= "AND date_s >= :start_date ";
-                                                }
+                                                    if (isset($_POST['date_s']) && !empty($_POST['date_s'])) {
+                                                        $start_date = $_POST['date_s'];
+                                                        $sql .= "AND date_s >= :start_date ";
+                                                    }
 
-                                                // Check if "End Date" is selected
-                                                if (isset($_POST['date_e']) && !empty($_POST['date_e'])) {
-                                                    $end_date = $_POST['date_e'];
-                                                    $sql .= "AND date_e <= :end_date ";
-                                                }
+                                                    if (isset($_POST['date_e']) && !empty($_POST['date_e'])) {
+                                                        $end_date = $_POST['date_e'];
+                                                        $sql .= "AND date_e <= :end_date ";
+                                                    }
 
-                                                // Check if "Activity Types" is selected
-                                                if (isset($_POST['activity']) && !empty($_POST['activity'])) {
-                                                    $selected_activity = $_POST['activity'];
-                                                    $sql .= "AND activity = :activity ";
-                                                }
+                                                    if (isset($_POST['activity']) && !empty($_POST['activity'])) {
+                                                        $selected_activity = $_POST['activity'];
+                                                        $sql .= "AND activity = :activity ";
+                                                    }
 
-                                                // Check if "University" is selected
-                                                if (isset($_POST['university']) && !empty($_POST['university'])) {
-                                                    $selected_university = $_POST['university'];
-                                                    $sql .= "AND university = :university ";
-                                                }
+                                                    if (isset($_POST['university']) && !empty($_POST['university'])) {
+                                                        $selected_university = $_POST['university'];
+                                                        $sql .= "AND university = :university ";
+                                                    }
 
-                                                // Prepare and execute the query
-                                                $stmt = $conn->prepare($sql);
+                                                    $stmt = $conn->prepare($sql);
 
-                                                if (isset($start_date)) {
-                                                    $stmt->bindParam(':start_date', $start_date);
-                                                }
+                                                    if (isset($start_date)) {
+                                                        $stmt->bindParam(':start_date', $start_date);
+                                                    }
 
-                                                if (isset($end_date)) {
-                                                    $stmt->bindParam(':end_date', $end_date);
-                                                }
+                                                    if (isset($end_date)) {
+                                                        $stmt->bindParam(':end_date', $end_date);
+                                                    }
 
-                                                if (isset($selected_activity)) {
-                                                    $stmt->bindParam(':activity', $selected_activity);
-                                                }
+                                                    if (isset($selected_activity)) {
+                                                        $stmt->bindParam(':activity', $selected_activity);
+                                                    }
 
-                                                if (isset($selected_university)) {
-                                                    $stmt->bindParam(':university', $selected_university);
-                                                }
+                                                    if (isset($selected_university)) {
+                                                        $stmt->bindParam(':university', $selected_university);
+                                                    }
 
-                                                $stmt->execute();
-                                                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                                    $stmt->execute();
+                                                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                                                if (count($results) > 0) {
-                                                    // Display the table with filtered data
+                                                    if (count($results) > 0) {
+                                                        echo '<a href="export_csv.php?date_s=' . $start_date . '&date_e=' . $end_date . '&activity=' . $selected_activity . '&university=' . $selected_university . '" class="btn btn-primary">Export CSV</a>';
+                                                    }
                                             ?>
+
                                                     <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                                         <thead>
                                                             <tr>
                                                                 <th>Start Date</th>
                                                                 <th>End Date</th>
-                                                                <th>Activity</th>
                                                                 <th>University</th>
+                                                                <th>Activity</th>
                                                                 <th>Agreement Details</th>
                                                                 <!-- Add other columns you want to display -->
                                                             </tr>
@@ -166,6 +162,7 @@ require_once 'head.php'; ?>
                                                             <?php endforeach; ?>
                                                         </tbody>
                                                     </table>
+
                                             <?php
                                                 } else {
                                                     echo "No data found.";
