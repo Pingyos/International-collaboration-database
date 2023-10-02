@@ -60,7 +60,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="choices-single-default">Activity Types</label>
                                             <select class="form-control" name="activity" id="activity">
-                                                <option value="" disabled selected>Show All</option>
+                                                <option value="" disabled <?php echo empty($_POST['activity']) ? 'selected' : ''; ?>>Show All</option>
                                                 <?php
                                                 require_once 'connect.php';
 
@@ -72,8 +72,9 @@
                                                 // วนลูปแสดงตัวเลือกใน dropdown
                                                 foreach ($checkings as $checking) {
                                                     $activity = $checking['activity'];
-                                                    // ไม่ต้องมีเงื่อนไขการเปรียบเทียบ $_POST['activity'] ในการเลือก
-                                                    echo "<option value='$activity'>$activity</option>";
+                                                    // Check if the current option matches the selected value
+                                                    $selected = isset($_POST['activity']) && $_POST['activity'] === $activity ? 'selected' : '';
+                                                    echo "<option value='$activity' $selected>$activity</option>";
                                                 }
                                                 ?>
                                             </select>
@@ -81,11 +82,12 @@
                                     </div>
 
 
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label" for="choices-single-default">University</label>
                                             <select class="form-control" name="university" id="university">
-                                                <option value="">Show All</option>
+                                                <option value="" disabled <?php echo empty($_POST['university']) ? 'selected' : ''; ?>>Show All</option>
                                                 <?php
                                                 if (isset($_POST['activity'])) {
                                                     $selected_activity = $_POST['activity'];
@@ -95,10 +97,10 @@
                                                     $stmt->execute();
                                                     $universities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                                                    // วนลูปแสดงตัวเลือกใน dropdown ของ University
+
                                                     foreach ($universities as $university) {
                                                         $uni_name = $university['university'];
-                                                        // Check if the option's value matches the selected university in $_POST
+
                                                         $selected = (isset($_POST['university']) && $_POST['university'] === $uni_name) ? 'selected' : '';
                                                         echo "<option value='$uni_name' $selected>$uni_name</option>";
                                                     }
@@ -108,9 +110,34 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <button type="submit" name="display_data" class="btn btn-primary">Submit</button>
+                                    <div class="btn-group col-12">
+                                        <button type="submit" name="display_data" class="btn btn-primary">Submit</button>
+                                        <button type="button" id="export_data" class="btn btn-success">Export</button>
+                                    </div>
                                 </div>
                             </form>
+                            <script>
+                                document.getElementById("export_data").addEventListener("click", function() {
+                                    var start_date = document.getElementById("date_s").value;
+                                    var end_date = document.getElementById("date_e").value;
+                                    var activity = document.getElementById("activity").value;
+                                    var university = document.getElementById("university").value;
+                                    var url = "Data_report_db.php?";
+                                    if (start_date) {
+                                        url += "start_date=" + encodeURIComponent(start_date) + "&";
+                                    }
+                                    if (end_date) {
+                                        url += "end_date=" + encodeURIComponent(end_date) + "&";
+                                    }
+                                    if (activity) {
+                                        url += "activity=" + encodeURIComponent(activity) + "&";
+                                    }
+                                    if (university) {
+                                        url += "university=" + encodeURIComponent(university) + "&";
+                                    }
+                                    window.location.href = url;
+                                });
+                            </script>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <?php
@@ -190,12 +217,11 @@
                                                                         </svg>
                                                                         </span>
                                                                     </a>
-                                                                    <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="Date-University-Edit.php?university_id=<?= $t1['university_id']; ?>">
+                                                                    <a class="btn btn-sm btn-icon btn-warning" href="Date-University-View.php?university_id=<?= $row['university_id']; ?>">
                                                                         <span class="btn-inner">
                                                                             <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                                <path d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.82812 10.921L16.3011 3.44799C17.2321 2.51799 18.7411 2.51799 19.6721 3.44799L20.8891 4.66499C21.8201 5.59599 21.8201 7.10599 20.8891 8.03599L13.3801 15.545C12.9731 15.952 12.4211 16.181 11.8451 16.181H8.09912L8.19312 12.401C8.20712 11.845 8.43412 11.315 8.82812 10.921Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                                                <path d="M15.1655 4.60254L19.7315 9.16854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                                <path d="M12.7 11.7488H3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7002 16.7498L20.6372 11.7488L12.7002 6.74776V16.7498Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                                                             </svg>
                                                                         </span>
                                                                     </a>

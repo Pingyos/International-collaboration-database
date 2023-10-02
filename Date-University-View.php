@@ -164,6 +164,7 @@
                                                 <th>#</th>
                                                 <th>Start</th>
                                                 <th>End</th>
+                                                <th>Name</th>
                                                 <th>Activity</th>
                                                 <th>Detail</th>
                                             </tr>
@@ -190,6 +191,7 @@
                                                     $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
                                                     ?>
                                                     <td><?php echo $date_e_formatted; ?></td>
+                                                    <td><?= ($t1['name']); ?></td>
                                                     <td><?= nl2br($t1['activity']); ?></td>
                                                     <td>
                                                         <div class="flex align-items-center list-user-action">
