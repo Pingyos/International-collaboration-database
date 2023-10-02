@@ -84,9 +84,6 @@ if (isset($_GET['error']) != null) {
 }
 
 
-
-
-// Get access_token to call webservices api
 function get_oauth_token($code, $oauth_url)
 {
     global $client_id;
