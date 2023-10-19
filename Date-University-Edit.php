@@ -124,17 +124,23 @@
                                                     <textarea class="form-control" name="comments_u" style="height: 150px"><?= $row['comments_u']; ?></textarea>
                                                 </div>
                                             </div>
+                                            <h8>Update : <?= $row['dateCreate']; ?></h8>
+                                            <h8>by : <?= $row['reg_by']; ?></h8>
                                             <input type="hidden" name="university_id" value="<?= $row['university_id']; ?>">
                                             <input type="hidden" name="dateCreate" value="<?= date('Y-m-d H:i:s'); ?>">
+                                            <input type="hidden" name="reg_by" value="Nest">
                                         </div>
                                     </div>
                                     <div class="form-group float-end">
-                                        <button type="submit" class="btn btn-primary" name="update">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                         <a href="#" class="btn btn-danger" onclick="window.history.back();">Back</a>
                                     </div>
                                     <?php
-                                    if (isset($_POST['update'])) {
-                                        require_once 'Date-University-Edit-db.php';
+                                    require_once 'Date-University-Edit-db.php';
+                                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                        echo '<pre>';
+                                        print_r($_POST);
+                                        echo '</pre>';
                                     }
                                     ?>
                                 </form>
