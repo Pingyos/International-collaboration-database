@@ -22,9 +22,10 @@ if (isset($_POST['update'])) {
     if ($stmt->rowCount() > 0) {
         // แสดง SweetAlert สำหรับการแก้ไขข้อมูลสำเร็จ
         echo '
-            <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+        echo '
             <script>
                 swal({
                     title: "Edit Data Success",
@@ -39,9 +40,10 @@ if (isset($_POST['update'])) {
     } else {
         // แสดง SweetAlert สำหรับการแก้ไขข้อมูลไม่สำเร็จ
         echo '
-            <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+        echo '
             <script>
                 swal({
                     title: "Edit Data Fail",
