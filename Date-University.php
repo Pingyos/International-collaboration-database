@@ -59,55 +59,47 @@
 
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="form-label">University : <span style="color:red;">*</span></label>
-                                                                <input type="text" name="university" required class="form-control">
+                                                                <input type="text" name="university" required class="form-control" placeholder="University">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="form-label">Department of : <span style="color:red;">*</span></label>
-                                                                <input type="text" name="department" required class="form-control">
+                                                                <input type="text" name="department" required class="form-control" placeholder="Department of">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="form-label">QS Ranking : <span style="color:red;">*</span></label>
-                                                                <input type="text" name="ranking" required class="form-control">
+                                                                <input type="text" name="ranking" required class="form-control" placeholder="QS Ranking">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="form-label">QS Ranking by Subject : <span style="color:red;">*</span></label>
-                                                                <input type="text" name="qs_suject" required class="form-control">
+                                                                <input type="text" name="qs_suject" required class="form-control" placeholder="QS Ranking by Subject">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="form-label">MOU/MOA : <span style="color:red;">*</span></label>
                                                                 <select name="mou" class="form-control" required>
-                                                                    <option value="" disabled selected>Please select</option>
+                                                                    <option value="" disabled selected>MOU/MOA</option>
                                                                     <option value="YES">YES</option>
                                                                     <option value="NO">NO</option>
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input type="date" name="signed" class="form-control" placeholder="Signed">
+                                                            </div>
+                                                        </div>
 
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="form-label">Signed : </label>
-                                                                <input type="date" name="signed" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Expired : </label>
-                                                                <input type="date" name="expired" class="form-control">
+                                                                <input type="date" name="expired" class="form-control" placeholder="Expired">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label for="country" class="control-label mb-1">Country <span style="color:red;">*</span> </label>
                                                                 <?php
                                                                 require_once 'connect.php';
                                                                 $query = "
@@ -117,7 +109,7 @@
                                                                 $result = $conn->query($query);
                                                                 ?>
                                                                 <select name="country" required class="form-control">
-                                                                    <option value="">Select Country</option>
+                                                                    <option value="">Country</option>
                                                                     <?php
                                                                     foreach ($result as $row) {
                                                                         echo '<option value="' . $row["country_name"] . '">' . $row["country_name"] . '</option>';
@@ -128,33 +120,30 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="form-label">Specialization : </label>
-                                                                <input type="text" name="spec" class="form-control">
+                                                                <input type="text" name="spec" class="form-control" placeholder="Specialization">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="form-label">Comments :</label>
-                                                                <textarea class="form-control" name="comments_u" style="height: 150px"></textarea>
+                                                                <textarea class="form-control" name="comments_u" style="height: 150px" placeholder="Comments"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                                    <?php
-                                                    require_once 'Date-University-Add-db.php';
-                                                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                                        echo '<pre>';
-                                                        print_r($_POST);
-                                                        echo '</pre>';
-                                                    }
-                                                    ?>
                                                 </div>
-                                                <h7><?php echo $json['firstname_EN'] . ' ' . $json['lastname_EN']; ?></h7>
-                                                <input type="hidden" name="reg_by" value="<?php echo $json['firstname_EN'] . ' ' . $json['lastname_EN']; ?>">
+                                                <?php
+                                                require_once 'Date-University-Add-db.php';
+                                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                                    echo '<pre>';
+                                                    print_r($_POST);
+                                                    echo '</pre>';
+                                                }
+                                                ?>
+                                                <h7>Margaret</h7>
+                                                <input type="hidden" name="reg_by" value="Margaret">
                                             </form>
                                         </div>
                                     </div>
