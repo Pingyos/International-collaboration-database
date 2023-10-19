@@ -40,7 +40,7 @@
       title: "Data already exists",
       text: "Please make a new list.",
       type: "error",
-      timer: 1500,
+      timer: 1000,
       showConfirmButton: false
     }, function(){
       window.location.href = "Date-University.php";
@@ -76,7 +76,7 @@ VALUES
                 title: "Add Data Success",
                 text: "success",
                 type: "success",
-                timer: 1500,
+                timer: 1000,
                 showConfirmButton: false
               }, function(){
                 window.location.href = "Date-University.php";
@@ -88,7 +88,7 @@ VALUES
               title: "Add data fail",
               text: "Add data fail",
               type: "error",
-              timer: 2000,
+              timer: 1000,
               showConfirmButton: false
             }, function(){
               window.location.href = "Date-University.php";
