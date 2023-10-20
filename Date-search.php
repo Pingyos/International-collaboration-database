@@ -110,10 +110,30 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="btn-group col-12">
-                                        <button type="submit" name="display_data" class="btn btn-primary">Submit</button>
-                                        <button type="button" id="export_data" class="btn btn-success">Export</button>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <button type="submit" name="display_data" class="btn btn-primary">Submit</button>
+                                            &nbsp;
+                                            <button type="button" id="export_data" class="btn btn-success">Export</button>
+                                            &nbsp;
+                                            <button type="button" id="clear_data" class="btn btn-danger">Clear</button>
+                                        </div>
                                     </div>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            var clearButton = document.getElementById("clear_data");
+                                            clearButton.addEventListener("click", function() {
+                                                var form = document.getElementById("your_form_id");
+                                                var elements = form.elements;
+
+                                                for (var i = 0; i < elements.length; i++) {
+                                                    if (elements[i].type === "text" || elements[i].type === "textarea" || elements[i].type === "select-one") {
+                                                        elements[i].value = ""; // ล้างค่าข้อมูลในฟิลด์
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    </script>
                                 </div>
                             </form>
                             <script>
@@ -192,20 +212,31 @@
                                             <table id="datatable" class="table table-striped" data-toggle="data-table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Start</th>
-                                                        <th>End</th>
-                                                        <th>University</th>
-                                                        <th>Activity</th>
+                                                        <th>Start | End</th>
+                                                        <th style="width: 60%;">Detail</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php foreach ($results as $row) : ?>
+
                                                         <tr>
-                                                            <td><?php echo $row['date_s']; ?></td>
-                                                            <td><?php echo $row['date_e']; ?></td>
-                                                            <td><?php echo $row['university']; ?></td>
-                                                            <td><?php echo $row['activity']; ?></td>
+                                                            <td><?php echo $row['date_s']; ?> | <?php echo $row['date_e']; ?>
+                                                                <br>
+                                                                <?php echo $row['university']; ?>
+                                                                <br>
+                                                                <span class="badge bg-success"> <?php echo $row['name']; ?></span>
+                                                                <br>
+                                                                <span class="badge bg-primary"><?= str_replace(',', '<br>', $row['activity']); ?> </span>
+
+                                                            </td>
+                                                            <td>
+                                                                <div class="flex align-items-center list-user-action">
+                                                                    <div class="details-cell" style="max-height: 150px; overflow-y: auto; word-wrap: break-word;">
+                                                                        <textarea class="form-control" name="details" style="height: 150px; width: 700px; border: none; resize: none;" disabled><?= $row['details']; ?></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
                                                             <td>
                                                                 <div class="flex align-items-center list-user-action">
                                                                     <a class="btn btn-sm btn-icon btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdropLive<?= $row['id']; ?>">
