@@ -148,7 +148,7 @@ if (document.querySelectorAll('#d-activity').length) {
           minHeight:20,
           maxHeight:20,
           style: {
-            colors: "#8A92A6",
+            colors: "#232D42",
           },
         }
       },
@@ -160,7 +160,7 @@ if (document.querySelectorAll('#d-activity').length) {
             minWidth: 19,
             maxWidth: 19,
             style: {
-              colors: "#8A92A6",
+              colors: "#232D42",
             },
         }
       },
@@ -218,7 +218,7 @@ if (document.querySelectorAll('#d-main').length) {
           minWidth: 19,
           maxWidth: 19,
           style: {
-            colors: "#8A92A6",
+            colors: "#232D42",
           },
           offsetX: -5,
         },
@@ -232,7 +232,7 @@ if (document.querySelectorAll('#d-main').length) {
               maxHeight:22,
               show: true,
               style: {
-                colors: "#8A92A6",
+                colors: "#232D42",
               },
           },
           lines: {

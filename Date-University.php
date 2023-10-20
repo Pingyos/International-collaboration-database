@@ -166,7 +166,7 @@
                                     <tbody>
                                         <?php
                                         require_once 'connect.php';
-                                        $stmt = $conn->prepare("SELECT* FROM university");
+                                        $stmt = $conn->prepare("SELECT * FROM university ORDER BY university ASC");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
                                         $countrow = 1;

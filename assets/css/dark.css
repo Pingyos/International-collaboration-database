@@ -123,11 +123,11 @@
   background: #222738;
 }
 .dark {
-  color: #8A92A6;
+  color: #232D42;
   background-color: #151824 !important;
 }
 .dark h1, .dark .h1, .dark h2, .dark .h2, .dark h3, .dark .h3, .dark h4, .dark .h4, .dark h5, .dark .h5, .dark h6, .dark .h6 {
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .border {
   border-color: #30384f !important;
@@ -143,15 +143,15 @@
 }
 .dark .datepicker-picker .datepicker-controls .button {
   background-color: #222738;
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark thead, .dark tbody, .dark tfoot, .dark tr, .dark td, .dark th {
   border-color: #30384f;
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .offcanvas {
   background-color: #222738;
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark button.close-btn-res {
   color: #dee2e6;
@@ -502,7 +502,7 @@
   color: #dee2e6;
 }
 .dark .sidebar .navbar-nav .nav-item .nav-link:not(.disabled) {
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .sidebar .navbar-nav .nav-item .nav-link:not(.disabled).active, .dark .sidebar .navbar-nav .nav-item .nav-link:not(.disabled)[aria-expanded=true] {
   background-color: #3a57e8;
@@ -640,7 +640,7 @@
   background-color: #222738 !important;
 }
 .dark .footer a {
-  color: #8A92A6;
+  color: #232D42;
   -webkit-transition: all 400ms ease;
   -o-transition: all 400ms ease;
   transition: all 400ms ease;
@@ -677,10 +677,10 @@
   border-color: #30384f;
 }
 .dark .iq-navbar .dropdown .dropdown-menu.sub-drop li a {
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .iq-navbar .dropdown .dropdown-menu.sub-drop .iq-sub-card {
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .iq-navbar .dropdown .dropdown-menu.sub-drop .iq-sub-card:hover {
   background: #060917;
@@ -1011,7 +1011,7 @@
   border: 1px solid #30384f;
 }
 .dark .apexcharts-theme-light .apexcharts-xaxistooltip .apexcharts-xaxistooltip-text {
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .icon-box {
   border-color: #30384f;
@@ -1024,7 +1024,7 @@
   color: #fff;
 }
 .dark .form-control {
-  color: #8A92A6;
+  color: #232D42;
   background-color: #222738;
   border-color: #30384f;
 }
@@ -1035,12 +1035,12 @@
   border-color: #1aa053;
 }
 .dark .form-check-input {
-  color: #8A92A6;
+  color: #232D42;
   background-color: #222738;
   border-color: #30384f;
 }
 .dark .form-select {
-  color: #8A92A6;
+  color: #232D42;
   background-color: #222738;
 }
 .dark .form-select.is-invalid {
@@ -1051,11 +1051,11 @@
   border-color: #30384f;
 }
 .dark .stepwizard-row a.btn {
-  color: #8A92A6;
+  color: #232D42;
   background-color: #151824;
 }
 .dark #top-tabbar-vertical li a {
-  color: #8A92A6;
+  color: #232D42;
   background-color: #151824;
 }
 .dark .custom-form-floating > .form-control:focus ~ label,
@@ -1106,23 +1106,23 @@
 }
 .dark .dropdown-menu {
   background-color: #151824;
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .dropdown-menu .dropdown-item {
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .dropdown-menu .dropdown-item:hover {
   color: #3a57e8;
   background-color: transparent;
 }
 .dark .like-block span {
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .dropdown > .dropdown-menu {
   background-color: #151824;
 }
 .dark .dropdown > .dropdown-menu > a {
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .profile-media::before {
   border-color: #30384f;
@@ -1165,13 +1165,13 @@
 .dark .page-item .page-link {
   background-color: #222738;
   border-color: #5c6ca5;
-  color: #8A92A6;
+  color: #232D42;
 }
 .dark .page-item .page-link.disabled .page-link {
   background-color: #151824;
 }
 .dark .list-group .list-group-item {
-  color: #8A92A6;
+  color: #232D42;
   border-color: #30384f;
 }
 .dark .bg-light {

@@ -66,7 +66,7 @@
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #8A92A6;
+  --bs-body-color: #232D42;
   --bs-body-bg: #F5F6FA;
 }
 
@@ -2370,15 +2370,15 @@ progress {
 .table {
   --bs-table-bg: transparent;
   --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: #8A92A6;
+  --bs-table-striped-color: #232D42;
   --bs-table-striped-bg: rgba(138, 146, 166, 0.03);
-  --bs-table-active-color: #8A92A6;
+  --bs-table-active-color: #232D42;
   --bs-table-active-bg: rgba(138, 146, 166, 0.1);
-  --bs-table-hover-color: #8A92A6;
+  --bs-table-hover-color: #232D42;
   --bs-table-hover-bg: rgba(138, 146, 166, 0.075);
   width: 100%;
   margin-bottom: 1rem;
-  color: #8A92A6;
+  color: #232D42;
   vertical-align: center;
   border-color: #eee;
 }
@@ -2610,7 +2610,7 @@ progress {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #8A92A6;
+  color: #232D42;
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
@@ -2642,7 +2642,7 @@ progress {
   cursor: pointer;
 }
 .form-control:focus {
-  color: #8A92A6;
+  color: #232D42;
   background-color: #fff;
   border-color: #9dabf4;
   outline: 0;
@@ -2678,7 +2678,7 @@ progress {
   -webkit-margin-end: 1rem;
      -moz-margin-end: 1rem;
           margin-inline-end: 1rem;
-  color: #8A92A6;
+  color: #232D42;
   background-color: #fff;
   pointer-events: none;
   border-color: inherit;
@@ -2708,7 +2708,7 @@ progress {
   margin: -0.5rem -1rem;
   -webkit-margin-end: 1rem;
           margin-inline-end: 1rem;
-  color: #8A92A6;
+  color: #232D42;
   background-color: #fff;
   pointer-events: none;
   border-color: inherit;
@@ -2740,7 +2740,7 @@ progress {
   padding: 0.5rem 0;
   margin-bottom: 0;
   line-height: 1.5;
-  color: #8A92A6;
+  color: #232D42;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
@@ -2833,7 +2833,7 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #8A92A6;
+  color: #232D42;
   background-color: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -2876,7 +2876,7 @@ textarea.form-control-lg {
 }
 .form-select:-moz-focusring {
   color: transparent;
-  text-shadow: 0 0 0 #8A92A6;
+  text-shadow: 0 0 0 #232D42;
 }
 
 .form-select-sm {
@@ -3245,7 +3245,7 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #8A92A6;
+  color: #232D42;
   text-align: center;
   white-space: nowrap;
   background-color: #fff;
@@ -3503,7 +3503,7 @@ textarea.form-control-lg {
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
-  color: #8A92A6;
+  color: #232D42;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -3531,7 +3531,7 @@ textarea.form-control-lg {
   }
 }
 .btn:hover {
-  color: #8A92A6;
+  color: #232D42;
 }
 .btn-check:focus + .btn, .btn:focus {
   outline: 0;
@@ -4148,7 +4148,7 @@ textarea.form-control-lg {
   padding: 0.5rem 0;
   margin: 0;
   font-size: 1rem;
-  color: #8A92A6;
+  color: #232D42;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -5583,7 +5583,7 @@ textarea.form-control-lg {
   width: 100%;
   padding: 1rem 1.5rem;
   font-size: 1rem;
-  color: #8A92A6;
+  color: #232D42;
   text-align: left;
   background-color: #F5F6FA;
   border: 0;
@@ -5623,7 +5623,7 @@ textarea.form-control-lg {
   height: 1.25rem;
   margin-left: auto;
   content: "";
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238A92A6'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23232D42'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   -webkit-background-size: 1.25rem 1.25rem;
           background-size: 1.25rem;
@@ -6088,7 +6088,7 @@ textarea.form-control-lg {
   background-color: #f8f9fa;
 }
 .list-group-item-action:active {
-  color: #8A92A6;
+  color: #232D42;
   background-color: #e9ecef;
 }
 
@@ -7153,7 +7153,7 @@ textarea.form-control-lg {
 
 .popover-body {
   padding: 1rem 1rem;
-  color: #8A92A6;
+  color: #232D42;
 }
 
 .carousel {
@@ -14694,7 +14694,7 @@ textarea.form-control-lg {
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
-  color: #8A92A6;
+  color: #232D42;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -14727,7 +14727,7 @@ textarea.form-control-lg {
   }
 }
 .btn:hover {
-  color: #8A92A6;
+  color: #232D42;
   -webkit-transition: all 300ms ease-in-out;
   -o-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
@@ -16093,7 +16093,7 @@ thead, tbody, tfoot, tr, td, th {
   height: 1px;
   -webkit-border-radius: 1px;
           border-radius: 1px;
-  background: #8A92A6;
+  background: #232D42;
   -webkit-transition: all 400ms ease;
   -o-transition: all 400ms ease;
   transition: all 400ms ease;
@@ -16198,14 +16198,14 @@ thead, tbody, tfoot, tr, td, th {
   animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 .iq-navbar .dropdown .dropdown-menu.sub-drop li a {
-  color: #8A92A6;
+  color: #232D42;
 }
 .iq-navbar .dropdown .dropdown-menu.sub-drop .iq-sub-card {
   cursor: pointer;
   padding: 0.75rem 1.25rem !important;
   display: inline-block;
   width: 100%;
-  color: #8A92A6;
+  color: #232D42;
   -webkit-transition: all 400ms ease;
   -o-transition: all 400ms ease;
   transition: all 400ms ease;
@@ -18376,7 +18376,7 @@ body.offcanvas-active {
 .d-slider1 .swiper-button.swiper-button-next:after {
   content: "next";
   font-size: 0.75rem;
-  color: #8A92A6;
+  color: #232D42;
 }
 .d-slider1 .swiper-button.swiper-button-prev {
   right: auto;
@@ -18386,7 +18386,7 @@ body.offcanvas-active {
 .d-slider1 .swiper-button.swiper-button-prev:after {
   content: "prev";
   font-size: 0.75rem;
-  color: #8A92A6;
+  color: #232D42;
 }
 
 .iq-maintenance {
@@ -19061,14 +19061,14 @@ body.offcanvas-active {
 
 .iq-example-row .row > .col {
   padding-top: 0.75rem;
-  color: #8A92A6;
+  color: #232D42;
   padding-bottom: 0.75rem;
   background-color: rgba(86, 61, 124, 0.15);
   border: 1px solid rgba(86, 61, 124, 0.2);
 }
 .iq-example-row .row > [class^=col-] {
   padding-top: 0.75rem;
-  color: #8A92A6;
+  color: #232D42;
   padding-bottom: 0.75rem;
   background-color: rgba(86, 61, 124, 0.15);
   border: 1px solid rgba(86, 61, 124, 0.2);

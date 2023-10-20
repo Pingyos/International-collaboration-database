@@ -162,17 +162,15 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Start</th>
-                                                <th>End</th>
-                                                <th>Name</th>
-                                                <th>Activity</th>
-                                                <th>Detail</th>
+                                                <th>Start | End</th>
+                                                <th style="width: 60%;">Detail</th>
+                                                <th>#</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             require_once 'connect.php';
-                                            $stmt = $conn->prepare("SELECT * FROM dateinter WHERE university_id=:university_id");
+                                            $stmt = $conn->prepare("SELECT * FROM dateinter WHERE university_id = :university_id ORDER BY date_s DESC");
                                             $stmt->bindParam(':university_id', $row['university_id'], PDO::PARAM_STR);
                                             $stmt->execute();
                                             $result = $stmt->fetchAll();
@@ -181,18 +179,19 @@
                                             ?>
                                                 <tr>
                                                     <td> <?= $countrow ?></td>
-                                                    <?php
-                                                    setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
-                                                    $date_s_formatted = strftime('%d %b %Y', strtotime($t1['date_s']));
-                                                    ?>
-                                                    <td><?php echo $date_s_formatted; ?></td>
-                                                    <?php
-                                                    setlocale(LC_TIME, 'en_US'); // Set the locale to English (United States)
-                                                    $date_e_formatted = strftime('%d %b %Y', strtotime($t1['date_e']));
-                                                    ?>
-                                                    <td><?php echo $date_e_formatted; ?></td>
-                                                    <td><?= ($t1['name']); ?></td>
-                                                    <td><?= nl2br($t1['activity']); ?></td>
+                                                    <td><?= $t1['date_s']; ?> | <?= $t1['date_e']; ?>
+                                                        <br>
+                                                        <span class="badge bg-success"><?= ($t1['name']); ?></span>
+                                                        <br>
+                                                        <span class="badge bg-primary"><?= str_replace(',', '<br>', $t1['activity']); ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="flex align-items-center list-user-action">
+                                                            <div class="details-cell" style="max-height: 150px; overflow-y: auto; word-wrap: break-word;">
+                                                                <textarea class="form-control" name="comments_u" style="height: 150px; width: 800px; border: none; resize: none;" disabled><?= $t1['details']; ?></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                     <td>
                                                         <div class="flex align-items-center list-user-action">
                                                             <a class="btn btn-sm btn-icon btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdropLive<?= $t1['id']; ?>"> <span class="btn-inner">
@@ -305,18 +304,10 @@
                                             }
                                             ?>
                                         </tbody>
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Start</th>
-                                                <th>End</th>
-                                                <th>Activity</th>
-                                                <th>Detail</th>
-                                            </tr>
-                                        </thead>
                                     </table>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -338,59 +329,64 @@
                                     <input type="text" name="department" value="<?= $row['department']; ?>" hidden>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">Start *</label>
+                                            <label class="form-label">Start</label>
                                             <input type="date" name="date_s" required class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">End *</label>
+                                            <label class="form-label">End</label>
                                             <input type="date" name="date_e" required class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="exampleFormControlSelect1">Select Activities</label>
-                                            <div class="row">
-                                                <?php
-                                                require_once 'connect.php';
-
-                                                $sql = "SELECT activity FROM tage";
-                                                $result = $conn->query($sql);
-
-                                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                                    echo '<div class="col-6"><input type="checkbox" name="activity[]" value="' . $row['activity'] . '"> ' . $row['activity'] . '</div>';
-                                                }
-                                                ?>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">Name Surname *</label>
-                                            <input type="text" name="name" required class="form-control">
+                                            <label class="form-label">Name Surname</label>
+                                            <input type="text" name="name" class="form-control">
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Select Activities</label>
+                                            <select class="selectpicker form-control" multiple data-live-search="true" name="activity[]" required>
+                                                <?php
+                                                require_once 'connect.php';
+                                                $sql = "SELECT activity FROM tage";
+                                                $result = $conn->query($sql);
+
+                                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                                    echo '<option value="' . $row['activity'] . '">' . $row['activity'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="form-label">Details *</label>
-                                            <textarea class="form-control" name="details" style="height: 150px"></textarea>
+                                            <label class="form-label">Details</label>
+                                            <textarea class="form-control" name="details" style="height: 350px"></textarea>
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="reg_by" value="Margaret">
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <?php
-                                require_once 'Date-Information-Add-db.php';
-                                // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                //     echo '<pre>';
-                                //     print_r($_POST);
-                                //     echo '</pre>';
-                                // }
-                                ?>
+                                <button type="button" id="get" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                             </div>
+                            <?php
+                            require_once 'Date-Information-Add-db.php';
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                echo '<pre>';
+                                print_r($_POST);
+                                echo '</pre>';
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>
