@@ -6,7 +6,7 @@ if (isset($_POST['update'])) {
     $university = $_POST['university'];
     $date_s = $_POST['date_s'];
     $date_e = $_POST['date_e'];
-    $activity = implode(", ", $_POST['activity']);
+    $activity = $_POST['activity'];
     $details = $_POST['details'];
     $name = $_POST['name'];
 

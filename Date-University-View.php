@@ -151,9 +151,12 @@
                                     <h4 class="card-title">Information</h4>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
                                         Add Information
                                     </button>
+                                    <a class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="View" href="pdf_export_all.php?university_id=<?= isset($_GET['university_id']) ? $_GET['university_id'] : ''; ?>&ACTION=VIEW" target="_blank">
+                                        Export
+                                    </a>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -258,6 +261,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <a class="btn btn-sm btn-icon btn-primary" data-toggle="tooltip" data-placement="top" title="View" href="pdf_export.php?id=<?php echo $t1['id']; ?>&university_id=<?php echo $t1['university_id']; ?>&ACTION=VIEW" target="_blank"> <span class="btn-inner">
+                                                                    <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M12.1221 15.436L12.1221 3.39502" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                        <path d="M15.0381 12.5083L12.1221 15.4363L9.20609 12.5083" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                        <path d="M16.7551 8.12793H17.6881C19.7231 8.12793 21.3721 9.77693 21.3721 11.8129V16.6969C21.3721 18.7269 19.7271 20.3719 17.6971 20.3719L6.55707 20.3719C4.52207 20.3719 2.87207 18.7219 2.87207 16.6869V11.8019C2.87207 9.77293 4.51807 8.12793 6.54707 8.12793L7.48907 8.12793" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </a>
                                                             <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="Date-Information-Edit.php?id=<?= $t1['id']; ?>">
                                                                 <span class="btn-inner">
                                                                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

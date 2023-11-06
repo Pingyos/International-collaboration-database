@@ -81,10 +81,15 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="form-label">Activity types</label>
+                                                    <label class="form-label">Activities</label>
                                                     <input type="text" name="activity" required value="<?= $row['activity']; ?>" class="form-control" readonly>
                                                 </div>
                                             </div>
+
+                                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+                                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
                                             <?php
                                             if (isset($_GET['id'])) {
                                                 require_once 'connect.php';
@@ -119,9 +124,9 @@
                                     <?php
                                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         require_once 'Date-Information-Edit-db.php';
-                                        echo '<pre>';
-                                        print_r($_POST);
-                                        echo '</pre>';
+                                        // echo '<pre>';
+                                        // print_r($_POST);
+                                        // echo '</pre>';
                                     }
                                     ?>
                                 </form>
