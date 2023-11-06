@@ -96,7 +96,6 @@
                                                 $stmt = $conn->prepare("SELECT* FROM dateinter WHERE id=?");
                                                 $stmt->execute([$_GET['id']]);
                                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                                //ถ้าคิวรี่ผิดพลาดให้กลับไปหน้า index
                                                 if ($stmt->rowCount() < 1) {
                                                     header('Location: index.php');
                                                     exit();
