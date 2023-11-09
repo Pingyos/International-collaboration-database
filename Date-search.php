@@ -122,6 +122,30 @@
                                         </script>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label class a="form-label" for="choices-single-default"><b>Activity Types</b></label>
+                                                <select class="form-control" name="activity" id="activity">
+                                                    <option value="" data-country="" disabled <?php echo empty($_POST['activity']) ? 'selected' : ''; ?>>Show All</option>
+                                                    <?php
+                                                    require_once 'connect.php';
+
+                                                    $sql = "SELECT DISTINCT activity FROM tage";
+                                                    $stmt = $conn->prepare($sql);
+                                                    $stmt->execute();
+                                                    $checkings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                                    // วนลูปแสดงตัวเลือกใน dropdown
+                                                    foreach ($checkings as $checking) {
+                                                        $activity = $checking['activity'];
+                                                        // Check if the current option matches the selected value
+                                                        $selected = isset($_POST['activity']) && $_POST['activity'] === $activity ? 'selected' : '';
+                                                        echo "<option value='$activity' $selected>$activity</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label class="form-label" for="choices-single-default"><b>Start</b></label>
                                                 <input class="form-control" type="date" id="date_s" name="date_s" value="<?php echo isset($_POST['date_s']) ? $_POST['date_s'] : ''; ?>">
                                             </div>
@@ -135,7 +159,7 @@
                                         <div class="form-group">
                                             <button type="submit" name="display_data" class="btn btn-primary">Submit</button>
                                             &nbsp;
-                                            <button type="button" id="export_data" class="btn btn-success">Export</button>
+                                            <button type="button" id="export_data" class="btn btn-success">Export to excel</button>
                                             &nbsp;
                                             <button type="button" id="clear_data" class="btn btn-danger">Clear</button>
                                         </div>
@@ -147,7 +171,7 @@
                                                     var elements = form.elements;
 
                                                     for (var i = 0; i < elements.length; i++) {
-                                                        if (elements[i].type === "text" || elements[i].type === "textarea" || elements[i].type === "select-one") {
+                                                        if (elements[i].type === "text" || elements[i].type === "textarea" || elements[i].type === "date" || elements[i].type === "select-one") {
                                                             elements[i].value = ""; // ล้างค่าข้อมูลในฟิลด์
                                                         }
                                                     }

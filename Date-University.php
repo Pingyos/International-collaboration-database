@@ -70,25 +70,40 @@
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <select name="mou" class="form-control" required>
+                                                                <select name="mou" class="form-control" required onchange="toggleDateFields(this)">
                                                                     <option value="" disabled selected>MOU/MOA</option>
                                                                     <option value="YES">YES</option>
                                                                     <option value="NO">NO</option>
                                                                 </select>
                                                             </div>
                                                         </div>
+
                                                         <div class="col-md-6">
-                                                            <div class="form-group">
+                                                            <div class="form-group" id="signedField" style="display: none;">
                                                                 <input type="date" name="signed" class="form-control" placeholder="Signed">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-6">
-                                                            <div class="form-group">
+                                                            <div class="form-group" id="expiredField" style="display: none;">
                                                                 <input type="date" name="expired" class="form-control" placeholder="Expired">
                                                             </div>
                                                         </div>
 
+                                                        <script>
+                                                            function toggleDateFields(selectElement) {
+                                                                var signedField = document.getElementById("signedField");
+                                                                var expiredField = document.getElementById("expiredField");
+
+                                                                if (selectElement.value === "YES") {
+                                                                    signedField.style.display = "block";
+                                                                    expiredField.style.display = "block";
+                                                                } else {
+                                                                    signedField.style.display = "none";
+                                                                    expiredField.style.display = "none";
+                                                                }
+                                                            }
+                                                        </script>
                                                         <div class="col-6">
                                                             <div class="form-group">
                                                                 <?php
@@ -157,7 +172,7 @@
                                     <tbody>
                                         <?php
                                         require_once 'connect.php';
-                                        $stmt = $conn->prepare("SELECT * FROM university ORDER BY university ASC");
+                                        $stmt = $conn->prepare("SELECT university_id, university, department, ranking, expired, country FROM university ORDER BY university ASC");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
                                         $countrow = 1;
@@ -227,16 +242,6 @@
                                         }
                                         ?>
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>University/Institute</th>
-                                            <th>Country</th>
-                                            <th>QS ranking</th>
-                                            <th>Expired</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>

@@ -146,7 +146,7 @@
                                         Add Information
                                     </button>
                                     <a class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="View" href="pdf_export_all.php?university_id=<?= isset($_GET['university_id']) ? $_GET['university_id'] : ''; ?>&ACTION=VIEW" target="_blank">
-                                        Export
+                                        Export to pdf
                                     </a>
                                 </div>
                             </div>

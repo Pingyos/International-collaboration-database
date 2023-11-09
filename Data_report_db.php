@@ -5,18 +5,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $end_date = null;
     $selected_activity = null;
     $selected_university = null;
+    $selected_country = null;
 
     // Check if any filter values are set
-    if (isset($_GET['start_date']) || isset($_GET['end_date']) || isset($_GET['activity']) || isset($_GET['university'])) {
+    if (isset($_GET['start_date']) || isset($_GET['end_date']) || isset($_GET['activity']) || isset($_GET['university']) || isset($_GET['country'])) {
         // Set filter values if provided in the GET request
         $start_date = isset($_GET['start_date']) ? $_GET['start_date'] : null;
         $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : null;
         $selected_activity = isset($_GET['activity']) ? $_GET['activity'] : null;
         $selected_university = isset($_GET['university']) ? $_GET['university'] : null;
+        $selected_country = isset($_GET['country']) ? $_GET['country'] : null;
     }
 
     // Build the SQL query
-    $sql = "SELECT id, university, university_id, date_s, date_e, activity, name, details, dateCreate FROM dateinter WHERE 1=1 ";
+    $sql = "SELECT id, university, university_id, date_s, date_e, activity, country, name, details, dateCreate FROM dateinter WHERE 1=1 ";
 
     if (!empty($start_date)) {
         $sql .= "AND date_s >= :start_date ";
@@ -32,6 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if (!empty($selected_university)) {
         $sql .= "AND university = :university ";
+    }
+    if (!empty($selected_country)) {
+        $sql .= "AND country = :country ";
     }
 
     require_once 'connect.php';
@@ -52,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (!empty($selected_university)) {
         $stmt->bindParam(':university', $selected_university);
     }
-
+    if (!empty($selected_country)) {
+        $stmt->bindParam(':country', $selected_country);
+    }
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (!empty($results)) {
@@ -62,7 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        $columns = ['University', 'Start', 'End', 'Activity', 'Name', 'Details', 'DateCreate'];
+        $columns = ['University', 'Country', 'Start', 'End', 'Activity', 'Name', 'Details', 'DateCreate'];
+
         $col = 'A';
 
         foreach ($columns as $column) {
@@ -73,6 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         foreach ($results as $result) {
             $col = 'A';
             $sheet->setCellValue($col . $row, $result['university']);
+            $col++;
+            $sheet->setCellValue($col . $row, $result['country']);
             $col++;
             $sheet->setCellValue($col . $row, $result['date_s']);
             $col++;
@@ -105,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // If no filter values are set, export all data
     require_once 'connect.php';
 
-    $sql = "SELECT id, university, university_id, date_s, date_e, activity, name, details, dateCreate FROM dateinter";
+    $sql = "SELECT id, university, university_id, date_s, date_e, activity, country, name, details, dateCreate FROM dateinter";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -117,7 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        $columns = ['University', 'Start', 'End', 'Activity', 'Name', 'Details', 'DateCreate'];
+        $columns = ['University', 'Country', 'Start', 'End', 'Activity', 'Name', 'Details', 'DateCreate'];
+
         $col = 'A';
 
         foreach ($columns as $column) {
@@ -128,6 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         foreach ($results as $result) {
             $col = 'A';
             $sheet->setCellValue($col . $row, $result['university']);
+            $col++;
+            $sheet->setCellValue($col . $row, $result['country']);
             $col++;
             $sheet->setCellValue($col . $row, $result['date_s']);
             $col++;
