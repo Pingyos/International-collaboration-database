@@ -1,14 +1,5 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['login_info'])) {
-//     header('Location: login.php');
-//     exit;
-// }
-// if (isset($_SESSION['login_info'])) {
-//     $json = $_SESSION['login_info'];
-// } else {
-//     echo "You are not logged in.";
-// }
+// require_once 'session.php'
 ?>
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -46,9 +37,9 @@
                 <div class="col-md-12 col-lg-6">
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
-                            <div class="card" data-aos="fade-up" data-aos-delay="900">
+                            <div class="card" data-aos="fade-up" data-aos-delay="1600">
                                 <div class="flex-wrap card-header d-flex justify-content-between">
-                                    <div id="columnchart" style="width: 100%; height: 500px;"></div>
+                                    <div id="columnchart" style="width: 100%; height: 800px;"></div>
                                 </div>
                             </div>
                         </div>
@@ -57,9 +48,9 @@
                 <div class="col-md-12 col-lg-6">
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
-                            <div class="card" data-aos="fade-up" data-aos-delay="900">
+                            <div class="card" data-aos="fade-up" data-aos-delay="1600">
                                 <div class="flex-wrap card-header d-flex justify-content-between">
-                                    <div id="donutchart" style="width: 100%; height: 500px;"></div>
+                                    <div id="donutchart" style="width: 100%; height: 800px;"></div>
                                 </div>
                             </div>
                         </div>
@@ -176,35 +167,15 @@
             chart.draw(data, options);
         }
     </script>
-    <!-- Library Bundle Script -->
     <script src="assets/js/core/libs.min.js"></script>
-
-    <!-- External Library Bundle Script -->
     <script src="assets/js/core/external.min.js"></script>
-
-    <!-- Widgetchart Script -->
-    <script src="assets/js/charts/widgetcharts.js"></script>
-
-    <!-- mapchart Script -->
     <script src="assets/js/charts/vectore-chart.js"></script>
     <script src="assets/js/charts/dashboard.js"></script>
-
-    <!-- fslightbox Script -->
     <script src="assets/js/plugins/fslightbox.js"></script>
-
-    <!-- Settings Script -->
     <script src="assets/js/plugins/setting.js"></script>
-
-    <!-- Slider-tab Script -->
     <script src="assets/js/plugins/slider-tabs.js"></script>
-
-    <!-- Form Wizard Script -->
     <script src="assets/js/plugins/form-wizard.js"></script>
-
-    <!-- AOS Animation Plugin-->
     <script src="assets/vendor/aos/dist/aos.js"></script>
-
-    <!-- App Script -->
     <script src="assets/js/hope-ui.js" defer></script>
 </body>
 

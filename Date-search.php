@@ -1,14 +1,5 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['login_info'])) {
-//     header('Location: login.php');
-//     exit;
-// }
-// if (isset($_SESSION['login_info'])) {
-//     $json = $_SESSION['login_info'];
-// } else {
-//     echo "You are not logged in.";
-// }
+// require_once 'session.php'
 ?>
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -42,75 +33,105 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="post" class="mt-3 text-center">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="choices-single-default">Start</label>
-                                            <input class="form-control" type="date" id="date_s" name="date_s" value="<?php echo isset($_POST['date_s']) ? $_POST['date_s'] : ''; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="choices-single-default">End</label>
-                                            <input class="form-control" type="date" id="date_e" name="date_e" value="<?php echo isset($_POST['date_e']) ? $_POST['date_e'] : ''; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="choices-single-default">Activity Types</label>
-                                            <select class="form-control" name="activity" id="activity">
-                                                <option value="" disabled <?php echo empty($_POST['activity']) ? 'selected' : ''; ?>>Show All</option>
-                                                <?php
-                                                require_once 'connect.php';
+                            <form method="post" class="mt-3" id="clear">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="choices-single-default"><b>Country</b></label>
+                                                <select class="form-control" name="country" id="country">
+                                                    <option value="" data-university="" disabled <?php echo empty($_POST['country']) ? 'selected' : ''; ?>>Show All</option>
+                                                    <?php
+                                                    require_once 'connect.php';
+                                                    $sql = "SELECT DISTINCT country FROM dateinter ORDER BY `dateinter`.`country` ASC";
 
-                                                $sql = "SELECT DISTINCT activity FROM dateinter";
-                                                $stmt = $conn->prepare($sql);
-                                                $stmt->execute();
-                                                $checkings = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                                                // วนลูปแสดงตัวเลือกใน dropdown
-                                                foreach ($checkings as $checking) {
-                                                    $activity = $checking['activity'];
-                                                    // Check if the current option matches the selected value
-                                                    $selected = isset($_POST['activity']) && $_POST['activity'] === $activity ? 'selected' : '';
-                                                    echo "<option value='$activity' $selected>$activity</option>";
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="choices-single-default">University</label>
-                                            <select class="form-control" name="university" id="university">
-                                                <option value="" disabled <?php echo empty($_POST['university']) ? 'selected' : ''; ?>>Show All</option>
-                                                <?php
-                                                if (isset($_POST['activity'])) {
-                                                    $selected_activity = $_POST['activity'];
-                                                    $sql = "SELECT DISTINCT university FROM dateinter WHERE activity = :activity";
                                                     $stmt = $conn->prepare($sql);
-                                                    $stmt->bindParam(':activity', $selected_activity);
                                                     $stmt->execute();
-                                                    $universities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                                    $checkings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                                    foreach ($checkings as $checking) {
+                                                        $country = $checking['country'];
+                                                        $selected = isset($_POST['country']) && $_POST['country'] === $country ? 'selected' : '';
+                                                        echo "<option value='$country' data-university='' $selected>$country</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
 
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class a="form-label" for="choices-single-default"><b>University</b></label>
+                                                <select class="form-control" name="university" id="university">
+                                                    <option value="" data-country="" disabled <?php echo empty($_POST['university']) ? 'selected' : ''; ?>>Show All</option>
+                                                    <?php
+                                                    $sql = "SELECT DISTINCT university, country FROM dateinter";
+                                                    $stmt = $conn->prepare($sql);
+                                                    $stmt->execute();
+                                                    $checkings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                                    foreach ($checkings as $checking) {
+                                                        $university = $checking['university'];
+                                                        $country = $checking['country'];
+                                                        $selected = isset($_POST['university']) && $_POST['university'] === $university ? 'selected' : '';
+                                                        echo "<option value='$university' data-country='$country' $selected>$university</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                                                    foreach ($universities as $university) {
-                                                        $uni_name = $university['university'];
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                var countrySelect = document.getElementById("country");
+                                                var universitySelect = document.getElementById("university");
 
-                                                        $selected = (isset($_POST['university']) && $_POST['university'] === $uni_name) ? 'selected' : '';
-                                                        echo "<option value='$uni_name' $selected>$uni_name</option>";
+                                                countrySelect.addEventListener("change", filterUniversities);
+                                                universitySelect.addEventListener("change", filterCountries);
+
+                                                function filterUniversities() {
+                                                    var selectedCountry = countrySelect.value;
+                                                    var universityOptions = universitySelect.options;
+
+                                                    for (var i = 0; i < universityOptions.length; i++) {
+                                                        var option = universityOptions[i];
+                                                        var optionCountry = option.getAttribute("data-country");
+
+                                                        if (selectedCountry === "" || option.value === "" || optionCountry === selectedCountry) {
+                                                            option.style.display = "block";
+                                                        } else {
+                                                            option.style.display = "none";
+                                                        }
                                                     }
                                                 }
-                                                ?>
-                                            </select>
+
+                                                function filterCountries() {
+                                                    var selectedUniversity = universitySelect.value;
+                                                    var countryOptions = countrySelect.options;
+
+                                                    for (var i = 0; i < countryOptions.length; i++) {
+                                                        var option = countryOptions[i];
+                                                        var optionUniversity = option.getAttribute("data-university");
+
+                                                        if (selectedUniversity === "" || option.value === "" || optionUniversity === selectedUniversity) {
+                                                            option.style.display = "block";
+                                                        } else {
+                                                            option.style.display = "none";
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        </script>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="choices-single-default"><b>Start</b></label>
+                                                <input class="form-control" type="date" id="date_s" name="date_s" value="<?php echo isset($_POST['date_s']) ? $_POST['date_s'] : ''; ?>">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <div class="col-md-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="choices-single-default"><b>End</b></label>
+                                                <input class="form-control" type="date" id="date_e" name="date_e" value="<?php echo isset($_POST['date_e']) ? $_POST['date_e'] : ''; ?>">
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <button type="submit" name="display_data" class="btn btn-primary">Submit</button>
                                             &nbsp;
@@ -118,22 +139,22 @@
                                             &nbsp;
                                             <button type="button" id="clear_data" class="btn btn-danger">Clear</button>
                                         </div>
-                                    </div>
-                                    <script>
-                                        document.addEventListener("DOMContentLoaded", function() {
-                                            var clearButton = document.getElementById("clear_data");
-                                            clearButton.addEventListener("click", function() {
-                                                var form = document.getElementById("your_form_id");
-                                                var elements = form.elements;
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                var clearButton = document.getElementById("clear_data");
+                                                clearButton.addEventListener("click", function() {
+                                                    var form = document.getElementById("clear");
+                                                    var elements = form.elements;
 
-                                                for (var i = 0; i < elements.length; i++) {
-                                                    if (elements[i].type === "text" || elements[i].type === "textarea" || elements[i].type === "select-one") {
-                                                        elements[i].value = ""; // ล้างค่าข้อมูลในฟิลด์
+                                                    for (var i = 0; i < elements.length; i++) {
+                                                        if (elements[i].type === "text" || elements[i].type === "textarea" || elements[i].type === "select-one") {
+                                                            elements[i].value = ""; // ล้างค่าข้อมูลในฟิลด์
+                                                        }
                                                     }
-                                                }
+                                                });
                                             });
-                                        });
-                                    </script>
+                                        </script>
+                                    </div>
                                 </div>
                             </form>
                             <script>
@@ -186,6 +207,10 @@
                                                 $selected_university = $_POST['university'];
                                                 $sql .= "AND university = :university ";
                                             }
+                                            if (isset($_POST['country']) && !empty($_POST['country'])) {
+                                                $selected_country = $_POST['country'];
+                                                $sql .= "AND country = :country ";
+                                            }
 
                                             $stmt = $conn->prepare($sql);
 
@@ -203,6 +228,9 @@
 
                                             if (isset($selected_university)) {
                                                 $stmt->bindParam(':university', $selected_university);
+                                            }
+                                            if (isset($selected_country)) {
+                                                $stmt->bindParam(':country', $selected_country);
                                             }
 
                                             $stmt->execute();

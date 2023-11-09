@@ -7,6 +7,7 @@ if (
   && isset($_POST['name'])
   && isset($_POST['details'])
   && isset($_POST['reg_by'])
+  && isset($_POST['country'])
 ) {
   require_once 'connect.php';
   $university = $_POST['university_name'];
@@ -17,10 +18,11 @@ if (
   $name = $_POST['name'];
   $details = $_POST['details'];
   $reg_by = $_POST['reg_by'];
+  $country = $_POST['country'];
 
   // SQL insert
-  $stmt = $conn->prepare("INSERT INTO dateinter (university, university_id, date_s, date_e, activity, reg_by, name, details)
-    VALUES (:university, :university_id, :date_s, :date_e, :activity, :reg_by, :name, :details)");
+  $stmt = $conn->prepare("INSERT INTO dateinter (university, university_id, date_s, date_e, activity, reg_by, name, country, details)
+    VALUES (:university, :university_id, :date_s, :date_e, :activity, :reg_by, :name, :country, :details)");
 
   $stmt->bindParam(':university', $university, PDO::PARAM_STR);
   $stmt->bindParam(':university_id', $university_id, PDO::PARAM_STR);
@@ -30,6 +32,7 @@ if (
   $stmt->bindParam(':name', $name, PDO::PARAM_STR);
   $stmt->bindParam(':details', $details, PDO::PARAM_STR);
   $stmt->bindParam(':reg_by', $reg_by, PDO::PARAM_STR);
+  $stmt->bindParam(':country', $country, PDO::PARAM_STR);
 
   $result = $stmt->execute();
 

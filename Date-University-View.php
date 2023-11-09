@@ -1,14 +1,5 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['login_info'])) {
-//     header('Location: login.php');
-//     exit;
-// }
-// if (isset($_SESSION['login_info'])) {
-//     $json = $_SESSION['login_info'];
-// } else {
-//     echo "You are not logged in.";
-// }
+// require_once 'session.php'
 ?>
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -336,6 +327,7 @@
                             <div class="form-card text-start">
                                 <div class="row">
                                     <input type="text" name="university_id" value="<?= $row['university_id']; ?>" hidden>
+                                    <input type="text" name="country" value="<?= $row['country']; ?>" hidden>
                                     <input type="text" name="university_name" value="<?= $row['university']; ?>" hidden>
                                     <input type="text" name="department" value="<?= $row['department']; ?>" hidden>
                                     <div class="col-md-6">
