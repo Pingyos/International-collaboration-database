@@ -23,6 +23,156 @@
         </div>
         <div class="conatiner-fluid content-inner mt-n5 py-0">
             <div class="row">
+                <?php
+                require_once 'connect.php';
+                $sqltotal_universities = "SELECT COUNT(DISTINCT university) AS total_universities FROM university";
+                $stmttotal_universities = $conn->prepare($sqltotal_universities);
+                $stmttotal_universities->execute();
+                $resulttotal_universities = $stmttotal_universities->fetch();
+
+                $sqltotal_country = "SELECT COUNT(DISTINCT country) AS total_country FROM university";
+                $stmttotal_country = $conn->prepare($sqltotal_country);
+                $stmttotal_country->execute();
+                $resulttotal_country = $stmttotal_country->fetch();
+
+                $sqltotal_dateinter = "SELECT COUNT(*) AS total_dateinter FROM dateinter";
+                $stmttotal_dateinter = $conn->prepare($sqltotal_dateinter);
+                $stmttotal_dateinter->execute();
+                $resulttotal_dateinter = $stmttotal_dateinter->fetch();
+
+                ?>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card credit-card-widget" data-aos="fade-up" data-aos-delay="900">
+                        <div class="pb-4 border-0 card-header">
+                            <div class="p-4 border border-white rounded primary-gradient-card" style="height: 120px;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="font-weight-bold">University</h5>
+                                        <span class="fs-5 me-2"><?php echo $resulttotal_universities['total_universities']; ?></span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6></h6>
+                                    <h6 class="ms-5"><a href="" data-bs-toggle="modal" data-bs-target="#UniversityList" style="color: white;">more</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="UniversityList" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="UniversityListLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="UniversityListLabel">University List</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table id="datatable" class="table table-striped" data-toggle="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>University</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        // ดึงข้อมูลรายชื่อมหาลัยจากฐานข้อมูล
+                                        $sql_universities = "SELECT university FROM university";
+                                        $stmt_universities = $conn->prepare($sql_universities);
+                                        $stmt_universities->execute();
+                                        $universities = $stmt_universities->fetchAll();
+
+                                        $count = 1;
+                                        foreach ($universities as $university) {
+                                            echo "<tr>";
+                                            echo "<td>" . $count . "</td>";
+                                            echo "<td>" . $university['university'] . "</td>";
+                                            echo "</tr>";
+                                            $count++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card credit-card-widget" data-aos="fade-up" data-aos-delay="900">
+                        <div class="pb-4 border-0 card-header">
+                            <div class="p-4 border border-white rounded primary-gradient-card" style="height: 120px;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="font-weight-bold">Country </h5>
+                                        <span class="fs-5 me-2"><?php echo $resulttotal_country['total_country']; ?></span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6></h6>
+                                    <h6 class="ms-5"><a href="" data-bs-toggle="modal" data-bs-target="#CountryListLabel" style="color: white;">more</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="CountryListLabel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="CountryListLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="CountryListLabelLabel">Country List</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table id="datatable" class="table table-striped" data-toggle="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Country</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $sql_country = "SELECT DISTINCT country FROM university";
+                                        $stmt_country = $conn->prepare($sql_country);
+                                        $stmt_country->execute();
+                                        $countries = $stmt_country->fetchAll();
+
+                                        $count = 1;
+                                        foreach ($countries as $country) {
+                                            echo "<tr>";
+                                            echo "<td>" . $count . "</td>";
+                                            echo "<td>" . $country['country'] . "</td>";
+                                            echo "</tr>";
+                                            $count++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card credit-card-widget" data-aos="fade-up" data-aos-delay="900">
+                        <div class="pb-4 border-0 card-header">
+                            <div class="p-4 border border-white rounded primary-gradient-card" style="height: 120px;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="font-weight-bold">Date Inter</h5>
+                                        <span class="fs-5 me-2"><?php echo $resulttotal_dateinter['total_dateinter']; ?></span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6></h6>
+                                    <h6 class="ms-5"><a href="" style="color: white;"></a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-12 col-lg-12">
                     <div class="row">
                         <div class="col-md-12">
@@ -177,6 +327,8 @@
     <script src="assets/js/plugins/form-wizard.js"></script>
     <script src="assets/vendor/aos/dist/aos.js"></script>
     <script src="assets/js/hope-ui.js" defer></script>
+
+
 </body>
 
 </html>
